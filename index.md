@@ -80,4 +80,12 @@ One of the best parts about Github is that you can view how other people set up 
 - [Example 2](https://sviatil0.github.io/Sviatoslav_BSE/)
 - [Example 3](https://arneshkumar.github.io/arneshbluestamp/)
 
-To watch the BSE tutorial on how to create a portfolio, click here.
+# Starter Project
+As my starter project, I made the digital clock. This project makes use of a variety of different components, including:
+- Resistors, thermistors, photoresistors, and transistors
+- Ceramic capacitors and electrolytic capacitors
+- Diodes
+- A crystal oscillator 
+- A lithium battery
+
+<iframe width="560" height="315" src="https://www.youtube.com/embed/G0spfXQhkr8" title="YouTube video player" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share" allowfullscreen></iframe>
