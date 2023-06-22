@@ -99,11 +99,17 @@ One of the best parts about Github is that you can view how other people set up 
 # Starter Project
 
 ## Summary
-As my starter project, I made the digital clock. This project makes use of a variety of different components, including:
+As a starter project, I chose to make a digital clock. This project makes use of a variety of different components which all work together to provide the time display that you see as an end result. The main conceptual understanding of how a digital clock works comes with understanding the **time base**, which is essentially the internal clock of the digital clock, providing the project with functionality. The component that makes this internal clock possible is the **crystal oscillator**. 
+
+The function of a digital clock revolves around a quartz crystal inside which oscillates, and therefore is named the crystal oscillator. Quartz is the ideal material to use as these oscillators due to the uniformity in its structure at the molecular level, which ultimately resutls in more consistent oscillations/vibrations, bettering the time base as opposed to how it would be using a different material. When the electric charge (coming from the power source) reaches this crystal, it begins to oscillate at a frequency of approximately 33,000 oscillations per second (Hz). For each 33,000 oscillations of the crystal (or one second of real time), the circuit releases an electric pulse, effectively converting the oscillations of the crystal into seconds. 
+
+###Parts
 - Resistors, thermistors, photoresistors, and transistors
 - Ceramic capacitors and electrolytic capacitors
-- Diodes
+- Diode
 - A crystal oscillator 
 - A lithium battery
+- Buzzer
+- DIP-20 IC
 
 <iframe width="560" height="315" src="https://www.youtube.com/embed/G0spfXQhkr8" title="YouTube video player" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share" allowfullscreen></iframe>
