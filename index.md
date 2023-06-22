@@ -97,6 +97,8 @@ One of the best parts about Github is that you can view how other people set up 
 -->
 
 # Starter Project
+
+## Summary
 As my starter project, I made the digital clock. This project makes use of a variety of different components, including:
 - Resistors, thermistors, photoresistors, and transistors
 - Ceramic capacitors and electrolytic capacitors
