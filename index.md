@@ -4,7 +4,7 @@ Replace this text with a brief description (2-3 sentences) of your project. This
 -->
 | **Engineer** | **School** | **Area of Interest** | **Grade** |
 |:--:|:--:|:--:|:--:|
-| FirstName LastInitialOnly | School Name | Electrical Engineering | Incoming Senior
+| Derin G | Cupertino High School | General Engineering, Undecided | Rising Junior 
 
 <!---
 **Replace the BlueStamp logo below with an image of yourself and your completed project. Follow the guide [here](https://tomcam.github.io/least-github-pages/adding-images-github-pages-site.html) if you need help.**
@@ -103,7 +103,7 @@ As a starter project, I chose to make a digital clock. This project makes use of
 
 The function of a digital clock revolves around a quartz crystal inside which oscillates, and therefore is named the crystal oscillator. Quartz is the ideal material to use as these oscillators due to the uniformity in its structure at the molecular level, which ultimately resutls in more consistent oscillations/vibrations, bettering the time base as opposed to how it would be using a different material. When the electric charge (coming from the power source) reaches this crystal, it begins to oscillate at a frequency of approximately 33,000 oscillations per second (Hz). For each 33,000 oscillations of the crystal (or one second of real time), the circuit releases an electric pulse, effectively converting the oscillations of the crystal into seconds. 
 
-###Parts
+### Parts
 - Resistors, thermistors, photoresistors, and transistors
 - Ceramic capacitors and electrolytic capacitors
 - Diode
