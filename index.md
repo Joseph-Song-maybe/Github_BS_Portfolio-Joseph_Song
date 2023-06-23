@@ -3,7 +3,6 @@
 Replace this text with a brief description (2-3 sentences) of your project. This description should draw the reader in and make them interested in what you've built. You can include what the biggest challenges, takeaways, and triumphs from completing the project were. As you complete your portfolio, remember your audience is less familiar than you are with all that your project entails!
 -->
 | **Engineer** | **School** | **Area of Interest** | **Grade** |
-|:--:|:--:|:--:|:--:|
 | Derin G | Cupertino High School | General Engineering, Undecided | Rising Junior 
 
 <!---
@@ -26,7 +25,7 @@ For your final milestone, explain the outcome of your project. Key details to in
 --->
 
 # Second Milestone
-<!---
+<!-- 
 For your second milestone, explain what you've worked on since your previous milestone. You can highlight:
 - Technical details of what you've accomplished and how they contribute to the final goal
 - What has been surprising about the project so far
@@ -39,13 +38,15 @@ For your second milestone, explain what you've worked on since your previous mil
 --->
 
 # First Milestone
-<!---
-For your first milestone, describe what your project is and how you plan to build it. You can include:
-- An explanation about the different components of your project and how they will all integrate together
-- Technical progress you've made so far
-- Challenges you're facing and solving in your future milestones
-- What your plan is to complete your project
 
+I am building a ball tracking robot using computer vision which is meant to follow a red ball by doing image processing to track the ball. The main components of my project are the DC motors, Raspberry Pi micro-controller board, L298N motor driver board, Raspberry Pi camera, and ultrasonic sensors.
+
+The end goal for my project is for the camera to be able to detect the red ball and to be able to maneuver the robot accordingly to follow the ball through my Python code. Up until this first milestone, I've build the starting prototype of my robot, set up my Raspberry Pi micro-controller, wired my two motors to my L298N motor driver board and to a power source (battery pack), and wrote some simple lines of code to test the functionality of both my Raspberry Pi camera and DC motors. 
+
+Some of the most challenging obstacles I faced was to figure out how work and display my Raspberry Pi, and to troubleshoot with one of my motors originally not working. I've managed to overcome both of these major challenges so far, and now have a functioning Raspberry Pi and two functioning DC motors. Additional challenges that I have yet to overcome include the installation of the 3 ultrasonic sensors and the trainnig of the machine learning model meant to track the color red with computer vision.
+
+In the future, I plan to research how to overcome the challenge of building a machine learning model and figuring out how to wire my ultrasonic sensors by studying past circuit diagrams and getting a fundamental understanding of how an ultrasonic sensor works.  
+<!--
 **Don't forget to replace the text below with the embedding for your milestone video. Go to Youtube, click Share -> Embed, and copy and paste the code to replace what's below.**
 
 <iframe width="560" height="315" src="https://www.youtube.com/embed/CaCazFBhYKs" title="YouTube video player" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share" allowfullscreen></iframe>
