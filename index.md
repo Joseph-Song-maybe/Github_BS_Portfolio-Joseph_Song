@@ -43,17 +43,16 @@ For your second milestone, explain what you've worked on since your previous mil
 
 <iframe width="560" height="315" src="https://www.youtube.com/embed/gQoetvs1tU4" title="YouTube video player" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share" allowfullscreen></iframe>
 
-## Summary
-I am building a ball tracking robot using computer vision which is meant to follow a red ball by doing image processing to track the ball. The main components of my project are the DC motors, Raspberry Pi micro-controller board, L298N motor driver board, Raspberry Pi camera, and 3 HC-SRO4 ultrasonic sensors.
+The end goal for my project is for the camera to be able to detect the red ball and for the robot to be able to maneuver accordingly to follow the ball through my Python code. Up until this first milestone, I've built the starting prototype of my robot, set up my Raspberry Pi micro-controller, wired my two motors to my L298N motor driver board and to a power source (6V battery pack), and wrote some simple lines of code to test the functionality of both my Raspberry Pi camera and DC motors (wheels). 
 
-The end goal for my project is for the camera to be able to detect the red ball and for the robot to be able to maneuver accordingly to follow the ball through my Python code. Up until this first milestone, I've build the starting prototype of my robot, set up my Raspberry Pi micro-controller, wired my two motors to my L298N motor driver board and to a power source (battery pack), and wrote some simple lines of code to test the functionality of both my Raspberry Pi camera and DC motors. 
+## Challenges
 
-Some of the most challenging obstacles I faced was to figure out how work and display my Raspberry Pi, and to troubleshoot with one of my motors originally not working. I've managed to overcome both of these major challenges so far, and now have a functioning Raspberry Pi and two functioning DC motors. Additional challenges that I have yet to overcome include the installation of the 3 ultrasonic sensors and the trainnig of the machine learning model meant to track the color red with computer vision.
+Some of the most challenging obstacles I faced was figuring out how work and display my Raspberry Pi, and to troubleshoot with one of my motors, which was originally not working. I've managed to overcome both of these major challenges so far, and now have a functioning Raspberry Pi and two functioning DC motors. Additional challenges that I have yet to overcome include the installation of the 3 ultrasonic sensors and the trainnig of the machine learning model meant to track the color red with computer vision.
 
 In the future, I plan to research how to overcome the challenge of building a machine learning model and figuring out how to wire my ultrasonic sensors by studying past circuit diagrams and getting a fundamental understanding of how an ultrasonic sensor works.  
 
 # Schematics 
-<!---
+
 Here's where you'll put images of your schematics. [Tinkercad](https://www.tinkercad.com/blog/official-guide-to-tinkercad-circuits) and [Fritzing](https://fritzing.org/learning/) are both great resoruces to create professional schematic diagrams, though BSE recommends Tinkercad becuase it can be done easily and for free in the browser. 
 
 
