@@ -1,4 +1,4 @@
-# Ball Tracking Robot with Computer Vision 
+# Ball Tracking Robot with OpenCV and Computer Vision  
 <!---
 Replace this text with a brief description (2-3 sentences) of your project. This description should draw the reader in and make them interested in what you've built. You can include what the biggest challenges, takeaways, and triumphs from completing the project were. As you complete your portfolio, remember your audience is less familiar than you are with all that your project entails!
 -->
@@ -29,6 +29,7 @@ For your final milestone, explain the outcome of your project. Key details to in
 # Second Milestone
 
 <iframe width="560" height="315" src="https://www.youtube.com/embed/6yCgNUtyPdY" title="YouTube video player" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share" allowfullscreen></iframe>
+
 
 ## Summary
 
