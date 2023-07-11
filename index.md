@@ -7,7 +7,7 @@ Replace this text with a brief description (2-3 sentences) of your project. This
 |:--:|:--:|:--:|:--:|
 | Derin G | Cupertino HS | General Engineering, Undecided | Rising Junior
 
-![Headstone Image](Derin-Headshot.jpg){:height="50%" width="50%"}
+![Headstone Image](Derin-Headshot.png){:height="50%" width="50%"}
 
 
 
