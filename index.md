@@ -5,17 +5,16 @@ Replace this text with a brief description (2-3 sentences) of your project. This
 
 | **Engineer** | **School** | **Area of Interest** | **Grade** |
 |:--:|:--:|:--:|:--:|
-| Derin G | Cupertio HS | Electrical Engineering | Incoming Senior
+| Derin G | Cupertino HS | General Engineering, Undecided | Rising Junior
 
-![Headshot](Derin-Headshot.jpg){:height="50%" width="50%"}
-<!---
-**Replace the BlueStamp logo below with an image of yourself and your completed project. Follow the guide [here](https://tomcam.github.io/least-github-pages/adding-images-github-pages-site.html) if you need help.**
+![Headstone Image](Derin-Headshot.jpg){:height="50%" width="50%"}
 
-![Headstone Image](Derin-Headshot.png){: height="50%" width="50%"}
 
-  
+
+
+<!--
 # Final Milestone
-<!---
+
 For your final milestone, explain the outcome of your project. Key details to include are:
 - What you've accomplished since your previous milestone
 - What your biggest challenges and triumphs were at BSE
@@ -25,26 +24,37 @@ For your final milestone, explain the outcome of your project. Key details to in
 **Don't forget to replace the text below with the embedding for your milestone video. Go to Youtube, click Share -> Embed, and copy and paste the code to replace what's below.**
 
 <iframe width="560" height="315" src="https://www.youtube.com/embed/F7M7imOVGug" title="YouTube video player" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share" allowfullscreen></iframe>
-
+-->
 
 # Second Milestone
-<!-- 
-For your second milestone, explain what you've worked on since your previous milestone. You can highlight:
-- Technical details of what you've accomplished and how they contribute to the final goal
-- What has been surprising about the project so far
-- Previous challenges you faced that you overcame
-- What needs to be completed before your final milestone 
 
-**Don't forget to replace the text below with the embedding for your milestone video. Go to Youtube, click Share -> Embed, and copy and paste the code to replace what's below.**
+<iframe width="560" height="315" src="https://www.youtube.com/embed/6yCgNUtyPdY" title="YouTube video player" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share" allowfullscreen></iframe>
 
-<iframe width="560" height="315" src="https://www.youtube.com/embed/y3VAmNlER5Y" title="YouTube video player" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share" allowfullscreen></iframe>
+## Summary
+
+This milestone was the main part of my project. I completed several major tasks, including writing the color detection, ball identification, ultrasonic sensor sensitivity, and robot movement codes. Throughout this milestone, I also worked on lots of wire management, and got a general idea of how I want my final product to look in terms of its organization.
+
+
 --->
 
 # First Milestone
 
 <iframe width="560" height="315" src="https://www.youtube.com/embed/gQoetvs1tU4" title="YouTube video player" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share" allowfullscreen></iframe>
 
+## Summary 
+
 The end goal for my project is for the camera to be able to detect the red ball and for the robot to be able to maneuver accordingly to follow the ball through my Python code. Up until this first milestone, I've built the starting prototype of my robot, set up my Raspberry Pi micro-controller, wired my two motors to my L298N motor driver board and to a power source (6V battery pack), and wrote some simple lines of code to test the functionality of both my Raspberry Pi camera and DC motors (wheels). 
+
+### Components Used
+
+- Raspberry Pi micro-processor
+    - The component that provides the main function of the project. The Raspberry Pi is essentially a mini computer that you can write code onto, and ultimately power the robot through wiring. 
+- DC motors
+    - A type of motor which is commonly used to provide functionality to wheels. This motor works by making use of an electromagnet which constantly switches its polarity by switching the direction of the current. This current direction switch is made possible with the commutator and brushes of the motor, which allows for the motor to constantly spin. 
+- Ultrasonic sensors
+    - These extremely useful devices work by sending out an ultrasound from the transmittor (trigger pin) and receiving it from the receiver (echo pin). By using some simple calculations including the speed of sound and dividing the final distance by 2 to account for both distances traveled, the ultrasonic sensor is very useful in applications such as this robot.
+- L298N motor driver board
+    - A dual H-Bridge motor driver board which makes use of a multitude of transistors, allowing for this device to control the direction and speed of two different motors, making it a very useful addition for a project such as this robot. 
 
 ## Challenges
 
@@ -105,14 +115,17 @@ One of the best parts about Github is that you can view how other people set up 
 As a starter project, I chose to make a digital clock. This project makes use of a variety of different components which all work together to provide the time display that you see as an end result. The main conceptual understanding of how a digital clock works comes with understanding the **time base**, which is essentially the internal clock of the digital clock, providing the project with functionality. The component that makes this internal clock possible is the **crystal oscillator**, one of the most important components of a digital clock. 
 
 ### Components Used
-- Resistors, thermistors, photoresistors, and transistors
-- Ceramic capacitors and electrolytic capacitors
-- Diode
+- Resistors: a component that resists the flow of electricity
+- Thermistors: thermally sensitive resistor 
+- Photoresistors: light-sensitive resistor
+- Transistors: a device that regulates electricity flow and can act as a switch
+- Capacitors: a component that temporarily stores electrical energy and creates a potential difference
+- Diode: a device that directs current by not allowing it to travel in the reverse direction
 - **A crystal oscillator** 
 - A lithium battery
 - Buzzer
-- DIP-20 IC
-- DIP-8 IC
+- DIP-20 IC: an integrated circuit
+- DIP-8 IC: an integrated circuit
 
 The function of a digital clock revolves around a quartz crystal inside which oscillates, and therefore is named the crystal oscillator. Quartz is the ideal material to use as these oscillators due to the uniformity in its structure at the molecular level, which ultimately resutls in more consistent oscillations (or vibrations), bettering the time base as opposed to how it would be using a different material. When the electric charge (coming from the power source) reaches this crystal, it begins to oscillate at a frequency of approximately 33,000 oscillations per second (Hz). For each 33,000 oscillations of the crystal (or one second of real time), the circuit releases an electric pulse, effectively converting the oscillations of the crystal into seconds. 
 
