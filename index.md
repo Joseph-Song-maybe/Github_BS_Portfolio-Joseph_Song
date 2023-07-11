@@ -35,8 +35,24 @@ For your final milestone, explain the outcome of your project. Key details to in
 
 This milestone was the main part of my project. I completed several major tasks, including writing the color detection, ball identification, ultrasonic sensor sensitivity, and robot movement codes. Throughout this milestone, I also worked on lots of wire management, and got a general idea of how I want my final product to look in terms of its organization.
 
+### Components Used
+**New** components used after the first milestone include:
 
---->
+- Raspberyy Pi Camera
+    - Once connected to the CAMERA port of the Raspberry Pi board, this camera can be used to take live video capture or take images onto the Raspberry Pi minicomputer. This component is very useful for my project because it is essential for the main function of the robot, which is color detection, making it ultimately able to track the red ball.
+- Basic assembly and wiring components:
+    - Jumper wires
+    - Resistors for ultrasonic sensor voltage divider
+    - Hot glue
+    - Electrical tape
+
+## Challenges 
+
+This milestone came with many challenges, the main ones including wire management, understanding and creating voltage dividers for my ultrasonic sensor, and writing code to finalize color detection as well as concurrently control the DC motors accordingly. Upon completion of my second milestone, my wires are relatively organized, my voltage divider works perfectly as to not burn out my Raspberry Pi board by sending in less voltage to the pins, and my color detection and linear movement code works nearly flawlessly. 
+
+## What's Next? 
+
+When finalizing the last parts to my project, I plan on implementing **object detection** on top of color detection and taking a user input to follow a variety of different objects, not just a red ball. Finally, I plan on organizing my robot even better and improving my wire management. 
 
 # First Milestone
 
@@ -49,7 +65,7 @@ The end goal for my project is for the camera to be able to detect the red ball 
 ### Components Used
 
 - Raspberry Pi micro-processor
-    - The component that provides the main function of the project. The Raspberry Pi is essentially a mini computer that you can write code onto, and ultimately power the robot through wiring. 
+    - The component that provides the main function of the project. The Raspberry Pi is essentially a minicomputer that you can write code onto, and ultimately power the robot through wiring. 
 - DC motors
     - A type of motor which is commonly used to provide functionality to wheels. This motor works by making use of an electromagnet which constantly switches its polarity by switching the direction of the current. This current direction switch is made possible with the commutator and brushes of the motor, which allows for the motor to constantly spin. 
 - Ultrasonic sensors
