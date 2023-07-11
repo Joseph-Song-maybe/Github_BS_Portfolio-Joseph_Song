@@ -53,8 +53,8 @@ In the future, I plan to research how to overcome the challenge of building a ma
 
 # Schematics 
 
-![Front View of robot](least-github-pages/assets/IMG_6618.HEIC)
-![Top View of robot](least-github-pages/assets/IMG_6615.HEIC)
+![Front View of robot](IMG_6618.jpg)
+![Top View of robot](IMG_6615.jpg)
 
 # Code
 <!---
