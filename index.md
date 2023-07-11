@@ -53,8 +53,8 @@ In the future, I plan to research how to overcome the challenge of building a ma
 
 # Schematics 
 
-Here's where you'll put images of your schematics. [Tinkercad](https://www.tinkercad.com/blog/official-guide-to-tinkercad-circuits) and [Fritzing](https://fritzing.org/learning/) are both great resoruces to create professional schematic diagrams, though BSE recommends Tinkercad becuase it can be done easily and for free in the browser. 
-
+![Front View of robot](least-github-pages/assets/IMG_6618.HEIC)
+![Top View of robot](least-github-pages/assets/IMG_6615.HEIC)
 
 # Code
 <!---
