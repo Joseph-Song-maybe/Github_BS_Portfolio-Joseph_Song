@@ -7,6 +7,7 @@ Replace this text with a brief description (2-3 sentences) of your project. This
 |:--:|:--:|:--:|:--:|
 | Derin G | Cupertio HS | Electrical Engineering | Incoming Senior
 
+![Headshot](Derin-Headshot.jpg){:height="50%" width="50%"}
 <!---
 **Replace the BlueStamp logo below with an image of yourself and your completed project. Follow the guide [here](https://tomcam.github.io/least-github-pages/adding-images-github-pages-site.html) if you need help.**
 
