@@ -52,7 +52,7 @@ This milestone came with many challenges, the main ones including wire managemen
 
 ### Color Detection with OpenCV:
 
-![Color Detection gif](color_detection_AdobeExpress.gif){:height="180" width="320"}
+![Color Detection gif](color_detection_AdobeExpress.gif){:height="270" width="480"}
 
 ## What's Next? 
 
