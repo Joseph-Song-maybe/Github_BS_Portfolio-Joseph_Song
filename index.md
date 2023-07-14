@@ -1,7 +1,7 @@
-# Ball Tracking Robot with OpenCV and Computer Vision  
-<!---
-Replace this text with a brief description (2-3 sentences) of your project. This description should draw the reader in and make them interested in what you've built. You can include what the biggest challenges, takeaways, and triumphs from completing the project were. As you complete your portfolio, remember your audience is less familiar than you are with all that your project entails!
--->
+# Ball Tracking Robot with OpenCV: Computer Vision  
+
+This project is a ball tracking robot using computer vision techniques using a well-known Python library, **OpenCV**. This project includes many different components, all of which provide a unique functionality to the final product; the robot features the Raspberry Pi minicomputer, a PiCamera (used for color detection), DC motors to control the wheels, and ultrasonic sensors to reduce the possibility of a collision. 
+
 
 | **Engineer** | **School** | **Area of Interest** | **Grade** |
 |:--:|:--:|:--:|:--:|
@@ -10,21 +10,22 @@ Replace this text with a brief description (2-3 sentences) of your project. This
 ![Headstone Image](Derin-Headshot.png){:height="49%" width="49%"}
 ![Final Headshot Image](Final-Headshot.png){:height="49%" width="49%"}
 
-
-
-<!--
 # Final Milestone
 
-For your final milestone, explain the outcome of your project. Key details to include are:
-- What you've accomplished since your previous milestone
-- What your biggest challenges and triumphs were at BSE
-- A summary of key topics you learned about
-- What you hope to learn in the future after everything you've learned at BSE
+## Summary
 
-**Don't forget to replace the text below with the embedding for your milestone video. Go to Youtube, click Share -> Embed, and copy and paste the code to replace what's below.**
+In this final milestone, I worked on adding the second dimension to the movement of my robot, adding code to turn left and right depending on the positioning of the red ball. I also added a searching feature for the bot, meaning that if no large groups of red pixels are detected, the robot will go into search mode and make slow turns until it locates the red ball once again. Finally, in this milestone, I added a reverse feature which puts the robot in reverse if a foreign object is detected by the ultrasonic sensors. 
 
-<iframe width="560" height="315" src="https://www.youtube.com/embed/F7M7imOVGug" title="YouTube video player" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share" allowfullscreen></iframe>
--->
+Some key concepts this project has taught me was the color detection implementation with OpenCV, and how useful this library truly is. Many of the functions in my final code are using OpenCV, and make the code much quicker and simpler to write. Additionally, this project taught me the concept of a voltage divider, a very important addition to certain circuits. Since this project uses the HC-SRO4 Ultrasonic Sensor, a voltage divider must be used to drop the voltage from *5V* to *3.3V* for the Raspberry Pi input. 
+
+## Challenges 
+
+The main challenge I faced within this milestone had to do with the sizing of my frame. The frame spans from -70 to 240 (approximately) on the x-axis, which added confusion to some of my calculations and margins involving the robots second dimensional movements. Once I discovered the mistake, I was able to fix my calculations accordingly and therefore run my movement with much more accuracy. 
+
+## What's Next? 
+
+Being a fairly simple build in terms of hardware, this project has much more potential for future implementations of different and new concepts, one of which is **object detection**. This is an idea I would like to implement in the future, but struggled to do so in the scope of this project due to the speed at which the Raspberry Pi can operate with a complex neural network such as the ones that most of these object detection implementations use.
+
 
 # Second Milestone
 
@@ -33,7 +34,7 @@ For your final milestone, explain the outcome of your project. Key details to in
 
 ## Summary
 
-This milestone was the main part of my project. I completed several major tasks, including writing the color detection, ball identification, ultrasonic sensor sensitivity, and robot movement codes. Throughout this milestone, I also worked on lots of wire management, and got a general idea of how I want my final product to look in terms of its organization.
+This milestone was the main portion of my project's work, as I completed several major tasks, including writing the color detection, ball identification, ultrasonic sensor sensitivity, and linear robot movement codes. Throughout this milestone, I also worked on lots of wire management, and got a general idea of how I want my final product to look in terms of its organization.
 
 ### Components Used
 **New** components used after the first milestone include:
