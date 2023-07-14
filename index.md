@@ -82,7 +82,7 @@ Some of the most challenging obstacles I faced was figuring out how work and dis
 In the future, I plan to research how to overcome the challenge of building a machine learning model and figuring out how to wire my ultrasonic sensors by studying past circuit diagrams and getting a fundamental understanding of how an ultrasonic sensor works.  
 
 # Schematics 
-[![Circuit Diagram Schematic](assets/logo.png)](https://drive.google.com/file/d/14pjy1joovcfL6eFNL_UVC5tmyHhD_BlX/view?usp=sharing)
+[![Circuit Diagram Schematic](schematic.png)](https://drive.google.com/file/d/14pjy1joovcfL6eFNL_UVC5tmyHhD_BlX/view?usp=sharing)
 
 ![Front View of robot](IMG_6633.jpg){:height="33%" width="31%"}
 ![Top View of robot](IMG_6615.jpg){:height="33%" width="31%"}
