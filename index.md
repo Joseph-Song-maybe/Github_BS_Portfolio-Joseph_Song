@@ -39,7 +39,7 @@ This milestone was the main part of my project. I completed several major tasks,
 **New** components used after the first milestone include:
 
 - Raspberyy Pi Camera
-    - Once connected to the CAMERA port of the Raspberry Pi board, this camera can be used to take live video capture or take images onto the Raspberry Pi minicomputer. This component is very useful for my project because it is essential for the main function of the robot, which is color detection, making it ultimately able to track the red ball.
+    - Once connected to the CAMERA port of the Raspberry Pi board, this camera can be used to take live video capture or take images onto the Raspberry Pi minicomputer. This component is extremely useful for my project because it is essential for the main function of the robot, which is color detection, making it ultimately able to track the red ball.
 - Basic assembly and wiring components:
     - Jumper wires
     - Resistors for ultrasonic sensor voltage divider
@@ -48,7 +48,11 @@ This milestone was the main part of my project. I completed several major tasks,
 
 ## Challenges 
 
-This milestone came with many challenges, the main ones including wire management, understanding and creating voltage dividers for my ultrasonic sensor, and writing code to finalize color detection as well as concurrently control the DC motors accordingly. Upon completion of my second milestone, my wires are relatively organized, my voltage divider works perfectly as to not burn out my Raspberry Pi board by sending in less voltage to the pins, and my color detection and linear movement code works nearly flawlessly. 
+This milestone came with many challenges, the main ones including wire management, understanding and creating voltage dividers for my ultrasonic sensor, and especially color detection with OpenCV. Upon completion of my second milestone, my wires are relatively organized, my voltage divider works perfectly as to not burn out my Raspberry Pi board by sending in less voltage to the pins, and my color detection and linear movement code works nearly flawlessly. 
+
+### Color Detection with OpenCV:
+
+![Color Detection gif](color_detection_AdobeExpress.gif)
 
 ## What's Next? 
 
