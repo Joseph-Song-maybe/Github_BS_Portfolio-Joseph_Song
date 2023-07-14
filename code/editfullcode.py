@@ -12,7 +12,7 @@ from PIL import Image
 
 # Detection & Sensor Parameters
 proximity = 10
-saveVideo = True
+saveVideo = False
 
 #hardware work
 GPIO.setmode(GPIO.BCM)
@@ -155,7 +155,7 @@ def segment_colour(frame):    #returns only the red colors in the frame
     mask=cv2.dilate(mask,kern_dilate)     #Dilating
     # Debug: Eren
     (h,w) = mask.shape
-    cv2.imshow('mask', cv2.resize(mask, (w//1,h//1)) )
+    #cv2.imshow('mask', cv2.resize(mask, (w//1,h//1)) )
     #cv2.imshow('mask',mask)
     return mask
 
@@ -217,7 +217,7 @@ while(True):
     height = frame.shape[0]
     width = frame.shape[1]
 
-    cv2.imshow('frame', frame)#[:,:,[2,1,0]])
+    #cv2.imshow('frame', frame)#[:,:,[2,1,0]])
     
     # I guess that camera (VideoCapture.read) captures in RGB, but cv2.imshow uses BGR to display.
     # I decided to flip the channel order [0,1,2] (from camera) to [2,1,0] (to display via cv2.imshow)
@@ -263,10 +263,10 @@ while(True):
     if((area<15000) and (found == 1)):
         # if(distanceL > 25 and distanceC > 25 and distanceR > 25):
         if no_obstacle(distanceL, distanceC, distanceR):
-            if(centre_x < 20):
+            if(centre_x < -10):
                 leftturn()
                 print("left turn")
-            elif(centre_x > 140):
+            elif(centre_x > 170):
                 rightturn()
                 print("right turn")
             else:
@@ -287,7 +287,9 @@ while(True):
             reverse()
             time.sleep(0.30)
             stop()
-            time.sleep(1)
+            time.sleep(0.2)
+        else:
+            reverse()
 
     else:
         stop()
@@ -301,7 +303,7 @@ while(True):
     # with the processed RGB frame (with box, center marked) in order to display side-by-side
     mask_red_rgb = cv2.cvtColor(mask_red,cv2.COLOR_GRAY2RGB)
     frame_and_mask = np.concatenate((frame, mask_red_rgb), axis=1)
-    cv2.imshow("side-by-side", frame_and_mask)
+    #qcv2.imshow("side-by-side", frame_and_mask)
 
     if saveVideo and (imgs_count < 360):
         imgs_video.append(frame_and_mask)
