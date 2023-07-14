@@ -38,7 +38,7 @@ This milestone was the main part of my project. I completed several major tasks,
 ### Components Used
 **New** components used after the first milestone include:
 
-- Raspberyy Pi Camera
+- Raspberry Pi Camera
     - Once connected to the CAMERA port of the Raspberry Pi board, this camera can be used to take live video capture or take images onto the Raspberry Pi minicomputer. This component is extremely useful for my project because it is essential for the main function of the robot, which is color detection, making it ultimately able to track the red ball.
 - Basic assembly and wiring components:
     - Jumper wires
@@ -50,21 +50,19 @@ This milestone was the main part of my project. I completed several major tasks,
 
 This milestone came with many challenges, the main ones including wire management, understanding and creating voltage dividers for my ultrasonic sensor, and especially color detection with OpenCV. Upon completion of my second milestone, my wires are relatively organized, my voltage divider works perfectly as to not burn out my Raspberry Pi board by sending in less voltage to the pins, and my color detection and linear movement code works nearly flawlessly. 
 
-### Color Detection with OpenCV:
-
 ![Color Detection gif](color_detection_AdobeExpress.gif){:height="270" width="480"}
 
 ## What's Next? 
 
 When finalizing the last parts to my project, I plan on implementing **object detection** on top of color detection and taking a user input to follow a variety of different objects, not just a red ball. Finally, I plan on organizing my robot even better and improving my wire management. 
 
-# First Milestone
+# First Milestone 
 
 <iframe width="560" height="315" src="https://www.youtube.com/embed/gQoetvs1tU4" title="YouTube video player" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share" allowfullscreen></iframe>
 
 ## Summary 
 
-The end goal for my project is for the camera to be able to detect the red ball and for the robot to be able to maneuver accordingly to follow the ball through my Python code. Up until this first milestone, I've built the starting prototype of my robot, set up my Raspberry Pi micro-controller, wired my two motors to my L298N motor driver board and to a power source (6V battery pack), and wrote some simple lines of code to test the functionality of both my Raspberry Pi camera and DC motors (wheels). 
+The end goal for this robot is to be able to maneuver according to the largest area of red pixels seen by the PiCamera with Python code using the OpenCV library. Up until this first milestone, I've built the starting prototype of my robot, set up my Raspberry Pi minicomputer, wired my two motors to the L298N motor driver board (H-Bridge) and to a power source (6V battery pack), and finally wrote some simple lines of code to test the functionality of both my Raspberry Pi camera and DC motors (wheels). 
 
 ### Components Used
 
@@ -84,6 +82,7 @@ Some of the most challenging obstacles I faced was figuring out how work and dis
 In the future, I plan to research how to overcome the challenge of building a machine learning model and figuring out how to wire my ultrasonic sensors by studying past circuit diagrams and getting a fundamental understanding of how an ultrasonic sensor works.  
 
 # Schematics 
+
 
 ![Front View of robot](IMG_6633.jpg){:height="33%" width="31%"}
 ![Top View of robot](IMG_6615.jpg){:height="33%" width="31%"}
