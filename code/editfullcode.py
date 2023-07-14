@@ -1,3 +1,6 @@
+# Written by Derin Gurses
+# Date: 07/13/2023
+
 # import the necessary packages
 import cv2
 from picamera.array import PiRGBArray     #As there is a resolution problem in raspberry pi, will not be able to capture frames by VideoCapture
