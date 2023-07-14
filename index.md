@@ -12,6 +12,8 @@ This project is a ball tracking robot using computer vision techniques using a w
 
 # Final Milestone
 
+<iframe width="560" height="315" src="https://www.youtube.com/embed/BLc-4pT_r2o" title="YouTube video player" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share" allowfullscreen></iframe>
+
 ## Summary
 
 In this final milestone, I worked on adding the second dimension to the movement of my robot, adding code to turn left and right depending on the positioning of the red ball. I also added a searching feature for the bot, meaning that if no large groups of red pixels are detected, the robot will go into search mode and make slow turns until it locates the red ball once again. Finally, in this milestone, I added a reverse feature which puts the robot in reverse if a foreign object is detected by the ultrasonic sensors. 
@@ -84,7 +86,15 @@ In the future, I plan to research how to overcome the challenge of building a ma
 
 # Schematics 
 [![Circuit Diagram Schematic](schematic.png)](https://drive.google.com/file/d/14pjy1joovcfL6eFNL_UVC5tmyHhD_BlX/view?usp=sharing)
-
+*Note: Voltage Dividers **must** be used (as shown on breadboard) with 1kΩ and 2kΩ resistors to reduce voltage to 3.3V to avoid shorting Raspberry Pi.*
+*Right and Center Ultrasonic Sensors are not shown on the diagram.*
+- *Right:*
+    - *ECHO to GPIO 12*
+    - *TRIG to GPIO 11*
+- *Center:*
+    - *ECHO to GPIO 20*
+    - *TRIG to GPIO 16*
+  
 ![Front View of robot](IMG_6633.jpg){:height="33%" width="31%"}
 ![Top View of robot](IMG_6615.jpg){:height="33%" width="31%"}
 ![Side View of robot](IMG_6621.jpg){:height="33%" width="31%"}
