@@ -1,44 +1,41 @@
 # import the necessary packages
-import cv2
-from picamera.array import PiRGBArray     #As there is a resolution problem in raspberry pi, will not be able to capture frames by VideoCapture
+import cv2 #OpenCV
 from picamera import PiCamera
 import RPi.GPIO as GPIO
 import time              
 import numpy as np
-from PIL import Image
 
-# Detection & Sensor Parameters
-proximity = 10
-saveVideo = True
+#Ultrasonic Sensor Proximity parameter
+proximity = 10 
 
-#hardware work
+#Hardware work
 GPIO.setmode(GPIO.BCM)
 
-GPIO_TRIGGER1 = 19     #Left ultrasonic sensor
+GPIO_TRIGGER1 = 19     #LEFT ultrasonic sensor
 GPIO_ECHO1 = 26
 
-GPIO_TRIGGER2 = 16     #Front ultrasonic sensor
+GPIO_TRIGGER2 = 16     #FRONT ultrasonic sensor
 GPIO_ECHO2 = 20
 
-GPIO_TRIGGER3 = 11     #Right ultrasonic sensor
+GPIO_TRIGGER3 = 11     #RIGHT ultrasonic sensor
 GPIO_ECHO3 = 12
 
-MOTOR1B=24  #Left Motor
-MOTOR1E=10
+motor1B=24#6  #LEFT Motor
+motor1E=10#5
 
-MOTOR2B=22  #Right Motor
-MOTOR2E=23
+motor2B=22  #RIGHT Motor
+motor2E=23
 
-LED_PIN=13  #If it finds the ball, then it will light up the led
+LED_PIN=18  #If it finds the ball, then it will light up the led
 
 # Set pins as output and input
-GPIO.setup(GPIO_TRIGGER1,GPIO.OUT)  # Trigger
-GPIO.setup(GPIO_ECHO1,GPIO.IN)    # Echo
-GPIO.setup(GPIO_TRIGGER2,GPIO.OUT)  # Trigger
-GPIO.setup(GPIO_ECHO2,GPIO.IN)
-GPIO.setup(GPIO_TRIGGER3,GPIO.OUT)  # Trigger
-GPIO.setup(GPIO_ECHO3,GPIO.IN)
-GPIO.setup(LED_PIN,GPIO.OUT)
+GPIO.setup(GPIO_TRIGGER1,GPIO.OUT)  # Trigger 1
+GPIO.setup(GPIO_ECHO1,GPIO.IN)  # Echo 1
+GPIO.setup(GPIO_TRIGGER2,GPIO.OUT)  # Trigger 2
+GPIO.setup(GPIO_ECHO2,GPIO.IN)  # Echo 2
+GPIO.setup(GPIO_TRIGGER3,GPIO.OUT)  # Trigger 3
+GPIO.setup(GPIO_ECHO3,GPIO.IN)  # Echo 3
+GPIO.setup(LED_PIN,GPIO.OUT)  # LED light 
 
 # Set trigger to False (Low)
 GPIO.output(GPIO_TRIGGER1, False)
@@ -73,66 +70,64 @@ def sonar(GPIO_TRIGGER,GPIO_ECHO):
      
     # Calculate pulse length
     elapsed = stop-start
-    # Distance pulse travelled in that time is time
-    # multiplied by the speed of sound (cm/s)
+    
+    # Distance pulse traveled in that time is time multiplied by the speed of sound (cm/s)
     distance = elapsed * 34000
      
-    # That was the distance there and back so halve the value
+    # That was the distance there and back, so take half of the value
     distance = distance / 2
-     
-    #print ("Distance : %.1f" % distance)
-    
 
     # Reset GPIO settings
     return distance
 
-GPIO.setup(MOTOR1B, GPIO.OUT)
-GPIO.setup(MOTOR1E, GPIO.OUT)
+GPIO.setup(motor1B, GPIO.OUT)
+GPIO.setup(motor1E, GPIO.OUT)
 
-GPIO.setup(MOTOR2B, GPIO.OUT)
-GPIO.setup(MOTOR2E, GPIO.OUT)
+GPIO.setup(motor2B, GPIO.OUT)
+GPIO.setup(motor2E, GPIO.OUT)
 
+# Define motor movement functions
 def forward():
-    GPIO.output(MOTOR1B, GPIO.HIGH)
-    GPIO.output(MOTOR1E, GPIO.LOW)
-    GPIO.output(MOTOR2B, GPIO.HIGH)
-    GPIO.output(MOTOR2E, GPIO.LOW)
+    GPIO.output(motor1B, GPIO.HIGH)
+    GPIO.output(motor1E, GPIO.LOW)
+    GPIO.output(motor2B, GPIO.HIGH)
+    GPIO.output(motor2E, GPIO.LOW)
      
 def reverse():
-    GPIO.output(MOTOR1B, GPIO.LOW)
-    GPIO.output(MOTOR1E, GPIO.HIGH)
-    GPIO.output(MOTOR2B, GPIO.LOW)
-    GPIO.output(MOTOR2E, GPIO.HIGH)
+    GPIO.output(motor1B, GPIO.LOW)
+    GPIO.output(motor1E, GPIO.HIGH)
+    GPIO.output(motor2B, GPIO.LOW)
+    GPIO.output(motor2E, GPIO.HIGH)
      
 def leftturn():
-    GPIO.output(MOTOR1B,GPIO.LOW)
-    GPIO.output(MOTOR1E,GPIO.LOW)
-    GPIO.output(MOTOR2B,GPIO.HIGH)
-    GPIO.output(MOTOR2E,GPIO.LOW)
+    GPIO.output(motor1B,GPIO.LOW)
+    GPIO.output(motor1E,GPIO.LOW)
+    GPIO.output(motor2B,GPIO.HIGH)
+    GPIO.output(motor2E,GPIO.LOW)
      
 def rightturn():
-    GPIO.output(MOTOR1B,GPIO.HIGH)
-    GPIO.output(MOTOR1E,GPIO.LOW)
-    GPIO.output(MOTOR2B,GPIO.LOW)
-    GPIO.output(MOTOR2E,GPIO.LOW)
+    GPIO.output(motor1B,GPIO.HIGH)
+    GPIO.output(motor1E,GPIO.LOW)
+    GPIO.output(motor2B,GPIO.LOW)
+    GPIO.output(motor2E,GPIO.LOW)
 
 def stop():
-    GPIO.output(MOTOR1E,GPIO.LOW)
-    GPIO.output(MOTOR1B,GPIO.LOW)
-    GPIO.output(MOTOR2E,GPIO.LOW)
-    GPIO.output(MOTOR2B,GPIO.LOW)
+    GPIO.output(motor1E,GPIO.LOW)
+    GPIO.output(motor1B,GPIO.LOW)
+    GPIO.output(motor2E,GPIO.LOW)
+    GPIO.output(motor2B,GPIO.LOW)
     
 def sharp_left():
-    GPIO.output(MOTOR1E,GPIO.LOW)
-    GPIO.output(MOTOR1B,GPIO.HIGH)
-    GPIO.output(MOTOR2E,GPIO.HIGH)
-    GPIO.output(MOTOR2B,GPIO.LOW)
+    GPIO.output(motor1E,GPIO.LOW)
+    GPIO.output(motor1B,GPIO.HIGH)
+    GPIO.output(motor2E,GPIO.HIGH)
+    GPIO.output(motor2B,GPIO.LOW)
     
 def sharp_right():
-    GPIO.output(MOTOR1E,GPIO.HIGH)
-    GPIO.output(MOTOR1B,GPIO.LOW)
-    GPIO.output(MOTOR2E,GPIO.LOW)
-    GPIO.output(MOTOR2B,GPIO.HIGH)
+    GPIO.output(motor1E,GPIO.HIGH)
+    GPIO.output(motor1B,GPIO.LOW)
+    GPIO.output(motor2E,GPIO.LOW)
+    GPIO.output(motor2B,GPIO.HIGH)
     
 
 
@@ -141,22 +136,23 @@ def sharp_right():
 def segment_colour(frame):    #returns only the red colors in the frame
     hsv_roi =  cv2.cvtColor(frame, cv2.COLOR_BGR2HSV)
     
-    mask_1 = cv2.inRange(hsv_roi, np.array([160, 140,1]), np.array([190,255,255]))
-    ycr_roi=cv2.cvtColor(frame,cv2.COLOR_BGR2YCrCb)
-    mask_2=cv2.inRange(ycr_roi, np.array((0.,165.,0.)), np.array((255.,255.,255.)))
+    mask_1 = cv2.inRange(hsv_roi, np.array([150, 140,1]), np.array([190,255,255])) #Experimentally set BGR values 
+    # ycr_roi=cv2.cvtColor(frame,cv2.COLOR_BGR2YCrCb)
+    # mask_2=cv2.inRange(ycr_roi, np.array((0.,165.,0.)), np.array((255.,255.,255.)))
 
-    mask = mask_1 #| mask_2
+    mask = mask_1 # | mask_2
     kern_dilate = np.ones((8,8),np.uint8)
     kern_erode  = np.ones((3,3),np.uint8)
     mask= cv2.erode(mask,kern_erode)    #Eroding
     mask=cv2.dilate(mask,kern_dilate)     #Dilating
-    # Debug: Eren
+    
     (h,w) = mask.shape
-    cv2.imshow('mask', cv2.resize(mask, (w//1,h//1)) )
-    #cv2.imshow('mask',mask)
+    
+    cv2.imshow('mask', cv2.resize(mask, (w//1,h//1)) ) # Shows mask (identified red pixels) 
+    
     return mask
 
-def find_blob(blob): #returns the red colored circle
+def find_blob(blob): # Returns the red colored circle
     largest_contour=0
     cont_index=0
     contours, hierarchy = cv2.findContours(blob, cv2.RETR_CCOMP, cv2.CHAIN_APPROX_SIMPLE)
@@ -165,8 +161,6 @@ def find_blob(blob): #returns the red colored circle
         if (area >largest_contour) :
             largest_contour=area
             cont_index=idx
-        #if res>15 and res<18:
-        #    cont_index=idx
                     
     r=(0,0,2,2)
     if len(contours) > 0:
@@ -183,7 +177,8 @@ def target_hist(frame):
 def no_obstacle(distanceL, distanceC, distanceR):
     if(distanceL > proximity and distanceC > proximity and distanceR > proximity):
         return True
-    return False
+    else:
+        return False
 
 #CAMERA CAPTURE
 ##initialize the camera and grab a reference to the raw camera capture
@@ -207,14 +202,12 @@ camera.set(4,240)
 #    frame=cv2.flip(frame,1)
 #-------------------------------
 
-imgs_video = []  # We are going to add frames to this list in order to greate a gif
-imgs_count = 0
 while(True):       
     ret, frame = camera.read()
     height = frame.shape[0]
     width = frame.shape[1]
 
-    cv2.imshow('frame', frame)#[:,:,[2,1,0]])
+    #cv2.imshow('frame', frame)#[:,:,[2,1,0]])
     
     # I guess that camera (VideoCapture.read) captures in RGB, but cv2.imshow uses BGR to display.
     # I decided to flip the channel order [0,1,2] (from camera) to [2,1,0] (to display via cv2.imshow)
@@ -237,10 +230,17 @@ while(True):
     distanceR = sonar(GPIO_TRIGGER3,GPIO_ECHO3)
     #distance coming from left ultrasonic sensor
     distanceL = sonar(GPIO_TRIGGER1,GPIO_ECHO1)
-    print("left distance: ", distanceL//1)
-    print("center distance: ", distanceC//1)
-    print("right distance: ", distanceR//1)
-    if (w*h) < 10:
+    #print("left distance: ", distanceL//1)
+    #print("center distance: ", distanceC//1)
+    #print("right distance: ", distanceR//1)
+    print("\n\n--------------")
+    print("x,y,w,h = ", x,y,w,h)
+    print("dL,dC,dR = ", distanceL//1, distanceC//1, distanceR//1)
+    
+    
+    if (w*h) < 400:
+        print ("no boxjcjsghdjcgsdhcdsc")
+        GPIO.output(LED_PIN, GPIO.LOW)
         found=0
     else:
         found=1
@@ -250,48 +250,50 @@ while(True):
         cv2.circle(frame,(int(centre_x),int(centre_y)),3,(0,110,255),-1)
         centre_x-=80
         centre_y=6--centre_y
-        print (centre_x)
+        #print (centre_x)
     
-    initial=15000
-    GPIO.output(LED_PIN,GPIO.LOW)        
+    initial=150000  # Something very large
     print("area of ball is: ", area)
     #mid_frame = width//2 -40
     #print("mid frame = ", mid_frame)
-    if((area<15000) and (found == 1)):
-        # if(distanceL > 25 and distanceC > 25 and distanceR > 25):
+    if((area<initial) and (found == 1)):
+        print("ball found")
         if no_obstacle(distanceL, distanceC, distanceR):
-            if(centre_x < 20):
+            print("distance good")                
+            GPIO.output(LED_PIN,GPIO.HIGH)
+            #GPIO.output(LED_PIN,GPIO.LOW)
+            if(centre_x < -10):
                 leftturn()
+                time.sleep(0.1)
                 print("left turn")
-            elif(centre_x > 140):
+            elif(centre_x > 180):
                 rightturn()
+                time.sleep(0.1)
                 print("right turn")
             else:
                 forward()
                 print("forward")
-                
+    
         else:
             stop()        
-        '''
-        '''
+
     elif(found==0):
+        GPIO.output(LED_PIN,GPIO.LOW)
         if no_obstacle(distanceL, distanceC, distanceR):
             print("finding ball, turning")
-            rightturn()
-            time.sleep(0.30)
-            stop()
-            time.sleep(0.30)
-            reverse()
-            time.sleep(0.30)
-            stop()
-            time.sleep(1)
-
+        #    sharp_right()
+        #    time.sleep(0.05)
+        #    stop()
+        #    time.sleep(0.001)
+        else:
+        #    reverse()
+            print("reversing")
     else:
         stop()
 
     
     
-    # cv2.imshow("draw",frame)
+    cv2.imshow("draw",frame)
     #rawCapture.truncate(0)  # clear the stream in preparation for the next frame
     
     # Convert mask_red (1-channel grayscale) to 3-channel (RGB) so we can concatenate
@@ -300,16 +302,7 @@ while(True):
     frame_and_mask = np.concatenate((frame, mask_red_rgb), axis=1)
     # cv2.imshow("side-by-side", frame_and_mask)
 
-    if saveVideo and (imgs_count < 360):
-        imgs_video.append(frame_and_mask)
-        imgs_count += 1
-
     if(cv2.waitKey(1) & 0xff == ord('q')):
-        if saveVideo:
-            out = cv2.VideoWriter("side_by_side.avi", 0, 15, (2*width, height))
-            for img in imgs_video:
-                out.write(img)
-            out.release()    
         stop()
         break
 

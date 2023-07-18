@@ -26,7 +26,8 @@ motor1E=10#5
 motor2B=22  #RIGHT Motor
 motor2E=23
 
-LED_PIN=18  #If it finds the ball, then it will light up the led
+LED_SEARCH=18  #If it finds the ball, then it will light up the LED
+LED_PARKED=5 #Once the robot has parked in front of the ball, it will light up the LED
 
 # Set pins as output and input
 GPIO.setup(GPIO_TRIGGER1,GPIO.OUT)  # Trigger 1
@@ -35,7 +36,8 @@ GPIO.setup(GPIO_TRIGGER2,GPIO.OUT)  # Trigger 2
 GPIO.setup(GPIO_ECHO2,GPIO.IN)  # Echo 2
 GPIO.setup(GPIO_TRIGGER3,GPIO.OUT)  # Trigger 3
 GPIO.setup(GPIO_ECHO3,GPIO.IN)  # Echo 3
-GPIO.setup(LED_PIN,GPIO.OUT)  # LED light 
+GPIO.setup(LED_SEARCH,GPIO.OUT)  # LED light for tracking
+GPIO.setup(LED_PARKED,GPIO.OUT) # LED light for parking 
 
 # Set trigger to False (Low)
 GPIO.output(GPIO_TRIGGER1, False)
@@ -72,12 +74,12 @@ def sonar(GPIO_TRIGGER,GPIO_ECHO):
     elapsed = stop-start
     
     # Distance pulse traveled in that time is time multiplied by the speed of sound (cm/s)
-    distance = elapsed * 34000
+    distance = elapsed * 34300
      
     # That was the distance there and back, so take half of the value
     distance = distance / 2
 
-    # Reset GPIO settings
+    # Reset GPIO settings, return distance (in cm) appropriate for robot movements 
     return distance
 
 GPIO.setup(motor1B, GPIO.OUT)
@@ -112,10 +114,10 @@ def rightturn():
     GPIO.output(motor2E,GPIO.LOW)
 
 def stop():
-    GPIO.output(motor1E,GPIO.LOW)
     GPIO.output(motor1B,GPIO.LOW)
-    GPIO.output(motor2E,GPIO.LOW)
+    GPIO.output(motor1E,GPIO.LOW)
     GPIO.output(motor2B,GPIO.LOW)
+    GPIO.output(motor2E,GPIO.LOW)
     
 def sharp_left():
     GPIO.output(motor1B,GPIO.LOW)
@@ -146,11 +148,9 @@ def back_right():
 def segment_colour(frame):    #returns only the red colors in the frame
     hsv_roi =  cv2.cvtColor(frame, cv2.COLOR_BGR2HSV)
     
-    mask_1 = cv2.inRange(hsv_roi, np.array([150, 140,1]), np.array([190,255,255])) #Experimentally set BGR values 
-    # ycr_roi=cv2.cvtColor(frame,cv2.COLOR_BGR2YCrCb)
-    # mask_2=cv2.inRange(ycr_roi, np.array((0.,165.,0.)), np.array((255.,255.,255.)))
+    mask_1 = cv2.inRange(hsv_roi, np.array([150, 140,1]), np.array([190,255,255])) #Experimentally set BGR values appropriate for desired color
 
-    mask = mask_1 # | mask_2
+    mask = mask_1 
     kern_dilate = np.ones((8,8),np.uint8)
     kern_erode  = np.ones((3,3),np.uint8)
     mask= cv2.erode(mask,kern_erode)    #Eroding
@@ -158,11 +158,11 @@ def segment_colour(frame):    #returns only the red colors in the frame
     
     (h,w) = mask.shape
     
-    #cv2.imshow('mask', mask) # Shows mask (identified red pixels) 
+    cv2.imshow('mask', mask) # Shows mask (B&W screen with identified red pixels) 
     
     return mask
 
-def find_blob(blob): # Returns the red colored circle
+def find_blob(blob): # Returns the red colored largest object 
     largest_contour=0
     cont_index=0
     contours, hierarchy = cv2.findContours(blob, cv2.RETR_CCOMP, cv2.CHAIN_APPROX_SIMPLE)
@@ -184,46 +184,27 @@ def target_hist(frame):
     hist=cv2.calcHist([hsv_img],[0],None,[50],[0,255])
     return hist
 
-def no_obstacle(distanceL, distanceC, distanceR):
+def no_obstacle(distanceL, distanceC, distanceR): #TRUE: no obstacles within 10 cm of sensor, FALSE: obstacle
     if(distanceL > proximity and distanceC > proximity and distanceR > proximity):
         return True
     else:
         return False
 
 #CAMERA CAPTURE
-##initialize the camera and grab a reference to the raw camera capture
-#camera = PiCamera()
-#camera.resolution = (160, 120)
-#camera.framerate = 16
-#rawCapture = PiRGBArray(camera, size=(160, 120))
-## allow the camera to warmup
-#time.sleep(0.001)
  
 camera = cv2.VideoCapture(0)
 camera.set(3,320)
 camera.set(4,240)
 
-# capture frames from the camera
-#-------------------------------
-# Commented out by Eren
-#for image in camera.capture_continuous(rawCapture, format="bgr", use_video_port=True):
-#    #grab the raw NumPy array representing the image, then initialize the timestamp and occupied/unoccupied text
-#    frame = image.array
-#    frame=cv2.flip(frame,1)
-#-------------------------------
+
 flag = 0 #SEARCHING: 0: left turn for last location of ball, 1: right turn for last location of ball
-flag_reroute = -1 #REROUTE SEARCHING  -1: No reroute, 0:reroute left , 1: reroute rigth
+flag_reroute = -1 #REROUTE SEARCHING  -1: No reroute, 0:reroute left , 1: reroute right
 while(True):       
     ret, frame = camera.read()
     height = frame.shape[0]
     width = frame.shape[1]
 
-    #cv2.imshow('frame', frame)#[:,:,[2,1,0]])
-    
-    # I guess that camera (VideoCapture.read) captures in RGB, but cv2.imshow uses BGR to display.
-    # I decided to flip the channel order [0,1,2] (from camera) to [2,1,0] (to display via cv2.imshow)
-    #frame_r = cv2.resize(frame, (width//4,height//4))
-    #cv2.imshow('frame', frame_r[:,:,[2,1,0]])
+    #cv2.imshow('frame', frame) #Shows the frame (video capture)
     
     global center_x
     global center_y
@@ -231,7 +212,8 @@ while(True):
     center_y=0.
     hsv1 = cv2.cvtColor(frame, cv2.COLOR_RGB2HSV)
     mask_red=segment_colour(frame[:,:,[0,1,2]])
-    #masking red the frame
+    
+    #Masking red the frame
     loct,area=find_blob(mask_red)
     x,y,w,h=loct
      
@@ -241,17 +223,14 @@ while(True):
     distanceR = sonar(GPIO_TRIGGER3,GPIO_ECHO3)
     #distance coming from left ultrasonic sensor
     distanceL = sonar(GPIO_TRIGGER1,GPIO_ECHO1)
-    #print("left distance: ", distanceL//1)
-    #print("center distance: ", distanceC//1)
-    #print("right distance: ", distanceR//1)
-    print("\n\n--------------")
-    #print("x,y,w,h = ", x,y,w,h)
-    #print("dL,dC,dR = ", distanceL//1, distanceC//1, distanceR//1)
-    print("0:left, 1: right => flag = ", flag)
     
-    if (w*h) < 400:
-        print ("no boxjcjsghdjcgsdhcdsc")
-        GPIO.output(LED_PIN, GPIO.LOW)
+    print("\n\n--------------") #Nicely formatted printing for checking distance or debugging
+    print("0:left, 1: right ===> flag = ", flag)
+    
+    if (w*h) < 400: #If the area of a found red spot is <400, ignore it and set found = 0
+        print ("This object is not the ball.")
+        GPIO.output(LED_SEARCH, GPIO.LOW)
+        GPIO.output(LED_PARKED, GPIO.LOW)
         found=0
     else:
         found=1
@@ -259,105 +238,82 @@ while(True):
         center_x=x+((w)/2)
         center_y=y+((h)/2)
         cv2.circle(frame,(int(center_x),int(center_y)),3,(0,110,255),-1)
-        #center_x-=80
-        center_y=6--center_y
-        print (center_x)
+        
     
     initial=150000  # Something very large
-    #print("area of ball is: ", area)
-    #mid_frame = width//2 -40
-    #print("mid frame = ", mid_frame)
+    
     if((area<initial) and (found == 1)):
-        print("ball found")
-        if no_obstacle(distanceL, distanceC, distanceR):
-            #print("distance good")                
-            GPIO.output(LED_PIN,GPIO.HIGH)
-            #GPIO.output(LED_PIN,GPIO.LOW)
-            #if(center_x < 0):
-            if(center_x < 40): # width=320 full frame
-                flag = 0
+        print("Ball is found.")
+        if no_obstacle(distanceL, distanceC, distanceR): #If ball is found and no obstacle, turn on searching LED               
+            GPIO.output(LED_SEARCH,GPIO.HIGH)
+            GPIO.output(LED_PARKED,GPIO.LOW)
+            
+            if(center_x < 40): # Full frame's width is 320
+                flag = 0 # Last seen on the left (if robot loses ball) 
                 leftturn()
-                print("left turn")
-            #elif(center_x > 190):
+                print("Turning left")
+        
             elif(center_x > 280):
-                flag = 1
+                flag = 1 # Last seen on the right (if robot loses ball) 
                 rightturn()
-                print("right turn")
-            else:
+                print("Turning right")
+                
+            else: #If the ball is relatively centered, move forward 
                 forward()
-                print("forward")
+                print("Moving forward")
     
         else:
             stop()
-            #''
-            if (distanceC < proximity):
+            
+            if (distanceC < proximity): # PARKED STATE: If the ball is in front of the center sensor
                 stop()
-            elif(distanceL<proximity):
-                print("rerouting right")
+                GPIO.output(LED_SEARCH,GPIO.LOW) #Turn off the tracking LED
+                GPIO.output(LED_PARKED, GPIO.HIGH) #Turn on the parked LED
+                
+            # REROUTING MOVEMENT
+            elif(distanceL < proximity):
+                print("Rerouting right")
                 back_left()
                 time.sleep(0.2)
                 flag_reroute = 1
                 if(flag_reroute == 1):
                     forward()
                     
-                #time.sleep(0.1)
-                #back_left()
-                #time.sleep(0.1)
-            elif(distanceR<proximity):
+            elif(distanceR < proximity):
                 print("rerouting left")
                 back_right()
                 time.sleep(0.2)
                 flag_reroute = 0
                 if(flag_reroute == 0):
                     forward()
-                #time.sleep(0.1)
-                #back_right()
-                #time.sleep(0.1)
-            #stop()
             
 
     elif(found==0):
-        GPIO.output(LED_PIN,GPIO.LOW)
+        GPIO.output(LED_SEARCH,GPIO.LOW)
         if no_obstacle(distanceL, distanceC, distanceR):
-            print("finding ball, turning")
+            print("Finding ball, turning")
             if(flag == 0): # If last seen location was on the left, search by turning left
-                print("searching left")
+                print("Searching left")
                 sharp_left()
                 time.sleep(0.08)
                 stop()
-            elif(flag == 1):
+            elif(flag == 1): # If last seen location was on the right, search by turning right
                 sharp_right()
-                print("searching right")
+                print("Searching right")
                 time.sleep(0.08)
                 stop()
-            '''
-            print("finding ball, turning")
-            rightturn()
-            time.sleep(0.05)
-            stop()
-            time.sleep(0.05)
-            reverse()
-            time.sleep(0.05)
-            stop()
-            '''
+            
         else:
             reverse()
-            print("reversing")
+            print("Reversing")
     else:
         stop()
 
     
     
-    #cv2.imshow("draw",frame)
-    #rawCapture.truncate(0)  # clear the stream in preparation for the next frame
+    #cv2.imshow("draw",frame) #Shows frame with bounding box 
     
-    # Convert mask_red (1-channel grayscale) to 3-channel (RGB) so we can concatenate
-    # with the processed RGB frame (with box, center marked) in order to display side-by-side
-    #mask_red_rgb = cv2.cvtColor(mask_red,cv2.COLOR_GRAY2RGB)
-    #frame_and_mask = np.concatenate((frame, mask_red_rgb), axis=1)
-
-    
-    if(cv2.waitKey(1) & 0xff == ord('q')):
+    if(cv2.waitKey(1) & 0xff == ord('q')): #Press q to break the loop and stop moving 
         stop()
         break
 
