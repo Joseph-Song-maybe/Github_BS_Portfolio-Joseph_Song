@@ -382,7 +382,7 @@ This milestone was the main portion of my project's work, as I completed several
 
 This milestone came with many challenges, the main ones including wire management, understanding and creating voltage dividers for my ultrasonic sensor, and especially color detection with OpenCV. Upon completion of my second milestone, my wires are relatively organized, my voltage divider works perfectly as to not burn out my Raspberry Pi board by sending in less voltage to the pins, and my color detection and linear movement code works nearly flawlessly. 
 
-![Color Detection gif](color_detection_AdobeExpress.gif){:height="270" width="480"}
+![Color Detection gif](color_detection_AdobeExpress.gif){:height="405" width="720"}
 
 ## What's Next? 
 
