@@ -480,7 +480,8 @@ However, despite the seemingly smooth processs, this project did come with many 
 
 ## Basic Camera Testing Code
 
-*This code is useful when beginning with this project, being one of the simplest ways to experiment with live video capture with OpenCV's cv2.VideoCapture() function.*
+This code is useful when beginning with this project, being one of the simplest ways to experiment with live video capture with OpenCV's cv2.VideoCapture() function.
+
 
 <pre style="background:#fdfdfd; border:none; height:40pc">
         import cv2
@@ -510,7 +511,8 @@ However, despite the seemingly smooth processs, this project did come with many 
 
 ## Basic Motor Testing Code
 
-*This code uses basic WASD controls to move your robot, similar to controlling a video game character. It is extremely useful for testing basic mechanical function of DC motors, as well as working through the logical aspect of new vehicle control implementations.*
+This code uses basic *WASD* controls to move your robot, similar to controlling a video game character. It is extremely useful for testing basic mechanical function of DC motors, as well as working through the logical aspect of new vehicle control implementations.
+
 
 <pre style="background:#fdfdfd; border:none; height:40pc">
         import RPi.GPIO as GPIO
@@ -567,7 +569,8 @@ However, despite the seemingly smooth processs, this project did come with many 
 
 ## Basic Ultrasonic Sensor Testing Code
 
-*This code is a very simple way to start understanding ultrasonic sensor calculations to convert garbage sensor values to ones that are crucial to the movement of the robot relative to these values. This simple code will print the distance at which the closest detected object lays.*
+This code is a very simple way to start understanding ultrasonic sensor calculations to convert garbage sensor values to ones that are crucial to the movement of the robot relative to these values. This simple code will print the distance at which the closest detected object lays.
+
 
 <pre style="background:#fdfdfd; border:none; height:40pc">
         import RPi.GPIO as GPIO
