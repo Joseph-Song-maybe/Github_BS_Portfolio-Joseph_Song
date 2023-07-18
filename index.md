@@ -149,7 +149,7 @@ The clock must then convert this internal count of time into the digital display
 However, despite the seemingly smooth processs, this project did come with many challenges. With a digital clock generally being fairly small, this makes the soldering work very precise and difficult. I had to come up with unorthodox ways of soldering my components onto the board with the little amount of space I had to work with. This project also came with soldering parts that you wouldn't usually see in any other electronics project. My digital clock came with having to solder the lithium battery pack onto a flat surface, which is one of the many unusual uses of solder that I had to navigate through this project. 
 
 # Code
-<pre><code>
+<pre style="background:#fdfdfd; border:none; height:40pc"><code>
 
 #PYTHON
 
