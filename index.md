@@ -10,15 +10,15 @@ This project is a ball tracking robot using computer vision techniques using a w
 ![Headstone Image](Derin-Headshot.png){:height="49%" width="49%"}
 ![Final Headshot Image](Final-Headshot.png){:height="49%" width="49%"}
 
-# Final Milestone
+# Third Milestone
 
 <iframe width="560" height="315" src="https://www.youtube.com/embed/BLc-4pT_r2o" title="YouTube video player" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share" allowfullscreen></iframe>
 
 ## Summary
 
-In this final milestone, I worked on adding the second dimension to the movement of my robot, adding code to turn left and right depending on the positioning of the red ball. I also added a searching feature for the bot, meaning that if no large groups of red pixels are detected, the robot will go into search mode and make slow turns until it locates the red ball once again. Finally, in this milestone, I added a reverse feature which puts the robot in reverse if a foreign object is detected by the ultrasonic sensors. 
+In this third milestone, I worked on adding the second dimension to the movement of my robot, adding code to turn left and right depending on the positioning of the red ball. I also added a searching feature for the bot, meaning that if no large groups of red pixels are detected, the robot will go into search mode and make slow turns until it locates the red ball once again. Finally, in this milestone, I added a reverse feature which puts the robot in reverse if a foreign object is detected by the ultrasonic sensors. 
 
-Some key concepts this project has taught me was the color detection implementation with OpenCV, and how useful this library truly is. Many of the functions in my final code are using OpenCV, and make the code much quicker and simpler to write. Additionally, this project taught me the concept of a voltage divider, a very important addition to certain circuits. Since this project uses the HC-SRO4 Ultrasonic Sensor, a voltage divider must be used to drop the voltage from *5V* to *3.3V* for the Raspberry Pi input. 
+Some key concepts this project has taught me was the color detection implementation with OpenCV, and how useful this library truly is. Many of the functions in my final code are using OpenCV, and make the code much quicker and simpler to write. Additionally, this project taught me the concept of a voltage divider, a very important addition to certain circuits. Since this project uses the HC-SR04 Ultrasonic Sensor, a voltage divider must be used to reduce the voltage from *5V* to *3.3V* for the Raspberry Pi pins. 
 
 ## Challenges 
 
@@ -28,127 +28,8 @@ The main challenge I faced within this milestone had to do with the sizing of my
 
 Being a fairly simple build in terms of hardware, this project has much more potential for future implementations of different and new concepts, one of which is **object detection**. This is an idea I would like to implement in the future, but struggled to do so in the scope of this project due to the speed at which the Raspberry Pi can operate with a complex neural network such as the ones that most of these object detection implementations use.
 
-
-# Second Milestone
-
-<iframe width="560" height="315" src="https://www.youtube.com/embed/6yCgNUtyPdY" title="YouTube video player" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share" allowfullscreen></iframe>
-
-
-## Summary
-
-This milestone was the main portion of my project's work, as I completed several major tasks, including writing the color detection, ball identification, ultrasonic sensor sensitivity, and linear robot movement codes. Throughout this milestone, I also worked on lots of wire management, and got a general idea of how I want my final product to look in terms of its organization.
-
-### Components Used
-**New** components used after the first milestone include:
-
-- Raspberry Pi Camera
-    - Once connected to the CAMERA port of the Raspberry Pi board, this camera can be used to take live video capture or take images onto the Raspberry Pi minicomputer. This component is extremely useful for my project because it is essential for the main function of the robot, which is color detection, making it ultimately able to track the red ball.
-- Basic assembly and wiring components:
-    - Jumper wires
-    - Resistors for ultrasonic sensor voltage divider
-    - Hot glue
-    - Electrical tape
-
-## Challenges 
-
-This milestone came with many challenges, the main ones including wire management, understanding and creating voltage dividers for my ultrasonic sensor, and especially color detection with OpenCV. Upon completion of my second milestone, my wires are relatively organized, my voltage divider works perfectly as to not burn out my Raspberry Pi board by sending in less voltage to the pins, and my color detection and linear movement code works nearly flawlessly. 
-
-![Color Detection gif](color_detection_AdobeExpress.gif){:height="270" width="480"}
-
-## What's Next? 
-
-When finalizing the last parts to my project, I plan on implementing **object detection** on top of color detection and taking a user input to follow a variety of different objects, not just a red ball. Finally, I plan on organizing my robot even better and improving my wire management. 
-
-# First Milestone 
-
-<iframe width="560" height="315" src="https://www.youtube.com/embed/gQoetvs1tU4" title="YouTube video player" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share" allowfullscreen></iframe>
-
-## Summary 
-
-The end goal for this robot is to be able to maneuver according to the largest area of red pixels seen by the PiCamera with Python code using the OpenCV library. Up until this first milestone, I've built the starting prototype of my robot, set up my Raspberry Pi minicomputer, wired my two motors to the L298N motor driver board (H-Bridge) and to a power source (6V battery pack), and finally wrote some simple lines of code to test the functionality of both my Raspberry Pi camera and DC motors (wheels). 
-
-### Components Used
-
-- Raspberry Pi micro-processor
-    - The component that provides the main function of the project. The Raspberry Pi is essentially a minicomputer that you can write code onto, and ultimately power the robot through wiring. 
-- DC motors
-    - A type of motor which is commonly used to provide functionality to wheels. This motor works by making use of an electromagnet which constantly switches its polarity by switching the direction of the current. This current direction switch is made possible with the commutator and brushes of the motor, which allows for the motor to constantly spin. 
-- Ultrasonic sensors
-    - These extremely useful devices work by sending out an ultrasound from the transmittor (trigger pin) and receiving it from the receiver (echo pin). By using some simple calculations including the speed of sound and dividing the final distance by 2 to account for both distances traveled, the ultrasonic sensor is very useful in applications such as this robot.
-- L298N motor driver board
-    - A dual H-Bridge motor driver board which makes use of a multitude of transistors, allowing for this device to control the direction and speed of two different motors, making it a very useful addition for a project such as this robot. 
-
-## Challenges
-
-Some of the most challenging obstacles I faced was figuring out how work and display my Raspberry Pi, and to troubleshoot with one of my motors, which was originally not working. I've managed to overcome both of these major challenges so far, and now have a functioning Raspberry Pi and two functioning DC motors. Additional challenges that I have yet to overcome include the installation of the 3 ultrasonic sensors and the trainnig of the machine learning model meant to track the color red with computer vision.
-
-In the future, I plan to research how to overcome the challenge of building a machine learning model and figuring out how to wire my ultrasonic sensors by studying past circuit diagrams and getting a fundamental understanding of how an ultrasonic sensor works.  
-
-# Schematics 
-[![Circuit Diagram Schematic](schematic.png)](https://drive.google.com/file/d/14pjy1joovcfL6eFNL_UVC5tmyHhD_BlX/view?usp=sharing)
-*Note: Voltage Dividers **must** be used (as shown on breadboard) with 1kΩ and 2kΩ resistors to reduce voltage to 3.3V to avoid shorting Raspberry Pi.*
-*Right and Center Ultrasonic Sensors are not shown on the diagram.*
-- *Right:*
-    - *ECHO to GPIO 12*
-    - *TRIG to GPIO 11*
-- *Center:*
-    - *ECHO to GPIO 20*
-    - *TRIG to GPIO 16*
-  
-![Front View of robot](IMG_6633.jpg){:height="33%" width="31%"}
-![Top View of robot](IMG_6615.jpg){:height="33%" width="31%"}
-![Side View of robot](IMG_6621.jpg){:height="33%" width="31%"}
-
-
-# Bill of Materials
-
-| **Part** | **Note** | **Price** | **Link** |
-|:--:|:--:|:--:|:--:|
-| Raspberri Pi 4 Model B | Minicomputer | $79 | <a href="https://www.amazon.com/Raspberry-Model-2019-Quad-Bluetooth/dp/B07TC2BK1X?source=ps-sl-shoppingads-lpcontext&ref_=fplfs&smid=A2QE71HEBJRNZE&th=1"> Link </a> |
-|:--:|:--:|:--:|:--:|
-| PiCamera | Live video capture, camera | $15 | <a href="https://www.amazon.com/Arducam-Autofocus-Raspberry-Motorized-Software/dp/B07SN8GYGD/ref=sr_1_5?crid=3236VFT39VAPQ&keywords=picamera&qid=1689698732&s=electronics&sprefix=picamer%2Celectronics%2C138&sr=1-5"> Link </a> |
-|:--:|:--:|:--:|:--:|
-| L298N Driver Board | Drives the wheels | $9 | <a href="https://www.amazon.com/Qunqi-2Packs-Controller-Stepper-Arduino/dp/B01M29YK5U/ref=sr_1_1_sspa?crid=3DE9ZH0NI3KJX&keywords=l298n&qid=1689698859&s=electronics&sprefix=l298n%2Celectronics%2C164&sr=1-1-spons&sp_csd=d2lkZ2V0TmFtZT1zcF9hdGY&psc=1"> Link </a> |
-|:--:|:--:|:--:|:--:|
-| Motors and Board kit | Basic hardware pieces and motors | $14 | <a href="https://www.amazon.com/Smart-Chassis-Motors-Encoder-Battery/dp/B01LXY7CM3/ref=sr_1_4?crid=27ACD61NPNLO4&keywords=robot+car+kit&qid=1689698962&s=electronics&sprefix=robot+car+kit%2Celectronics%2C169&sr=1-4"> Link </a> |
-|:--:|:--:|:--:|:--:|
-| Powerbank | External and portable power supply for Pi | $21 | <a href="https://www.amazon.com/Anker-Ultra-Compact-High-Speed-VoltageBoost-Technology/dp/B07QXV6N1B/ref=sr_1_1_sspa?crid=53ULGW8ZNDOW&keywords=power+bank&qid=1689699045&s=electronics&sprefix=power+bank%2Celectronics%2C144&sr=1-1-spons&sp_csd=d2lkZ2V0TmFtZT1zcF9hdGY&psc=1"> Link </a> |
-|:--:|:--:|:--:|:--:|
-| HC-SR04 sensors (5 pcs) | Obstacle distance calculations | $9 | <a href="https://www.amazon.com/Organizer-Ultrasonic-Distance-MEGA2560-ElecRight/dp/B07RGB4W8V/ref=sr_1_2?crid=UYI359LWAAVU&keywords=hc+sr04+ultrasonic+sensor+3+pc&qid=1689699122&s=electronics&sprefix=hc+sr04+ultrasonic+sensor+3+pc%2Celectronics%2C123&sr=1-2"> Link </a> |
-|:--:|:--:|:--:|:--:|
-| HDMI to micro HDMI cable | Used to display Pi contents on monitor | $9 | <a href="https://www.amazon.com/UGREEN-Adapter-Ethernet-Compatible-Raspberry/dp/B06WWQ7KLV/ref=sr_1_5?crid=3S06RDX7B1X4O&keywords=hdmi+to+micro+hdmi&qid=1689699482&s=electronics&sprefix=hdmi+to+micro%2Celectronics%2C132&sr=1-5"> Link </a> |
-|:--:|:--:|:--:|:--:|
-| Video Capture card | Needed to display onto Mac | $17 | <a href="https://www.amazon.com/Capture-Streaming-Broadcasting-Conference-Teaching/dp/B09FLN63B3/ref=sr_1_3?crid=19YSORXLTIALH&keywords=video+capture+card&qid=1689699799&s=electronics&sprefix=video+capture+car%2Celectronics%2C140&sr=1-3"> Link </a> |
-|:--:|:--:|:--:|:--:|
-
-# Starter Project
-
-<iframe width="560" height="315" src="https://www.youtube.com/embed/G0spfXQhkr8" title="YouTube video player" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share" allowfullscreen></iframe>
-
-## Summary
-As a starter project, I chose to make a digital clock. This project makes use of a variety of different components which all work together to provide the time display that you see as an end result. The main conceptual understanding of how a digital clock works comes with understanding the **time base**, which is essentially the internal clock of the digital clock, providing the project with functionality. The component that makes this internal clock possible is the **crystal oscillator**, one of the most important components of a digital clock. 
-
-### Components Used
-- Resistors: a component that resists the flow of electricity
-- Thermistors: thermally sensitive resistor 
-- Photoresistors: light-sensitive resistor
-- Transistors: a device that regulates electricity flow and can act as a switch
-- Capacitors: a component that temporarily stores electrical energy and creates a potential difference
-- Diode: a device that directs current by not allowing it to travel in the reverse direction
-- **A crystal oscillator** 
-- A lithium battery
-- Buzzer
-- DIP-20 IC: an integrated circuit
-- DIP-8 IC: an integrated circuit
-
-The function of a digital clock revolves around a quartz crystal inside which oscillates, and therefore is named the crystal oscillator. Quartz is the ideal material to use as these oscillators due to the uniformity in its structure at the molecular level, which ultimately resutls in more consistent oscillations (or vibrations), bettering the time base as opposed to how it would be using a different material. When the electric charge (coming from the power source) reaches this crystal, it begins to oscillate at a frequency of approximately 33,000 oscillations per second (Hz). For each 33,000 oscillations of the crystal (or one second of real time), the circuit releases an electric pulse, effectively converting the oscillations of the crystal into seconds. 
-
-The clock must then convert this internal count of time into the digital display you see on the surface. For every time the clock's oscillations are counted and an electric pulse is released, the electric pulse is converted to binary, which is then understood by the microchip (DIP IC) which converts the binary to a measure of time (hours, minutes, seconds). Finally, another microchip reads the binary numbers received then lights up the appropriate section on the LED display, completing the function of the clock. 
-
-### Challenges Faced
-However, despite the seemingly smooth processs, this project did come with many challenges. With a digital clock generally being fairly small, this makes the soldering work very precise and difficult. I had to come up with unorthodox ways of soldering my components onto the board with the little amount of space I had to work with. This project also came with soldering parts that you wouldn't usually see in any other electronics project. My digital clock came with having to solder the lithium battery pack onto a flat surface, which is one of the many unusual uses of solder that I had to navigate through this project. 
-
 # Code
+
 <pre style="background:#fdfdfd; border:none; height:40pc">
         #PYTHON
         
@@ -475,4 +356,251 @@ However, despite the seemingly smooth processs, this project did come with many 
                 break
         GPIO.cleanup() #free all the GPIO pins
         camera.release()               
+</pre>
+
+# Second Milestone
+
+<iframe width="560" height="315" src="https://www.youtube.com/embed/6yCgNUtyPdY" title="YouTube video player" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share" allowfullscreen></iframe>
+
+
+## Summary
+
+This milestone was the main portion of my project's work, as I completed several major tasks, including writing the color detection, ball identification, ultrasonic sensor sensitivity, and linear robot movement codes. Throughout this milestone, I also worked on lots of wire management, and got a general idea of how I want my final product to look in terms of its organization.
+
+### Components Used
+**New** components used after the first milestone include:
+
+- Raspberry Pi Camera
+    - Once connected to the CAMERA port of the Raspberry Pi board, this camera can be used to take live video capture or take images onto the Raspberry Pi minicomputer. This component is extremely useful for my project because it is essential for the main function of the robot, which is color detection, making it ultimately able to track the red ball.
+- Basic assembly and wiring components:
+    - Jumper wires
+    - Resistors for ultrasonic sensor voltage divider
+    - Hot glue
+    - Electrical tape
+
+## Challenges 
+
+This milestone came with many challenges, the main ones including wire management, understanding and creating voltage dividers for my ultrasonic sensor, and especially color detection with OpenCV. Upon completion of my second milestone, my wires are relatively organized, my voltage divider works perfectly as to not burn out my Raspberry Pi board by sending in less voltage to the pins, and my color detection and linear movement code works nearly flawlessly. 
+
+![Color Detection gif](color_detection_AdobeExpress.gif){:height="270" width="480"}
+
+## What's Next? 
+
+When finalizing the last parts to my project, I plan on implementing **object detection** on top of color detection and taking a user input to follow a variety of different objects, not just a red ball. Finally, I plan on organizing my robot even better and improving my wire management. 
+
+# First Milestone 
+
+<iframe width="560" height="315" src="https://www.youtube.com/embed/gQoetvs1tU4" title="YouTube video player" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share" allowfullscreen></iframe>
+
+## Summary 
+
+The end goal for this robot is to be able to maneuver according to the largest area of red pixels seen by the PiCamera with Python code using the OpenCV library. Up until this first milestone, I've built the starting prototype of my robot, set up my Raspberry Pi minicomputer, wired my two motors to the L298N motor driver board (H-Bridge) and to a power source (6V battery pack), and finally wrote some simple lines of code to test the functionality of both my Raspberry Pi camera and DC motors (wheels). 
+
+### Components Used
+
+- Raspberry Pi micro-processor
+    - The component that provides the main function of the project. The Raspberry Pi is essentially a minicomputer that you can write code onto, and ultimately power the robot through wiring. 
+- DC motors
+    - A type of motor which is commonly used to provide functionality to wheels. This motor works by making use of an electromagnet which constantly switches its polarity by switching the direction of the current. This current direction switch is made possible with the commutator and brushes of the motor, which allows for the motor to constantly spin. 
+- Ultrasonic sensors
+    - These extremely useful devices work by sending out an ultrasound from the transmittor (trigger pin) and receiving it from the receiver (echo pin). By using some simple calculations including the speed of sound and dividing the final distance by 2 to account for both distances traveled, the ultrasonic sensor is very useful in applications such as this.
+- L298N motor driver board
+    - A dual H-Bridge motor driver board which makes use of a multitude of transistors, allowing for this device to control the direction and speed of two different motors, making it a very useful addition for a project such as this. 
+
+## Challenges
+
+Some of the most challenging obstacles I faced was figuring out how work and display my Raspberry Pi, and to troubleshoot with one of my motors, which was originally not working. I've managed to overcome both of these major challenges so far, and now have a functioning Raspberry Pi and two functioning DC motors. Additional challenges that I have yet to overcome include the installation of the 3 ultrasonic sensors and the trainnig of the machine learning model meant to track the color red with computer vision.
+
+In the future, I plan to research how to overcome the challenge of building a machine learning model and figuring out how to wire my ultrasonic sensors by studying past circuit diagrams and getting a fundamental understanding of how an ultrasonic sensor works.  
+
+# Schematics 
+[![Circuit Diagram Schematic](schematic.png)](https://drive.google.com/file/d/14pjy1joovcfL6eFNL_UVC5tmyHhD_BlX/view?usp=sharing)
+*Note: Voltage Dividers **must** be used (as shown on breadboard) with 1kΩ and 2kΩ resistors to reduce voltage to 3.3V to avoid shorting Raspberry Pi board.*
+*Right and Center Ultrasonic Sensors are not shown on the diagram.*
+- *Right:*
+    - *ECHO to GPIO 12*
+    - *TRIG to GPIO 11*
+- *Center:*
+    - *ECHO to GPIO 20*
+    - *TRIG to GPIO 16*
+*LED connections are not shown on schematic diagram.*
+  
+![Front View of robot](IMG_6633.jpg){:height="33%" width="31%"}
+![Top View of robot](IMG_6615.jpg){:height="33%" width="31%"}
+![Side View of robot](IMG_6621.jpg){:height="33%" width="31%"}
+
+
+# Bill of Materials
+
+| **Part** | **Note** | **Price** | **Link** |
+|:--:|:--:|:--:|:--:|
+| Raspberri Pi 4 Model B | Minicomputer | $79 | <a href="https://www.amazon.com/Raspberry-Model-2019-Quad-Bluetooth/dp/B07TC2BK1X?source=ps-sl-shoppingads-lpcontext&ref_=fplfs&smid=A2QE71HEBJRNZE&th=1"> Link </a> |
+|:--:|:--:|:--:|:--:|
+| PiCamera | Live video capture, camera | $15 | <a href="https://www.amazon.com/Arducam-Autofocus-Raspberry-Motorized-Software/dp/B07SN8GYGD/ref=sr_1_5?crid=3236VFT39VAPQ&keywords=picamera&qid=1689698732&s=electronics&sprefix=picamer%2Celectronics%2C138&sr=1-5"> Link </a> |
+|:--:|:--:|:--:|:--:|
+| L298N Driver Board | Drives the wheels | $9 | <a href="https://www.amazon.com/Qunqi-2Packs-Controller-Stepper-Arduino/dp/B01M29YK5U/ref=sr_1_1_sspa?crid=3DE9ZH0NI3KJX&keywords=l298n&qid=1689698859&s=electronics&sprefix=l298n%2Celectronics%2C164&sr=1-1-spons&sp_csd=d2lkZ2V0TmFtZT1zcF9hdGY&psc=1"> Link </a> |
+|:--:|:--:|:--:|:--:|
+| Motors and Board kit | Basic hardware pieces and motors | $14 | <a href="https://www.amazon.com/Smart-Chassis-Motors-Encoder-Battery/dp/B01LXY7CM3/ref=sr_1_4?crid=27ACD61NPNLO4&keywords=robot+car+kit&qid=1689698962&s=electronics&sprefix=robot+car+kit%2Celectronics%2C169&sr=1-4"> Link </a> |
+|:--:|:--:|:--:|:--:|
+| Powerbank | External and portable power supply for Pi | $21 | <a href="https://www.amazon.com/Anker-Ultra-Compact-High-Speed-VoltageBoost-Technology/dp/B07QXV6N1B/ref=sr_1_1_sspa?crid=53ULGW8ZNDOW&keywords=power+bank&qid=1689699045&s=electronics&sprefix=power+bank%2Celectronics%2C144&sr=1-1-spons&sp_csd=d2lkZ2V0TmFtZT1zcF9hdGY&psc=1"> Link </a> |
+|:--:|:--:|:--:|:--:|
+| HC-SR04 sensors (5 pcs) | Obstacle distance calculations | $9 | <a href="https://www.amazon.com/Organizer-Ultrasonic-Distance-MEGA2560-ElecRight/dp/B07RGB4W8V/ref=sr_1_2?crid=UYI359LWAAVU&keywords=hc+sr04+ultrasonic+sensor+3+pc&qid=1689699122&s=electronics&sprefix=hc+sr04+ultrasonic+sensor+3+pc%2Celectronics%2C123&sr=1-2"> Link </a> |
+|:--:|:--:|:--:|:--:|
+| HDMI to micro HDMI cable | Used to display Pi contents on monitor | $9 | <a href="https://www.amazon.com/UGREEN-Adapter-Ethernet-Compatible-Raspberry/dp/B06WWQ7KLV/ref=sr_1_5?crid=3S06RDX7B1X4O&keywords=hdmi+to+micro+hdmi&qid=1689699482&s=electronics&sprefix=hdmi+to+micro%2Celectronics%2C132&sr=1-5"> Link </a> |
+|:--:|:--:|:--:|:--:|
+| Video Capture card | Needed to display onto Mac | $17 | <a href="https://www.amazon.com/Capture-Streaming-Broadcasting-Conference-Teaching/dp/B09FLN63B3/ref=sr_1_3?crid=19YSORXLTIALH&keywords=video+capture+card&qid=1689699799&s=electronics&sprefix=video+capture+car%2Celectronics%2C140&sr=1-3"> Link </a> |
+|:--:|:--:|:--:|:--:|
+
+# Starter Project
+
+<iframe width="560" height="315" src="https://www.youtube.com/embed/G0spfXQhkr8" title="YouTube video player" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share" allowfullscreen></iframe>
+
+## Summary
+As a starter project, I chose to make a digital clock. This project makes use of a variety of different components which all work together to provide the time display that you see as an end result. The main conceptual understanding of how a digital clock works comes with understanding the **time base**, which is essentially the internal clock of the digital clock, providing the project with functionality. The component that makes this internal clock possible is the **crystal oscillator**, one of the most important components of a digital clock. 
+
+### Components Used
+- Resistors: a component that resists the flow of electricity
+- Thermistors: thermally sensitive resistor 
+- Photoresistors: light-sensitive resistor
+- Transistors: a device that regulates electricity flow and can act as a switch
+- Capacitors: a component that temporarily stores electrical energy and creates a potential difference
+- Diode: a device that directs current by not allowing it to travel in the reverse direction
+- **A crystal oscillator** 
+- A lithium battery
+- Buzzer
+- DIP-20 IC: an integrated circuit
+- DIP-8 IC: an integrated circuit
+
+The function of a digital clock revolves around a quartz crystal inside which oscillates, and therefore is named the crystal oscillator. Quartz is the ideal material to use as these oscillators due to the uniformity in its structure at the molecular level, which ultimately resutls in more consistent oscillations (or vibrations), bettering the time base as opposed to how it would be using a different material. When the electric charge (coming from the power source) reaches this crystal, it begins to oscillate at a frequency of approximately 33,000 oscillations per second (Hz). For each 33,000 oscillations of the crystal (or one second of real time), the circuit releases an electric pulse, effectively converting the oscillations of the crystal into seconds. 
+
+The clock must then convert this internal count of time into the digital display you see on the surface. For every time the clock's oscillations are counted and an electric pulse is released, the electric pulse is converted to binary, which is then understood by the microchip (DIP IC) which converts the binary to a measure of time (hours, minutes, seconds). Finally, another microchip reads the binary numbers received then lights up the appropriate section on the LED display, completing the function of the clock. 
+
+### Challenges Faced
+However, despite the seemingly smooth processs, this project did come with many challenges. With a digital clock generally being fairly small, this makes the soldering work very precise and difficult. I had to come up with unorthodox ways of soldering my components onto the board with the little amount of space I had to work with. This project also came with soldering parts that you wouldn't usually see in any other electronics project. My digital clock came with having to solder the lithium battery pack onto a flat surface, which is one of the many unusual uses of solder that I had to navigate through this project. 
+
+## Basic Camera Testing Code
+
+*This code is useful when beginning with this project, being one of the simplest ways to experiment with live video capture with OpenCV's cv2.VideoCapture() function.*
+
+<pre style="background:#fdfdfd; border:none; height:40pc">
+        import cv2
+        
+        vid = cv2.VideoCapture(0)
+        
+        while(True):
+            ret, frame = vid.read()
+            height = frame.shape[0]
+            width = frame.shape[1]
+            
+            if ret:
+                
+                # frame_r: resized tensor H/4,W/4, 3
+                frame_r = cv2.resize(frame, (width//4,height//4))
+                
+                #swap channels (BGR)
+                cv2.imshow('frame', frame_r[:,:,[2,1,0]])
+                #cv2.imshow('frame', frame_r)
+        
+            if (cv2.waitKey(1) & 0xFF == ord('q')):
+                break
+                
+        vid.release()
+        cv2.destroyAllWindows()
+</pre>
+
+## Basic Motor Testing Code
+
+*This code uses basic WASD controls to move your robot, similar to controlling a video game character. It is extremely useful for testing basic mechanical function of DC motors, as well as working through the logical aspect of new vehicle control implementations.*
+
+<pre style="background:#fdfdfd; border:none; height:40pc">
+        import RPi.GPIO as GPIO
+        import cv2
+        import numpy as np
+        
+        GPIO.setmode(GPIO.BCM)
+        
+        MOTOR1B=24 #5 #Left Motor 22 10 23 24 (22&23 , 10&24)
+        MOTOR1E=10 #6
+        
+        MOTOR2B=22 #17  #Right Motor
+        MOTOR2E=23 #27
+        
+        GPIO.setup(MOTOR1B, GPIO.OUT)
+        GPIO.setup(MOTOR1E, GPIO.OUT)
+        
+        GPIO.setup(MOTOR2B, GPIO.OUT)
+        GPIO.setup(MOTOR2E, GPIO.OUT)
+        
+        while(True):
+            userInput = input()
+            
+            if(userInput == 'w'):
+                GPIO.output(MOTOR1B,GPIO.HIGH)
+                GPIO.output(MOTOR1E,GPIO.LOW)
+                GPIO.output(MOTOR2B,GPIO.HIGH)
+                GPIO.output(MOTOR2E,GPIO.LOW)
+            
+            if(userInput == 'a'):
+                GPIO.output(MOTOR1B,GPIO.LOW)
+                GPIO.output(MOTOR1E,GPIO.LOW)
+                GPIO.output(MOTOR2B,GPIO.HIGH)
+                GPIO.output(MOTOR2E,GPIO.LOW)
+                
+            if(userInput == 's'):
+                GPIO.output(MOTOR1B,GPIO.LOW)
+                GPIO.output(MOTOR1E,GPIO.HIGH)
+                GPIO.output(MOTOR2B,GPIO.LOW)
+                GPIO.output(MOTOR2E,GPIO.HIGH)
+            
+            if(userInput == 'd'):
+                GPIO.output(MOTOR1B,GPIO.HIGH)
+                GPIO.output(MOTOR1E,GPIO.LOW)
+                GPIO.output(MOTOR2B,GPIO.LOW)
+                GPIO.output(MOTOR2E,GPIO.LOW)
+        
+            if(userInput == 'x'):
+                 GPIO.output(MOTOR1B,GPIO.LOW)
+                 GPIO.output(MOTOR1E,GPIO.LOW)
+                 GPIO.output(MOTOR2B,GPIO.LOW)
+                 GPIO.output(MOTOR2E,GPIO.LOW)
+</pre>
+
+## Basic Ultrasonic Sensor Testing Code
+
+*This code is a very simple way to start understanding ultrasonic sensor calculations to convert garbage sensor values to ones that are crucial to the movement of the robot relative to these values. This simple code will print the distance at which the closest detected object lays.*
+
+<pre style="background:#fdfdfd; border:none; height:40pc">
+        import RPi.GPIO as GPIO
+        import time
+        GPIO.setmode(GPIO.BCM)
+        
+        TRIG_PIN = 11
+        ECHO_PIN = 12
+        
+        GPIO.setup(TRIG_PIN, GPIO.OUT)
+        GPIO.setup(ECHO_PIN, GPIO.IN)
+        GPIO.output(TRIG_PIN, GPIO.LOW)
+        
+        time.sleep(2)
+        
+        GPIO.output(TRIG_PIN, GPIO.HIGH)
+        
+        time.sleep(0.00001)
+        
+        GPIO.output(TRIG_PIN, GPIO.LOW)
+        
+        while GPIO.input(ECHO_PIN) ==0:
+            pulse_send=time.time()
+        while GPIO.input(ECHO_PIN) ==1:
+            pulse_received=time.time()
+            
+        pulse_duration=pulse_received - pulse_send
+        pulse_duration=pulse_duration/2
+        
+        distance = 34300 * pulse_duration #speed of sound (cm/s) = 34300
+        distance = round(distance,2)
+        
+        print ("object is at", distance, "cm from the ultrasonic sensor")
+        
+        GPIO.cleanup()
 </pre>
