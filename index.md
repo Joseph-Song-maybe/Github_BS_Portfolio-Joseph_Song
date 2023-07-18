@@ -769,6 +769,10 @@ camera.release()
 |:--:|:--:|:--:|:--:|
 | HC-SR04 sensors (5 pcs) | Obstacle distance calculations | $9 | <a href="https://www.amazon.com/Organizer-Ultrasonic-Distance-MEGA2560-ElecRight/dp/B07RGB4W8V/ref=sr_1_2?crid=UYI359LWAAVU&keywords=hc+sr04+ultrasonic+sensor+3+pc&qid=1689699122&s=electronics&sprefix=hc+sr04+ultrasonic+sensor+3+pc%2Celectronics%2C123&sr=1-2"> Link </a> |
 |:--:|:--:|:--:|:--:|
+| HDMI to micro HDMI cable | Used to display Pi contents on monitor | $9 | <a href="https://www.amazon.com/UGREEN-Adapter-Ethernet-Compatible-Raspberry/dp/B06WWQ7KLV/ref=sr_1_5?crid=3S06RDX7B1X4O&keywords=hdmi+to+micro+hdmi&qid=1689699482&s=electronics&sprefix=hdmi+to+micro%2Celectronics%2C132&sr=1-5"> Link </a> |
+|:--:|:--:|:--:|:--:|
+| Video Capture card | Needed to display onto Mac | $17 | <a href="https://www.amazon.com/Capture-Streaming-Broadcasting-Conference-Teaching/dp/B09FLN63B3/ref=sr_1_3?crid=19YSORXLTIALH&keywords=video+capture+card&qid=1689699799&s=electronics&sprefix=video+capture+car%2Celectronics%2C140&sr=1-3"> Link </a> |
+|:--:|:--:|:--:|:--:|
 
 # Starter Project
 
