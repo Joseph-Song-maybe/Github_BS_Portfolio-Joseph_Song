@@ -150,7 +150,7 @@ However, despite the seemingly smooth processs, this project did come with many 
 
 # Code
 
-```
+<pre style="background:#fdfdfd; border:none; height:40pc">
 #PYTHON
 
 #Author: Derin Gurses
@@ -477,5 +477,6 @@ while(True):
 
 GPIO.cleanup() #free all the GPIO pins
 camera.release()
-```
+</pre>
+
 
