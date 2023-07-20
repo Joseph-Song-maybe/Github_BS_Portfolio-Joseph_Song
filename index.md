@@ -96,7 +96,7 @@ In the future, I plan to research how to overcome the challenge of building a ma
 
   
 ![Front View of robot](IMG_6633.jpg){:height="33%" width="31%"}
-![Top View of robot](topview.JPG){:height="33%" width="31%"}
+![Top View of robot](TOPVIEW.JPG){:height="33%" width="31%"}
 ![Side View of robot](IMG_6621.jpg){:height="33%" width="31%"}
 
 
@@ -400,23 +400,142 @@ Define the function for the Ultrasonic Sensors and color detection to ultimately
 def sonar(GPIO_TRIGGER,GPIO_ECHO):
     start=0                     
     stop=0
-    # Set pins as output and input
     GPIO.setup(GPIO_TRIGGER,GPIO.OUT)  # Trigger
-    GPIO.setup(GPIO_ECHO,GPIO.IN)    # Echo
+    GPIO.setup(GPIO_ECHO,GPIO.IN)      # Echo
      
-    # Set trigger to False (Low)
-    GPIO.output(GPIO_TRIGGER, False)
+    GPIO.output(GPIO_TRIGGER, False)   # Set trigger to False (Low)
      
-    # Allow module to settle
-    time.sleep(0.01)
-         
-    #while distance > 5:
-    #Send 10us pulse to trigger
+    time.sleep(0.01)                   # Allow module to settle
+
+    #while distance > 5, Send 10us pulse to trigger
     GPIO.output(GPIO_TRIGGER, True)
     time.sleep(0.00001)
     GPIO.output(GPIO_TRIGGER, False)
     begin = time.time()
-    while GPIO.input(GPIO_ECHO)==0 and time.time()largest_contour) :
+    while GPIO.input(GPIO_ECHO)==0 and time.time()<begin+0.05:
+        start = time.time()
+     
+    while GPIO.input(GPIO_ECHO)==1 and time.time()<begin+0.1:
+        stop = time.time()
+     
+    elapsed = stop-start               # Calculate pulse length
+    
+    distance = elapsed * 34300         # Distance pulse traveled in that time is time multiplied by the speed of sound (cm/s)
+     
+   
+    distance = distance / 2            # That was the distance there and back, so take half of the value
+
+   
+    return distance                    # Reset GPIO settings, return distance (in cm) appropriate to be used for robot movement 
+```
+
+
+
+Set all motors to output:
+
+```
+GPIO.setup(motor1B, GPIO.OUT)
+GPIO.setup(motor1E, GPIO.OUT)
+
+GPIO.setup(motor2B, GPIO.OUT)
+GPIO.setup(motor2E, GPIO.OUT)
+```
+
+
+
+Define functions to simplify motor movements in later code (sharp turns will power both wheels in opposite directions whereas regular turns only power one):
+
+```
+def forward():
+    GPIO.output(motor1B, GPIO.HIGH)
+    GPIO.output(motor1E, GPIO.LOW)
+    GPIO.output(motor2B, GPIO.HIGH)
+    GPIO.output(motor2E, GPIO.LOW)
+     
+def reverse():
+    GPIO.output(motor1B, GPIO.LOW)
+    GPIO.output(motor1E, GPIO.HIGH)
+    GPIO.output(motor2B, GPIO.LOW)
+    GPIO.output(motor2E, GPIO.HIGH)
+     
+def leftturn():
+    GPIO.output(motor1B,GPIO.LOW)
+    GPIO.output(motor1E,GPIO.LOW)
+    GPIO.output(motor2B,GPIO.HIGH)
+    GPIO.output(motor2E,GPIO.LOW)
+     
+def rightturn():
+    GPIO.output(motor1B,GPIO.HIGH)
+    GPIO.output(motor1E,GPIO.LOW)
+    GPIO.output(motor2B,GPIO.LOW)
+    GPIO.output(motor2E,GPIO.LOW)
+
+def stop():
+    GPIO.output(motor1B,GPIO.LOW)
+    GPIO.output(motor1E,GPIO.LOW)
+    GPIO.output(motor2B,GPIO.LOW)
+    GPIO.output(motor2E,GPIO.LOW)
+    
+def sharp_left():
+    GPIO.output(motor1B,GPIO.LOW)
+    GPIO.output(motor1E,GPIO.HIGH)
+    GPIO.output(motor2B,GPIO.HIGH)
+    GPIO.output(motor2E,GPIO.LOW)
+    
+def sharp_right():
+    GPIO.output(motor1B,GPIO.HIGH)
+    GPIO.output(motor1E,GPIO.LOW)
+    GPIO.output(motor2B,GPIO.LOW)
+    GPIO.output(motor2E,GPIO.HIGH)
+    
+def back_left():
+    GPIO.output(motor1B,GPIO.LOW)
+    GPIO.output(motor1E,GPIO.LOW)
+    GPIO.output(motor2B,GPIO.LOW)
+    GPIO.output(motor2E,GPIO.HIGH)
+    
+def back_right():
+    GPIO.output(motor1B,GPIO.LOW)
+    GPIO.output(motor1E,GPIO.HIGH)
+    GPIO.output(motor2B,GPIO.LOW)
+    GPIO.output(motor2E,GPIO.LOW)
+```
+
+
+
+Define a function to isolate red colored pixels from other colors and create the mask (black and white frame). The range of BGR values are experimentally determined specific to the color of the ball of your choosing. These values may need to be slightly changed:
+
+```
+def segment_colour(frame):    #returns only the red colors in the frame
+    hsv_roi =  cv2.cvtColor(frame, cv2.COLOR_BGR2HSV)
+    
+    mask_1 = cv2.inRange(hsv_roi, np.array([150, 140,1]), np.array([190,255,255])) #Experimentally set BGR values appropriate for desired color
+
+    mask = mask_1 
+    kern_dilate = np.ones((8,8),np.uint8)
+    kern_erode  = np.ones((3,3),np.uint8)
+    mask= cv2.erode(mask,kern_erode)      # Eroding
+    mask=cv2.dilate(mask,kern_dilate)     # Dilating
+    
+    (h,w) = mask.shape
+    
+    cv2.imshow('mask', mask)              # Shows mask (B&W frame with identified red pixels) 
+    
+    return mask
+```
+
+
+
+Define the find_blob() function to place the bounding box on the largest area of red pixels. This function is important to allow the robot to not confuse red colors in the background as the ball. 
+
+```
+def find_blob(blob): # Returns the red colored largest object 
+    largest_contour=0
+    cont_index=0
+    contours, hierarchy = cv2.findContours(blob, cv2.RETR_CCOMP, cv2.CHAIN_APPROX_SIMPLE)
+    for idx, contour in enumerate(contours):
+        area=cv2.contourArea(contour)
+        if (area >largest_contour) :
             largest_contour=area
             cont_index=idx
                     
@@ -466,19 +585,21 @@ camera.set(4,240)
 Set flags. The flags are how the robot keeps track of where the ball was last seen, leading to more efficient and quicker searching methods.
 
 ```
-flag = 0 #SEARCHING: 0 = ball last seen LEFT;  1 = ball last seen RIGHT 
-flag_reroute = -1 #REROUTE SEARCHING  -1 = Do not reroute; 0 = reroute LEFT; 1 = reroute RIGHT
+flag = 0               #SEARCHING: 0 = ball last seen LEFT;  1 = ball last seen RIGHT 
+flag_reroute = -1      #REROUTE SEARCHING  -1 = Do not reroute; 0 = reroute LEFT; 1 = reroute RIGHT
 ```
 
 
 
-Write the main code block, the while loop. This is to be run repetitively until the loop is broken by pressing **"q"** on the keyboard. 
+Write the main code block, the while loop. This is to be run repetitively until the loop is broken by pressing **"q"** on the keyboard. First, it gets the three distances from the sensors using the sonar() function defined previously. 
 
-```
+```{r, attr.source='.numberLines'}
 while(True):       
     ret, frame = camera.read()
-    height = frame.shape[0] #Takes the height of the frame
-    width = frame.shape[1] #Takes the width of the frame
+    height = frame.shape[0]
+    width = frame.shape[1]
+
+    #cv2.imshow('frame', frame) #Shows the frame (video capture)
     
     global center_x
     global center_y
@@ -518,7 +639,19 @@ while(True):
     
     initial=150000  # Something very large
     
-    if((area 280):
+    if((area<initial) and (found == 1)):
+        print("Ball is found.")
+        if no_obstacle(distanceL, distanceC, distanceR): #If ball is found and no obstacle, turn on searching LED               
+            GPIO.output(LED_SEARCH,GPIO.HIGH)
+            GPIO.output(LED_PARKED,GPIO.LOW)
+            
+            if(center_x < 40): # Full frame's width is 320
+                flag = 0 # Last seen on the left (if robot loses ball) 
+                leftturn()
+                print("Turning left")
+            
+        
+            elif(center_x > 280):
                 flag = 1 # Last seen on the right (if robot loses ball) 
                 rightturn()
                 print("Turning right")
@@ -590,6 +723,10 @@ while(True):
     if(cv2.waitKey(1) & 0xff == ord('q')): #Press q to break the loop and stop moving 
         stop()
         break
+
+GPIO.cleanup() #free all the GPIO pins
+camera.release()
+        
 ```
 
 
