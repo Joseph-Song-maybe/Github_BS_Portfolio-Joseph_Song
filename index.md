@@ -31,7 +31,77 @@ Being a fairly simple build in terms of hardware, this project has much more pot
 <a id="pseudocode"></a>
 ## Pseudo Code
 
-Here is pseudo code
+<pre style="background:#fdfdfd; border:none; height:40pc">
+if( area_of_red < 400 ):
+	print( "This is not the ball" )
+	Ball is not found 
+else:
+	Ball is found
+
+
+if( Ball is found ):
+	if( no_obstacle ):
+		LED_SEARCH = on
+		LED_FOUND = off
+
+		if( center_x < 40 ):
+			turn_left()
+			ball_last_seen = LEFT
+
+		elif( center_x > 280 ):
+			turn_right()
+			ball_last_seen = RIGHT
+
+		elif( 40 < center_x < 280 ):
+			forward()
+
+			if( center_x < half of frame's width ):
+				ball_last_seen = LEFT
+
+			elif( center_x >= half of frame's width ):
+				ball_last_seen = RIGHT
+	 
+	elif( obstacle ):
+		stop()
+
+		if(( center_distance < 10 cm ) and ( area_of_red >= 10000 )):
+			stop()
+			LED_SEARCH = off
+			LED_FOUND = on
+			*Robot parked, ball has been located*
+
+		elif( left_distance < 17.5 cm ):
+			move_back_left() for 0.2 seconds
+			forward()
+
+		elif( right_distance < 17.5 cm ): 
+			move_back_right() for 0.2 seconds
+			forward()
+
+elif( Ball is not found ):
+	LED_SEARCH = off
+
+	if( no_obstacle ):
+		if( ball_last_seen = left ):
+			search_left() for 0.08 seconds
+			stop()
+
+		elif( ball_last_seen = right ):
+			search_right() for 0.08 seconds
+			stop()
+
+	elif( obstacle ):
+		reverse()
+
+else:
+	stop()
+
+
+if( user_input == "q")
+	stop()
+	break the loop
+            
+</pre>
 
 # Second Milestone
 
@@ -163,7 +233,7 @@ However, despite the seemingly smooth processs, this project did come with many 
 This code is useful when beginning with this project, being one of the simplest ways to experiment with live video capture with OpenCV's cv2.VideoCapture() function.
 
 
-<pre style="background:#fdfdfd; border:none; height:40pc">
+<pre style="background:#fdfdfd; border:none; height:30pc">
         import cv2
         
         vid = cv2.VideoCapture(0)
@@ -290,7 +360,7 @@ This code is a very simple way to start understanding ultrasonic sensor calculat
 
 # Tutorial 
 
-### 1) Download an OS 
+### 1) Download an Operating System (OS)
 
 To begin building this project, we must first set up the Raspberry Pi minicomputer by **flashing the microSD** card and **downloading an operating system (OS)** onto it. This project uses a 32-bit OS, but a 64-bit OS works just as well, if not better, as long as it is compatible with your Raspberry Pi model. You can choose and download your operating system <a href="https://www.amazon.com/Arducam-Autofocus-Raspberry-Motorized-Software/dp/B07SN8GYGD/ref=sr_1_5?crid=3236VFT39VAPQ&keywords=picamera&qid=1689698732&s=electronics&sprefix=picamer%2Celectronics%2C138&sr=1-5"> <ins>here</ins> </a> once you have the microSD card in the reader connected to your computer. Once flashed, the microSD can be inserted into the Raspberry Pi from the side, and you're almost ready to start up your minicomputer!
 
@@ -298,7 +368,7 @@ To begin building this project, we must first set up the Raspberry Pi minicomput
 
 <iframe width="560" height="315" src="https://www.youtube.com/embed/CQtliTJ41ZE" title="YouTube video player" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share" allowfullscreen></iframe>
 
-### 2) Finalize Pi setup 
+### 2) Finalize Raspberry Pi Setup 
 
 Next, to display the contents of the Raspberry Pi onto a monitor, plug in *HDMI to micro HDMI cable* to the Pi and to your monitor. *(Note: if using a computer, such as Mac, you may need to use the Video Capture card). Once plugging in a *USB-C power cable*, the Raspberry Pi should begin starting up. Finally, you can download a software such as <a href="https://obsproject.com"> <ins>OBS</ins> </a> (Open Broadcaster Software) to view the contents of your Pi. 
 
@@ -323,7 +393,13 @@ Next, install OpenCV:
 sudo apt install python3-opencv
 ```
 
-Now that we've installed OpenCV and have completed wiring, we can begin writing the code.
+To check is OpenCV has been properly installed, open the terminal (top left of desktop) and type in these commands:
+```
+python
+import cv2
+cv2.__version__
+```
+If it does not give an error while importing cv2, this means that OpenCV was successfully installed! Now that we've installed OpenCV and have completed wiring, let's begin writing the code.
 
 ### 5) Software (code)
 
@@ -392,7 +468,6 @@ GPIO.setup(LED_PARKED,GPIO.OUT) # LED light for parking
 Set Ultrasonic triggers (TRIG) to false (low):
 
 ```
-#Set trigger to False (Low)
 GPIO.output(GPIO_TRIGGER1, False)
 GPIO.output(GPIO_TRIGGER2, False)
 GPIO.output(GPIO_TRIGGER3, False)
@@ -735,6 +810,10 @@ After combining all of the components of code, we can write the final code and c
 - Backing up from an obstacle
 - Avoiding an obstacle
 - Parking in front of the ball (indicated by green LED)
+
+Here is a **demo video**: 
+
+<iframe width="560" height="315" src="https://www.youtube.com/embed/gwY0bOhOlUM" title="YouTube video player" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share" allowfullscreen></iframe> 
 
   
 # Code
