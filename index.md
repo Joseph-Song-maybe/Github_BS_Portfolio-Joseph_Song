@@ -593,7 +593,7 @@ flag_reroute = -1      #REROUTE SEARCHING  -1 = Do not reroute; 0 = reroute LEFT
 
 Write the main code block, the while loop. This is to be run repetitively until the loop is broken by pressing **"q"** on the keyboard. First, it gets the three distances from the sensors using the sonar() function defined previously. 
 
-```javascript=
+<pre style="background:#fdfdfd; border:none; height:40pc">{r, attr.source='.numberLines'}
 while(True):       
     ret, frame = camera.read()
     height = frame.shape[0]
@@ -727,7 +727,7 @@ while(True):
 GPIO.cleanup() #free all the GPIO pins
 camera.release()
         
-```
+</pre>
 
 
 
