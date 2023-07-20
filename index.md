@@ -26,7 +26,7 @@ The main challenge I faced within this milestone had to do with the sizing of my
 
 ## What's Next? 
 
-Being a fairly simple build in terms of hardware, this project has much more potential for future implementations of different and new concepts, one of which is **object detection**. This is an idea I would like to implement in the future, but struggled to do so in the scope of this project due to the speed at which the Raspberry Pi can operate with a complex neural network such as the ones that most of these object detection implementations use.
+Being a fairly simple build in terms of hardware, this project has much more potential for future implementations of different features both physically, and in the world of software, one of which is **object detection**. This is an idea I would like to implement in the future, but struggled to do so in the scope of this project due to the speed at which the Raspberry Pi can operate with a complex neural network such as the ones that most of these object detection implementations use. Additionally, with this project, I used a 32-bit OS as opposed to a 64-bit OS, which is more capable in handling more data at once.
 
 <a id="pseudocode"></a>
 ## Pseudo Code
