@@ -7,8 +7,8 @@ This project is a ball tracking robot using computer vision techniques using a w
 |:--:|:--:|:--:|:--:|
 | Derin G | Cupertino HS | General Engineering, Undecided | Rising Junior
 
-![Headstone Image](Derin-Headshot.png){:height="49%" width="49%"}
-![Final Demo Night Image](demo_night.png){:height="49%" width="49%"}
+![Headstone Image](Derin-Headshot.png){:height="30%" width="30%"}
+![Final Demo Night Image](demo_night.png){:height="90%" width="90%"}
 
 # Third Milestone
 
@@ -406,7 +406,7 @@ import cv2
 cv2.__version__
 ```
 
-![Checking OpenCV installation](opencvcheck.png){:height="25%" width="25%"}
+![Checking OpenCV installation](opencvcheck.png){:height="80%" width="80%"}
 
 If it does not give an error while importing cv2, this means that OpenCV was successfully installed! Now that we've installed OpenCV and have completed wiring, open any programming IDE from the top left of your Raspberry Pi computer by navigating to the raspberry icon > *"Programming"* and let's begin writing the code.
 
