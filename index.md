@@ -86,8 +86,9 @@ The end goal for this robot is to be able to maneuver according to the largest a
 
 Some of the most challenging obstacles I faced was figuring out how work and display my Raspberry Pi, and to troubleshoot with one of my motors, which was originally not working. I've managed to overcome both of these major challenges so far, and now have a functioning Raspberry Pi and two functioning DC motors. Additional challenges that I have yet to overcome include the installation of the 3 ultrasonic sensors and the trainnig of the machine learning model meant to track the color red with computer vision.
 
-In the future, I plan to research how to overcome the challenge of building a machine learning model and figuring out how to wire my ultrasonic sensors by studying past circuit diagrams and getting a fundamental understanding of how an ultrasonic sensor works.  
+In the future, I plan to research how to overcome the challenge of building a machine learning model and figuring out how to wire my ultrasonic sensors by studying past circuit diagrams and getting a fundamental understanding of how an ultrasonic sensor works.
 
+<a id="schematics"></a>
 # Schematics 
 [![Circuit Diagram Schematic](schematic.png)](https://drive.google.com/file/d/14pjy1joovcfL6eFNL_UVC5tmyHhD_BlX/view?usp=sharing)
 *Note: Voltage Dividers **must** be used (as shown on breadboard) with 1kΩ and 2kΩ resistors to reduce voltage to 3.3V to avoid shorting Raspberry Pi board.*
@@ -289,7 +290,7 @@ This code is a very simple way to start understanding ultrasonic sensor calculat
 
 # Tutorial 
 
-#### 1) Download an OS 
+### 1) Download an OS 
 
 To begin building this project, we must first set up the Raspberry Pi minicomputer by **flashing the microSD** card and **downloading an operating system (OS)** onto it. This project uses a 32-bit OS, but a 64-bit OS works just as well, if not better, as long as it is compatible with your Raspberry Pi model. You can choose and download your operating system <a href="https://www.amazon.com/Arducam-Autofocus-Raspberry-Motorized-Software/dp/B07SN8GYGD/ref=sr_1_5?crid=3236VFT39VAPQ&keywords=picamera&qid=1689698732&s=electronics&sprefix=picamer%2Celectronics%2C138&sr=1-5"> <ins>here</ins> </a> once you have the microSD card in the reader connected to your computer. Once flashed, the microSD can be inserted into the Raspberry Pi from the side, and you're almost ready to start up your minicomputer!
 
@@ -297,15 +298,15 @@ To begin building this project, we must first set up the Raspberry Pi minicomput
 
 <iframe width="560" height="315" src="https://www.youtube.com/embed/CQtliTJ41ZE" title="YouTube video player" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share" allowfullscreen></iframe>
 
-#### 2) Finalize Pi setup 
+### 2) Finalize Pi setup 
 
 Next, to display the contents of the Raspberry Pi onto a monitor, plug in *HDMI to micro HDMI cable* to the Pi and to your monitor. *(Note: if using a computer, such as Mac, you may need to use the Video Capture card). Once plugging in a *USB-C power cable*, the Raspberry Pi should begin starting up. Finally, you can download a software such as <a href="https://obsproject.com"> <ins>OBS</ins> </a> (Open Broadcaster Software) to view the contents of your Pi. 
 
-#### 3) Electrical Work
+### 3) Electrical Work
 
-To complete hardware assembly, follow the guide of the *Motors and Board kit.* Finally, for electrical connections, follow the <a href="https://drive.google.com/file/d/14pjy1joovcfL6eFNL_UVC5tmyHhD_BlX/view?usp=sharing"> <ins>schematic diagram.</ins> </a> Try to stay relatively organized as this will be very important later on, when the project becomes more complicated. Finally, please make proper breadboard connections, as these voltage dividers are crucial in order to not short the capacitors on the Raspberry Pi minicomputer. 
+To complete hardware assembly, follow the guide of the *Motors and Board kit.* Finally, for electrical connections, follow the [<ins>schematic diagram</ins>](#schematics). Try to stay relatively organized as this will be very important later on, when the project becomes more complicated. Finally, please make proper breadboard connections, as these voltage dividers are crucial in order to not short the capacitors on the Raspberry Pi minicomputer. 
 
-#### 4) Installing OpenCV
+### 4) Installing OpenCV
 
 First, lets install OpenCV through the Raspberry Pi terminal, a very important library that entirely enables this project.
 
@@ -324,7 +325,7 @@ sudo apt install python3-opencv
 
 Now that we've installed OpenCV and have completed wiring, we can begin writing the code.
 
-#### 5) Software (code)
+### 5) Software (code)
 
 Start with importing necessary packages for the project:
 
@@ -596,7 +597,7 @@ flag_reroute = -1      #REROUTE SEARCHING  -1 = Do not reroute; 0 = reroute LEFT
 
 
 
-Write the main code block, the while loop. This is to be run repetitively until the loop is broken by pressing **"q"** on the keyboard connected to the Raspberry Pi. *Jump to pseudo code [here](#pseudocode) for an explanation of the main while loop* 
+Write the main code block, the while loop. This is to be run repetitively until the user presses **"q"** on the keyboard connected to the Raspberry Pi, which will break the loop and stop the robot. *Jump to the [pseudo code](#pseudocode) for a detailed explanation of the function of the main while loop.* 
 
 ```
 while(True):       
@@ -719,14 +720,23 @@ while(True):
     if(cv2.waitKey(1) & 0xff == ord('q')): #Press q to break the loop and stop moving 
         stop()
         break
-
-GPIO.cleanup() #free all the GPIO pins
-camera.release()
-        
 ```
 
+Finally, reset the mode of all pins to input, and finally release the resources initialized for the code:
+```
+GPIO.cleanup() #free all the GPIO pins
+camera.release()
+```
 
+After combining all of the components of code, we can write the final code and complete the ball tracking robot with computer vision! Here is a field test of the final product, which demonstrates, in order: 
+- Forward movement
+- Searching right
+- Searching left
+- Backing up from an obstacle
+- Avoiding an obstacle
+- Parking in front of the ball (indicated by green LED)
 
+  
 # Code
 
 <pre style="background:#fdfdfd; border:none; height:40pc">
