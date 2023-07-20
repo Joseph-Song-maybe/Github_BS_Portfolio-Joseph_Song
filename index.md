@@ -28,6 +28,11 @@ The main challenge I faced within this milestone had to do with the sizing of my
 
 Being a fairly simple build in terms of hardware, this project has much more potential for future implementations of different and new concepts, one of which is **object detection**. This is an idea I would like to implement in the future, but struggled to do so in the scope of this project due to the speed at which the Raspberry Pi can operate with a complex neural network such as the ones that most of these object detection implementations use.
 
+<a id="pseudocode"></a>
+## Pseudo Code
+
+Here is pseudo code
+
 # Second Milestone
 
 <iframe width="560" height="315" src="https://www.youtube.com/embed/6yCgNUtyPdY" title="YouTube video player" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share" allowfullscreen></iframe>
@@ -591,9 +596,9 @@ flag_reroute = -1      #REROUTE SEARCHING  -1 = Do not reroute; 0 = reroute LEFT
 
 
 
-Write the main code block, the while loop. This is to be run repetitively until the loop is broken by pressing **"q"** on the keyboard. First, it gets the three distances from the sensors using the sonar() function defined previously. 
+Write the main code block, the while loop. This is to be run repetitively until the loop is broken by pressing **"q"** on the keyboard connected to the Raspberry Pi. *Jump to pseudo code [here](#pseudocode) for an explanation of the main while loop* 
 
-<pre style="background:#fdfdfd; border:none; height:40pc">{r, attr.source='.numberLines'}
+```
 while(True):       
     ret, frame = camera.read()
     height = frame.shape[0]
@@ -612,17 +617,10 @@ while(True):
     loct,area=find_blob(mask_red)
     x,y,w,h=loct
      
-    #distance coming from front ultrasonic sensor
-    distanceC = sonar(GPIO_TRIGGER2,GPIO_ECHO2)
-    #distance coming from right ultrasonic sensor
-    distanceR = sonar(GPIO_TRIGGER3,GPIO_ECHO3)
-    #distance coming from left ultrasonic sensor
-    distanceL = sonar(GPIO_TRIGGER1,GPIO_ECHO1)
-    print("dL, dC, dR ", distanceL//1, distanceC//1, distanceR//1)
-    
-    print("\n\n--------------") #Nicely formatted printing for checking distance or debugging
-    print("0:left, 1: right ===> flag = ", flag)
-    
+    distanceC = sonar(GPIO_TRIGGER2,GPIO_ECHO2)  #distance coming from front ultrasonic sensor
+    distanceR = sonar(GPIO_TRIGGER3,GPIO_ECHO3)  #distance coming from right ultrasonic sensor
+    distanceL = sonar(GPIO_TRIGGER1,GPIO_ECHO1)  #distance coming from left ultrasonic sensor
+
     if (w*h) < 400: #If the area of a found red spot is <400, ignore it and set found = 0
         print ("This object is not the ball.")
         GPIO.output(LED_SEARCH, GPIO.LOW)
@@ -634,8 +632,6 @@ while(True):
         center_x=x+((w)/2)
         center_y=y+((h)/2)
         cv2.circle(frame,(int(center_x),int(center_y)),3,(0,110,255),-1)
-        
-    print("area is ", area)
     
     initial=150000  # Something very large
     
@@ -727,7 +723,7 @@ while(True):
 GPIO.cleanup() #free all the GPIO pins
 camera.release()
         
-</pre>
+```
 
 
 
