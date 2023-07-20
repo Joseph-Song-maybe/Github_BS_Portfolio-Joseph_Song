@@ -412,7 +412,7 @@ The end goal for this robot is to be able to maneuver according to the largest a
 
 ### Components Used
 
-- Raspberry Pi micro-processor
+- Raspberry Pi minicomputer
     - The component that provides the main function of the project. The Raspberry Pi is essentially a minicomputer that you can write code onto, and ultimately power the robot through wiring. 
 - DC motors
     - A type of motor which is commonly used to provide functionality to wheels. This motor works by making use of an electromagnet which constantly switches its polarity by switching the direction of the current. This current direction switch is made possible with the commutator and brushes of the motor, which allows for the motor to constantly spin. 
