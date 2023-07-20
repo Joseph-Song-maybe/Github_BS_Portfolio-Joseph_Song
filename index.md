@@ -464,6 +464,10 @@ In the future, I plan to research how to overcome the challenge of building a ma
 |:--:|:--:|:--:|:--:|
 | Video Capture card | Capture card is necessary to display onto laptops (unnecessary for separate monitors). | $16.98 | <a href="https://www.amazon.com/Capture-Streaming-Broadcasting-Conference-Teaching/dp/B09FLN63B3/ref=sr_1_3?crid=19YSORXLTIALH&keywords=video+capture+card&qid=1689699799&s=electronics&sprefix=video+capture+car%2Celectronics%2C140&sr=1-3"> Link </a> |
 |:--:|:--:|:--:|:--:|
+| SD card reader | Necessary to flash your microSD and install an OS onto it. | $4.99 | <a href="https://www.amazon.com/Reader-Adapter-Camera-Memory-Wansurs/dp/B0B9QZ4W4Y/ref=sr_1_4?crid=F124KSQOC5SO&keywords=sd+card+reader&qid=1689869007&sprefix=sd+card+reader%2Caps%2C126&sr=8-4"> Link </a> |
+|:--:|:--:|:--:|:--:|
+| Wireless Mouse and Keyboard | A separate Mouse and Keyboard is needed to use the Raspberry Pi. | $25.99 | <a href="https://www.amazon.com/Wireless-Keyboard-Trueque-Cordless-Computer/dp/B09J4RQFK7/ref=sr_1_1_sspa?crid=2R048HRMFBA7Z&keywords=mouse+and+keyboard+wireless&qid=1689871090&sprefix=mouse+and+keyboard+wireless+%2Caps%2C131&sr=8-1-spons&sp_csd=d2lkZ2V0TmFtZT1zcF9hdGY&psc=1"> Link </a> |
+|:--:|:--:|:--:|:--:|
 
 # Starter Project
 
@@ -621,3 +625,39 @@ This code is a very simple way to start understanding ultrasonic sensor calculat
         
         GPIO.cleanup()
 </pre>
+
+# Tutorial 
+
+#### 1) Download an OS 
+
+To begin building this project, we must first set up the Raspberry Pi minicomputer by **flashing the microSD** card and **downloading an operating system (OS)** onto it. This project uses a 32-bit OS, but a 64-bit OS works just as well, if not better, as long as it is compatible with your Raspberry Pi model. You can choose and download your operating system <a href="https://www.amazon.com/Arducam-Autofocus-Raspberry-Motorized-Software/dp/B07SN8GYGD/ref=sr_1_5?crid=3236VFT39VAPQ&keywords=picamera&qid=1689698732&s=electronics&sprefix=picamer%2Celectronics%2C138&sr=1-5"> <ins>here</ins> </a> once you have the microSD card in the reader connected to your computer. Once flashed, the microSD can be inserted into the Raspberry Pi from the side, and you're almost ready to start up your minicomputer!
+
+*Here is a short official tutorial:*
+
+<iframe width="560" height="315" src="https://www.youtube.com/embed/CQtliTJ41ZE" title="YouTube video player" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share" allowfullscreen></iframe>
+
+#### 2) Finalize Pi setup 
+
+Next, to display the contents of the Raspberry Pi onto a monitor, plug in *HDMI to micro HDMI cable* to the Pi and to your monitor. *(Note: if using a computer, such as Mac, you may need to use the Video Capture card). Once plugging in a *USB-C power cable*, the Raspberry Pi should begin starting up. Finally, you can download a software such as <a href="https://obsproject.com"> <ins>OBS</ins> </a> (Open Broadcaster Software) to view the contents of your Pi. 
+
+#### 3) Electrical Work
+
+To complete hardware assembly, follow the guide of the *Motors and Board kit.* Finally, for electrical connections, follow the <a href="https://drive.google.com/file/d/14pjy1joovcfL6eFNL_UVC5tmyHhD_BlX/view?usp=sharing"> <ins>schematic diagram.</ins> </a> Try to stay relatively organized as this will be very important later on, when the project becomes more complicated. Finally, please make proper breadboard connections, as these voltage dividers are crucial in order to not short the capacitors on the Raspberry Pi minicomputer. 
+
+#### 4) Software (code)
+
+First, lets install OpenCV through the Raspberry Pi terminal, a very important library that entirely enables this project.
+
+Update and upgrade packages to newest version:
+```
+sudo apt update
+sudo apt upgrade
+```
+
+Next, install OpenCV: 
+```
+sudo apt install python3-opencv
+```
+
+
+
