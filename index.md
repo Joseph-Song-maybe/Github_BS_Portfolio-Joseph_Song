@@ -310,6 +310,8 @@ sudo apt update
 sudo apt upgrade
 ```
 
+
+
 Next, install OpenCV: 
 ```
 sudo apt install python3-opencv
@@ -320,6 +322,7 @@ Now that we've installed OpenCV and have completed wiring, we can begin writing 
 #### 5) Software (code)
 
 Start with importing necessary packages for the project:
+
 ```
 import cv2
 from picamera import PiCamera
@@ -330,12 +333,264 @@ import numpy as np
 
 
 
+Set up Ultrasonic Sensor proximity values for future use in motor movement an obstacle avoidance. These values will be used later in a different function as well as another maneuvering feature for the bot:
+
+```
+sensor_proximity = 10 #Middle sensor 
+rerouting_proximity = 17.5 #Side sensors only
+```
 
 
 
+Set up GPIO pin connections to all different components depending on which GPIO pin they have been connected to: 
+
+```
+GPIO.setmode(GPIO.BCM)
+
+GPIO_TRIGGER1 = 19     #LEFT ultrasonic sensor
+GPIO_ECHO1 = 26
+
+GPIO_TRIGGER2 = 16     #FRONT ultrasonic sensor
+GPIO_ECHO2 = 20
+
+GPIO_TRIGGER3 = 11     #RIGHT ultrasonic sensor
+GPIO_ECHO3 = 12
+
+motor1B=6  #LEFT Motor
+motor1E=5
+
+motor2B=22  #RIGHT Motor
+motor2E=23
+
+LED_SEARCH=18 
+LED_PARKED=5 
+```
 
 
 
+Set the pins as outputs and inputs so ultrasonic sensors can be properly used and so LEDs work how they're meant to: 
+
+```
+GPIO.setup(GPIO_TRIGGER1,GPIO.OUT)  # Trigger 1
+GPIO.setup(GPIO_ECHO1,GPIO.IN)  # Echo 1
+GPIO.setup(GPIO_TRIGGER2,GPIO.OUT)  # Trigger 2
+GPIO.setup(GPIO_ECHO2,GPIO.IN)  # Echo 2
+GPIO.setup(GPIO_TRIGGER3,GPIO.OUT)  # Trigger 3
+GPIO.setup(GPIO_ECHO3,GPIO.IN)  # Echo 3
+GPIO.setup(LED_SEARCH,GPIO.OUT)  # LED light for tracking
+GPIO.setup(LED_PARKED,GPIO.OUT) # LED light for parking
+```
+
+
+
+Set Ultrasonic triggers (TRIG) to false (low):
+
+```
+#Set trigger to False (Low)
+GPIO.output(GPIO_TRIGGER1, False)
+GPIO.output(GPIO_TRIGGER2, False)
+GPIO.output(GPIO_TRIGGER3, False)
+```
+
+
+
+Define the function for the Ultrasonic Sensors and color detection to ultimately draw a **bounding box** around the identified red ball. This bounding box is crucial for almost all of the movement features in the future, and allows us to calculate the area of the ball and therefore approximately how far away it is:
+
+```
+def sonar(GPIO_TRIGGER,GPIO_ECHO):
+    start=0                     
+    stop=0
+    # Set pins as output and input
+    GPIO.setup(GPIO_TRIGGER,GPIO.OUT)  # Trigger
+    GPIO.setup(GPIO_ECHO,GPIO.IN)    # Echo
+     
+    # Set trigger to False (Low)
+    GPIO.output(GPIO_TRIGGER, False)
+     
+    # Allow module to settle
+    time.sleep(0.01)
+         
+    #while distance > 5:
+    #Send 10us pulse to trigger
+    GPIO.output(GPIO_TRIGGER, True)
+    time.sleep(0.00001)
+    GPIO.output(GPIO_TRIGGER, False)
+    begin = time.time()
+    while GPIO.input(GPIO_ECHO)==0 and time.time()largest_contour) :
+            largest_contour=area
+            cont_index=idx
+                    
+    r=(0,0,2,2)
+    if len(contours) > 0:
+        r = cv2.boundingRect(contours[cont_index])
+     
+    return r,largest_contour
+```
+
+
+
+Define one last function for color detection:
+
+```
+def target_hist(frame):
+    hsv_img=cv2.cvtColor(frame, cv2.COLOR_BGR2HSV)
+   
+    hist=cv2.calcHist([hsv_img],[0],None,[50],[0,255])
+    return hist
+```
+
+
+
+Define a function for obstacle avoidance. It will return *True* if the sensors detect no obstacle within 10 centimeters of the three sensors, and will return *False* if there is an obstacle within 10 centimeters of the three sensors. This is a very basic function to be able to quickly check for obstacles in later code. 
+
+```
+def no_obstacle(distanceL, distanceC, distanceR): #TRUE: no obstacles within 10 cm of sensor, FALSE: obstacle
+    if(distanceL > sensor_proximity and distanceC > sensor_proximity and distanceR > sensor_proximity):
+        return True
+    else:
+        return False
+```
+
+
+
+Start live camera capture and resize the frame to speed up the Raspberry Pi to increase frames per second (FPS). Increased FPS will allow for the robot to run smoother and will increase efficiency in the detection of the ball, increasing the efficiency in the robot's overall movement.
+
+```
+camera = cv2.VideoCapture(0) #Live camera capture
+camera.set(3,320)
+camera.set(4,240)
+```
+
+
+
+Set flags. The flags are how the robot keeps track of where the ball was last seen, leading to more efficient and quicker searching methods.
+
+```
+flag = 0 #SEARCHING: 0 = ball last seen LEFT;  1 = ball last seen RIGHT 
+flag_reroute = -1 #REROUTE SEARCHING  -1 = Do not reroute; 0 = reroute LEFT; 1 = reroute RIGHT
+```
+
+
+
+Write the main code block, the while loop. This is to be run repetitively until the loop is broken by pressing **"q"** on the keyboard. 
+
+```
+while(True):       
+    ret, frame = camera.read()
+    height = frame.shape[0] #Takes the height of the frame
+    width = frame.shape[1] #Takes the width of the frame
+    
+    global center_x
+    global center_y
+    center_x=0.
+    center_y=0.
+    hsv1 = cv2.cvtColor(frame, cv2.COLOR_RGB2HSV)
+    mask_red=segment_colour(frame[:,:,[0,1,2]])
+    
+    #Masking red the frame
+    loct,area=find_blob(mask_red)
+    x,y,w,h=loct
+     
+    #distance coming from front ultrasonic sensor
+    distanceC = sonar(GPIO_TRIGGER2,GPIO_ECHO2)
+    #distance coming from right ultrasonic sensor
+    distanceR = sonar(GPIO_TRIGGER3,GPIO_ECHO3)
+    #distance coming from left ultrasonic sensor
+    distanceL = sonar(GPIO_TRIGGER1,GPIO_ECHO1)
+    print("dL, dC, dR ", distanceL//1, distanceC//1, distanceR//1)
+    
+    print("\n\n--------------") #Nicely formatted printing for checking distance or debugging
+    print("0:left, 1: right ===> flag = ", flag)
+    
+    if (w*h) < 400: #If the area of a found red spot is <400, ignore it and set found = 0
+        print ("This object is not the ball.")
+        GPIO.output(LED_SEARCH, GPIO.LOW)
+        GPIO.output(LED_PARKED, GPIO.LOW)
+        found=0
+    else:
+        found=1
+        simg2 = cv2.rectangle(frame, (x,y), (x+w,y+h), 255,2)
+        center_x=x+((w)/2)
+        center_y=y+((h)/2)
+        cv2.circle(frame,(int(center_x),int(center_y)),3,(0,110,255),-1)
+        
+    print("area is ", area)
+    
+    initial=150000  # Something very large
+    
+    if((area 280):
+                flag = 1 # Last seen on the right (if robot loses ball) 
+                rightturn()
+                print("Turning right")
+                
+                
+            else: #If the ball is relatively centered, move forward 
+                forward()
+                print("moving forward")
+                if(center_x < width//2):
+                    flag = 0 #If ball is lost while to the left of the center, assign flag = 0
+                elif(center_x >= width//2):
+                    flag = 1 #If ball is lost while to the right of the center, assign flag = 1
+                    
+                print(width//2)  
+                print("Flag is ", flag) 
+            
+    
+        else:
+            stop()
+            
+            if ((distanceC < sensor_proximity) and (area >= 10000)): # PARKED STATE: If the ball is in front of the center sensor
+                stop()
+                GPIO.output(LED_SEARCH,GPIO.LOW) #Turn off the tracking LED
+                GPIO.output(LED_PARKED, GPIO.HIGH) #Turn on the parked LED
+                
+            # REROUTING MOVEMENT
+            elif(distanceL < rerouting_proximity):
+                print("Rerouting right")
+                back_left()
+                time.sleep(0.2)
+                flag_reroute = 1
+                if(flag_reroute == 1):
+                    forward()
+                    
+            elif(distanceR < rerouting_proximity):
+                print("rerouting left")
+                back_right()
+                time.sleep(0.2)
+                flag_reroute = 0
+                if(flag_reroute == 0):
+                    forward()
+            
+
+    elif(found==0):
+        GPIO.output(LED_SEARCH,GPIO.LOW)
+        if no_obstacle(distanceL, distanceC, distanceR):
+            print("Finding ball, turning")
+            if(flag == 0): # If last seen location was on the left, search by turning left
+                print("Searching left")
+                sharp_left()
+                time.sleep(0.08)
+                stop()
+            elif(flag == 1): # If last seen location was on the right, search by turning right
+                sharp_right()
+                print("Searching right")
+                time.sleep(0.08)
+                stop()
+            
+        else:
+            reverse()
+            print("Reversing")
+    else:
+        stop()
+
+    
+    
+    cv2.imshow("draw",frame) #Shows frame with bounding box 
+    
+    if(cv2.waitKey(1) & 0xff == ord('q')): #Press q to break the loop and stop moving 
+        stop()
+        break
+```
 
 
 
@@ -368,8 +623,8 @@ GPIO_ECHO2 = 20
 GPIO_TRIGGER3 = 11     #RIGHT ultrasonic sensor
 GPIO_ECHO3 = 12
 
-motor1B=24#6  #LEFT Motor
-motor1E=10#5
+motor1B=6  #LEFT Motor
+motor1E=5
 
 motor2B=22  #RIGHT Motor
 motor2E=23
