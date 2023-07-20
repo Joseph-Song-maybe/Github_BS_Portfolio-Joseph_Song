@@ -440,7 +440,7 @@ In the future, I plan to research how to overcome the challenge of building a ma
 
   
 ![Front View of robot](IMG_6633.jpg){:height="33%" width="31%"}
-![Top View of robot](IMG_6615.jpg){:height="33%" width="31%"}
+![Top View of robot](topview.JPG){:height="33%" width="31%"}
 ![Side View of robot](IMG_6621.jpg){:height="33%" width="31%"}
 
 
