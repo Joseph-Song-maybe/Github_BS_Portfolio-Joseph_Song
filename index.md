@@ -385,13 +385,15 @@ Update and upgrade packages to newest version:
 sudo apt update
 sudo apt upgrade
 ```
-
-
+</br>
+</br>
 
 Next, install OpenCV: 
 ```
 sudo apt install python3-opencv
 ```
+</br>
+</br>
 
 To check is OpenCV has been properly installed, open the terminal (top left of desktop) and type in these commands:
 ```
@@ -399,7 +401,10 @@ python
 import cv2
 cv2.__version__
 ```
-If it does not give an error while importing cv2, this means that OpenCV was successfully installed! Now that we've installed OpenCV and have completed wiring, let's begin writing the code.
+
+![Checking OpenCV installation](opencvcheck.png){:height="25%" width="25%"}
+
+If it does not give an error while importing cv2, this means that OpenCV was successfully installed! Now that we've installed OpenCV and have completed wiring, open any programming IDE from the top left of your Raspberry Pi computer by navigating to the raspberry icon > *"Programming"* and let's begin writing the code.
 
 ### 5) Software (code)
 
@@ -412,8 +417,8 @@ import RPi.GPIO as GPIO
 import time              
 import numpy as np
 ```
-
-
+</br>
+</br>
 
 Set up Ultrasonic Sensor proximity values for future use in motor movement an obstacle avoidance. These values will be used later in a different function as well as another maneuvering feature for the bot:
 
@@ -421,8 +426,8 @@ Set up Ultrasonic Sensor proximity values for future use in motor movement an ob
 sensor_proximity = 10 #Middle sensor 
 rerouting_proximity = 17.5 #Side sensors only
 ```
-
-
+</br>
+</br>
 
 Set up GPIO pin connections to all different components depending on which GPIO pin they have been connected to: 
 
@@ -447,8 +452,8 @@ motor2E=23
 LED_SEARCH=18 
 LED_PARKED=5 
 ```
-
-
+</br>
+</br>
 
 Set the pins as outputs and inputs so ultrasonic sensors can be properly used and so LEDs work how they're meant to: 
 
@@ -462,8 +467,8 @@ GPIO.setup(GPIO_ECHO3,GPIO.IN)  # Echo 3
 GPIO.setup(LED_SEARCH,GPIO.OUT)  # LED light for tracking
 GPIO.setup(LED_PARKED,GPIO.OUT) # LED light for parking
 ```
-
-
+</br>
+</br>
 
 Set Ultrasonic triggers (TRIG) to false (low):
 
@@ -472,8 +477,8 @@ GPIO.output(GPIO_TRIGGER1, False)
 GPIO.output(GPIO_TRIGGER2, False)
 GPIO.output(GPIO_TRIGGER3, False)
 ```
-
-
+</br>
+</br>
 
 Define the function for the Ultrasonic Sensors and color detection to ultimately draw a **bounding box** around the identified red ball. This bounding box is crucial for almost all of the movement features in the future, and allows us to calculate the area of the ball and therefore approximately how far away it is:
 
@@ -509,8 +514,8 @@ def sonar(GPIO_TRIGGER,GPIO_ECHO):
    
     return distance                    # Reset GPIO settings, return distance (in cm) appropriate to be used for robot movement 
 ```
-
-
+</br>
+</br>
 
 Set all motors to output:
 
@@ -521,8 +526,8 @@ GPIO.setup(motor1E, GPIO.OUT)
 GPIO.setup(motor2B, GPIO.OUT)
 GPIO.setup(motor2E, GPIO.OUT)
 ```
-
-
+</br>
+</br>
 
 Define functions to simplify motor movements in later code (sharp turns will power both wheels in opposite directions whereas regular turns only power one):
 
@@ -581,8 +586,8 @@ def back_right():
     GPIO.output(motor2B,GPIO.LOW)
     GPIO.output(motor2E,GPIO.LOW)
 ```
-
-
+</br>
+</br>
 
 Define a function to isolate red colored pixels from other colors and create the mask (black and white frame). The range of BGR values are experimentally determined specific to the color of the ball of your choosing. These values may need to be slightly changed:
 
@@ -604,8 +609,8 @@ def segment_colour(frame):    #returns only the red colors in the frame
     
     return mask
 ```
-
-
+</br>
+</br>
 
 Define the find_blob() function to place the bounding box on the largest area of red pixels. This function is important to allow the robot to not confuse red colors in the background as the ball. 
 
@@ -626,8 +631,8 @@ def find_blob(blob): # Returns the red colored largest object
      
     return r,largest_contour
 ```
-
-
+</br>
+</br>
 
 Define one last function for color detection:
 
@@ -638,8 +643,8 @@ def target_hist(frame):
     hist=cv2.calcHist([hsv_img],[0],None,[50],[0,255])
     return hist
 ```
-
-
+</br>
+</br>
 
 Define a function for obstacle avoidance. It will return *True* if the sensors detect no obstacle within 10 centimeters of the three sensors, and will return *False* if there is an obstacle within 10 centimeters of the three sensors. This is a very basic function to be able to quickly check for obstacles in later code. 
 
@@ -650,8 +655,8 @@ def no_obstacle(distanceL, distanceC, distanceR): #TRUE: no obstacles within 10 
     else:
         return False
 ```
-
-
+</br>
+</br>
 
 Start live camera capture and resize the frame to speed up the Raspberry Pi to increase frames per second (FPS). Increased FPS will allow for the robot to run smoother and will increase efficiency in the detection of the ball, increasing the efficiency in the robot's overall movement.
 
@@ -660,8 +665,8 @@ camera = cv2.VideoCapture(0) #Live camera capture
 camera.set(3,320)
 camera.set(4,240)
 ```
-
-
+</br>
+</br>
 
 Set flags. The flags are how the robot keeps track of where the ball was last seen, leading to more efficient and quicker searching methods.
 
@@ -669,8 +674,8 @@ Set flags. The flags are how the robot keeps track of where the ball was last se
 flag = 0               #SEARCHING: 0 = ball last seen LEFT;  1 = ball last seen RIGHT 
 flag_reroute = -1      #REROUTE SEARCHING  -1 = Do not reroute; 0 = reroute LEFT; 1 = reroute RIGHT
 ```
-
-
+</br>
+</br>
 
 Write the main code block, the while loop. This is to be run repetitively until the user presses **"q"** on the keyboard connected to the Raspberry Pi, which will break the loop and stop the robot. *Jump to the [pseudo code](#pseudocode) for a detailed explanation of the function of the main while loop.* 
 
@@ -796,12 +801,16 @@ while(True):
         stop()
         break
 ```
+</br>
+</br>
 
 Finally, reset the mode of all pins to input, and finally release the resources initialized for the code:
 ```
 GPIO.cleanup() #free all the GPIO pins
 camera.release()
 ```
+</br>
+</br>
 
 After combining all of the components of code, we can write the final code and complete the ball tracking robot with computer vision! Here is a field test of the final product, which demonstrates, in order: 
 - Forward movement
@@ -811,7 +820,7 @@ After combining all of the components of code, we can write the final code and c
 - Avoiding an obstacle
 - Parking in front of the ball (indicated by green LED)
 
-Here is a **demo video**: 
+Here is a **demo video** of a final field test: 
 
 <iframe width="560" height="315" src="https://www.youtube.com/embed/gwY0bOhOlUM" title="YouTube video player" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share" allowfullscreen></iframe> 
 
