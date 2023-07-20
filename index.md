@@ -8,7 +8,7 @@ This project is a ball tracking robot using computer vision techniques using a w
 | Derin G | Cupertino HS | General Engineering, Undecided | Rising Junior
 
 ![Headstone Image](Derin-Headshot.png){:height="49%" width="49%"}
-![Final Headshot Image](Final-Headshot.png){:height="49%" width="49%"}
+![Final Demo Night Image](demo_night.png){:height="49%" width="49%"}
 
 # Third Milestone
 
