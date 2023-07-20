@@ -828,10 +828,14 @@ Here is a **demo video** of a final field test:
 
 <iframe width="560" height="315" src="https://www.youtube.com/embed/gwY0bOhOlUM" title="YouTube video player" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share" allowfullscreen></iframe> 
 
-  
-# Code
+### 6) Setting up Headless Pi (optional)
 
-<a href="ball_tracking_robot_code.py" download>Download link</a>
+At this point, you may have gotten tired of constantly plugging and unplugging the HDMI to micro HDMI cable. As a way to operate your Raspberry Pi remotely from a separate computer, set up **Headless Pi** by downloading VNC viewer. A quick tutorial to this can be found <a href="https://www.tomshardware.com/reviews/raspberry-pi-headless-setup-how-to,6028.html"> <ins>here.</ins> </a>
+
+  
+# Full Code
+
+<a href="ball_tracking_robot_code.py" download>Click here to download</a>
 <pre style="background:#fdfdfd; border:none; height:40pc">
 #PYTHON  
 
@@ -1174,5 +1178,3 @@ camera.release()
         
                  
 </pre>
-
-
