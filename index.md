@@ -6,8 +6,25 @@ This project is a ball tracking robot using computer vision techniques using a w
 | **Engineer** | **School** | **Area of Interest** | **Grade** |
 |:--:|:--:|:--:|:--:|
 | Derin G | Cupertino HS | Electrical Engineering | Rising Junior
+</br>
 
 ![Final Demo Night Image](demo_night.png){:height="100%" width="100%"}
+
+# Fourth Milestone
+
+## Summary 
+
+In my fourth milestone, I began to add much more complexity to the movement abilities of my robot while also adding LED features that light up depending on a certain state that the robot is in and cleaning up my code to optimizing the searching feature that the robot already had in the previous milestone. In addition to previous features, the ball tracking robot is now able to maneuver around obstacles that lie in the way of its path toward the ball, as well as efficiently search for the ball in case the ball rolls out of the frame. The robot now also features two LEDs on the back, both of which indicate different states that the robot is in. The *red* LED will light up when the robot is in the process of tracking the ball, while the *green* LED will light up when the robot has located the ball and has parked in front of it. 
+
+## Challenges
+
+The main challenges of this milestone were the complex movement features I decided to add. These movement features added a lot more complexity to the logic of my code, and as a result was hard to navigate through. Another main challenge I faced during this time was the frame rate drops I was experiencing. With some movement patterns, I had to incorporate the time.sleep() function in order to have more precise movements. However, since this robot works off live video capture, any time.sleep() functions would freeze my video capture for a short amount of time. These quick drops in frames per second (FPS) was enough to instead lower the precision and accuracy at which my robot would be able to track the ball, especially when the ball was in slight motion. In order to fix this problem, I had to find ways to decrease the time spent sleeping the live video capture in my code, and fine tune it to a point where the tracking precision was smooth enough alongside the efficiency of the robot's movements. 
+
+## Next Steps
+
+One major problem I encountered and have yet to fix was the dilemma my robot would face in a very specific situation. If an object (obstacle) were to stand in front of the center ultrasonic sensor and the ball would be seen farther away, the robot would mark the ball as found, confusing it with the object in front. In the future, I would like to add some complexity to my code to be able to fix this, however, this oddly specific situation was not a problem I faced enough to the point where it was ruining the functionality of my project. Additionally, fixing a small error in logic like this would require a whole separate set of logic that would inevitably run across the same issue I had with the drops in frames per second, as mentioned above.
+
+Another feature I plan on implementing in the feature is the use of the **enable pins** on the L298N motor driver board. These enable pins would allow me to control the speed at which the motors turn in specific situations, especially while turning, which would allow for more efficient searching methods for this robot, as it would limit overshooting while searching.
 
 # Third Milestone
 
@@ -202,10 +219,12 @@ In the future, I plan to research how to overcome the challenge of building a ma
 |:--:|:--:|:--:|:--:|
 | Basic connections components kit | This includes necessary components for connections such as: breadboard, jumper wires (male-to-male and male-to-female), resistors, and LEDs.  | $11.47 | <a href="https://www.amazon.com/Smraza-Breadboard-Resistors-Mega2560-Raspberry/dp/B01HRR7EBG/ref=sr_1_16?crid=27G99F3EADUCG&keywords=breadboard+1+pc&qid=1689894556&sprefix=breadboard+1+p%2Caps%2C185&sr=8-16"> <ins>Link</ins> </a> |
 |:--:|:--:|:--:|:--:|
-| Female to Female Jumper Wires | Wires necessary for sensor and input motor connections (not included in connections kit above). | $7.98 | <a href="https://www.amazon.com/EDGELEC-Breadboard-1pin-1pin-Connector-Multicolored/dp/B07GCY6CH7/ref=sr_1_3?crid=3C4YB6HOGZ8ZQ&keywords=female%2Bto%2Bfemale%2Bjumper&qid=1689894791&s=electronics&sprefix=female%2Bto%2Bfemale%2Bjumper%2Celectronics%2C161&sr=1-3&th=1"> <ins>Link</ins> </a> |
+| Female to Female Jumper Wires | Jumper wires that are necessary for sensor and input motor connections (not included in connections kit above). | $7.98 | <a href="https://www.amazon.com/EDGELEC-Breadboard-1pin-1pin-Connector-Multicolored/dp/B07GCY6CH7/ref=sr_1_3?crid=3C4YB6HOGZ8ZQ&keywords=female%2Bto%2Bfemale%2Bjumper&qid=1689894791&s=electronics&sprefix=female%2Bto%2Bfemale%2Bjumper%2Celectronics%2C161&sr=1-3&th=1"> <ins>Link</ins> </a> |
+|:--:|:--:|:--:|:--:|
+| Soldering Kit | Soldering kit for motor connections (and solderable breadboard, optional).  | $13.59 | <a href="https://www.amazon.com/Soldering-Interchangeable-Adjustable-Temperature-Enthusiast/dp/B087767KNW/ref=sr_1_5?crid=1QYWI5SBQAPH0&keywords=soldering+kit&qid=1689900771&sprefix=soldering+kit%2Caps%2C169&sr=8-5"> <ins>Link</ins> </a> |
 |:--:|:--:|:--:|:--:|
 
-# Starter Project
+# Digital Clock Project
 
 <iframe width="560" height="315" src="https://www.youtube.com/embed/G0spfXQhkr8" title="YouTube video player" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share" allowfullscreen></iframe>
 
@@ -231,6 +250,8 @@ The clock must then convert this internal count of time into the digital display
 
 ### Challenges Faced
 However, despite the seemingly smooth processs, this project did come with many challenges. With a digital clock generally being fairly small, this makes the soldering work very precise and difficult. I had to come up with unorthodox ways of soldering my components onto the board with the little amount of space I had to work with. This project also came with soldering parts that you wouldn't usually see in any other electronics project. My digital clock came with having to solder the lithium battery pack onto a flat surface, which is one of the many unusual uses of solder that I had to navigate through this project. 
+
+# Ball Tracking Robot Test Codes
 
 ## Basic Camera Testing Code
 
