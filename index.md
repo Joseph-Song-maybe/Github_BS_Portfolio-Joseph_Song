@@ -470,6 +470,15 @@ rerouting_proximity = 17.5 #Side sensors only
 &nbsp;
 &nbsp;
 
+Initialize lower and upper range parameters (computer vision) for tracking by turning:
+
+```
+lower_range = 30
+upper_range = 290
+```
+&nbsp;
+&nbsp;
+
 Set up GPIO pin connections to all different components depending on which GPIO pin they have been connected to: 
 
 ```
@@ -773,15 +782,19 @@ while(True):
             GPIO.output(LED_SEARCH,GPIO.HIGH)
             GPIO.output(LED_PARKED,GPIO.LOW)
             
-            if(center_x < 40): # Full frame's width is 320
+            if(center_x < lower_range): # Full frame's width is 320, this is LOWER range
                 flag = 0 # Last seen on the left (if robot loses ball) 
                 leftturn()
+		time.sleep(0.005)
+		stop()
                 print("Turning left")
             
         
-            elif(center_x > 280):
+            elif(center_x > upper_range): # Full frame's width is 320, this is UPPER range
                 flag = 1 # Last seen on the right (if robot loses ball) 
                 rightturn()
+		time.sleep(0.005)
+		stop()
                 print("Turning right")
                 
                 
@@ -809,7 +822,7 @@ while(True):
             elif(distanceL < rerouting_proximity):
                 print("Rerouting right")
                 back_left()
-                time.sleep(0.2)
+                time.sleep(0.1)
                 flag_reroute = 1
                 if(flag_reroute == 1):
                     forward()
@@ -817,7 +830,7 @@ while(True):
             elif(distanceR < rerouting_proximity):
                 print("rerouting left")
                 back_right()
-                time.sleep(0.2)
+                time.sleep(0.1)
                 flag_reroute = 0
                 if(flag_reroute == 0):
                     forward()
@@ -830,12 +843,12 @@ while(True):
             if(flag == 0): # If last seen location was on the left, search by turning left
                 print("Searching left")
                 sharp_left()
-                time.sleep(0.08)
+                time.sleep(0.04)
                 stop()
             elif(flag == 1): # If last seen location was on the right, search by turning right
                 sharp_right()
                 print("Searching right")
-                time.sleep(0.08)
+                time.sleep(0.04)
                 stop()
             
         else:
@@ -895,9 +908,14 @@ import RPi.GPIO as GPIO
 import time              
 import numpy as np
 
-#Ultrasonic Sensor proximity parameter (centimeter)
+# Ultrasonic Sensor proximity parameter (centimeter)
 sensor_proximity = 10
 rerouting_proximity = 17.5
+
+# Computer vision lower and upper turning range parameters for tracking
+lower_range = 30
+upper_range = 290
+	
 #Hardware work
 GPIO.setmode(GPIO.BCM)
 
@@ -1141,15 +1159,19 @@ while(True):
             GPIO.output(LED_SEARCH,GPIO.HIGH)
             GPIO.output(LED_PARKED,GPIO.LOW)
             
-            if(center_x < 40): # Full frame's width is 320
+            if(center_x < lower_range): # Full frame's width is 320
                 flag = 0 # Last seen on the left (if robot loses ball) 
                 leftturn()
+		time.sleep(0.005)
+		stop()
                 print("Turning left")
             
         
-            elif(center_x > 280):
+            elif(center_x > upper_range):
                 flag = 1 # Last seen on the right (if robot loses ball) 
                 rightturn()
+		time.sleep(0.005)
+		stop()
                 print("Turning right")
                 
                 
@@ -1177,7 +1199,7 @@ while(True):
             elif(distanceL < rerouting_proximity):
                 print("Rerouting right")
                 back_left()
-                time.sleep(0.2)
+                time.sleep(0.1)
                 flag_reroute = 1
                 if(flag_reroute == 1):
                     forward()
@@ -1185,7 +1207,7 @@ while(True):
             elif(distanceR < rerouting_proximity):
                 print("rerouting left")
                 back_right()
-                time.sleep(0.2)
+                time.sleep(0.1)
                 flag_reroute = 0
                 if(flag_reroute == 0):
                     forward()
@@ -1198,12 +1220,12 @@ while(True):
             if(flag == 0): # If last seen location was on the left, search by turning left
                 print("Searching left")
                 sharp_left()
-                time.sleep(0.08)
+                time.sleep(0.04)
                 stop()
             elif(flag == 1): # If last seen location was on the right, search by turning right
                 sharp_right()
                 print("Searching right")
-                time.sleep(0.08)
+                time.sleep(0.04)
                 stop()
             
         else:
