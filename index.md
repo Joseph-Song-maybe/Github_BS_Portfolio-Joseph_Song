@@ -7,7 +7,6 @@ This project is a ball tracking robot using computer vision techniques using a w
 |:--:|:--:|:--:|:--:|
 | Derin G | Cupertino HS | General Engineering, Undecided | Rising Junior
 
-![Headstone Image](Derin-Headshot.png){:height="30%" width="30%"}
 ![Final Demo Night Image](demo_night.png){:height="75%" width="75%"}
 
 # Third Milestone
@@ -161,7 +160,8 @@ In the future, I plan to research how to overcome the challenge of building a ma
 <a id="schematics"></a>
 # Schematics 
 [![Circuit Diagram Schematic](schematic.png)](https://drive.google.com/file/d/14pjy1joovcfL6eFNL_UVC5tmyHhD_BlX/view?usp=sharing)
-*Note: Voltage Dividers **must** be used (as shown on breadboard) with 1kΩ and 2kΩ resistors to reduce voltage to 3.3V to avoid shorting Raspberry Pi board.*
+*Note: Black wires represent Ground (GND) and red wires represent 5V. Colored wires are mostly for connections to GPIO pins.*
+*Note: Voltage Dividers ***must*** be used (as shown on breadboard) with 1kΩ and 2kΩ resistors to reduce voltage to 3.3V to avoid shorting Raspberry Pi board.*
 *Right and Center Ultrasonic Sensors are not shown on the diagram. LED connections are also not shown.*
 - *Right:*
     - *ECHO to GPIO 12*
