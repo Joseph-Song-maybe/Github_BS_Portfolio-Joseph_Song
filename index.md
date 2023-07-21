@@ -318,11 +318,11 @@ This code uses basic *WASD* controls to move your robot, similar to controlling 
         
         GPIO.setmode(GPIO.BCM)
         
-        MOTOR1B=24 #5 #Left Motor 22 10 23 24 (22&23 , 10&24)
-        MOTOR1E=10 #6
+        MOTOR1B=6 # LEFT motor
+        MOTOR1E=5
         
-        MOTOR2B=22 #17  #Right Motor
-        MOTOR2E=23 #27
+        MOTOR2B=22 # RIGHT motor
+        MOTOR2E=23 
         
         GPIO.setup(MOTOR1B, GPIO.OUT)
         GPIO.setup(MOTOR1E, GPIO.OUT)
