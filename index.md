@@ -13,9 +13,9 @@ This project is a ball tracking robot using computer vision techniques using a w
 
 &nbsp;
 
-![Front View of robot](IMG_6633.jpg){:height="33%" width="31%"}
-![Top View of robot](TOPVIEW.JPG){:height="33%" width="31%"}
-![Side View of robot](IMG_6621.jpg){:height="33%" width="31%"}
+![Front View of robot](IMG_6633.jpg){:height="33%" width="33%"}
+![Top View of robot](TOPVIEW.JPG){:height="33%" width="33%"}
+![Side View of robot](IMG_6621.jpg){:height="33%" width="33%"}
 
 [<ins>(*Jump to Tutorial*)</ins>](#Tutorial)
 
@@ -26,9 +26,9 @@ This project is a ball tracking robot using computer vision techniques using a w
 
 Here are field test videos comparing the human perspective to the robot's perspective. These may help to get a grasp of what's really happening in the software aspect of this project and how the robot implements its tracking logic compared to how we view the final product. 
 
-<iframe width="420" height="236" src="https://www.youtube.com/embed/gwY0bOhOlUM" title="YouTube video player" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share" allowfullscreen></iframe>
+<iframe width="700" height="394" src="https://www.youtube.com/embed/gwY0bOhOlUM" title="YouTube video player" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share" allowfullscreen></iframe>
 
-<iframe width="420" height="236" src="https://www.youtube.com/embed/GpLTcZbEwbo" title="YouTube video player" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share" allowfullscreen></iframe>
+<iframe width="700" height="394" src="https://www.youtube.com/embed/GpLTcZbEwbo" title="YouTube video player" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share" allowfullscreen></iframe>
 
 
 ## Summary 
