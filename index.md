@@ -22,6 +22,7 @@ This project is a ball tracking robot using computer vision techniques using a w
 # Fourth Milestone
 
 <a id="FieldTests"></a>
+
 ### Human's View vs. Robot's View 
 
 Here are field test videos comparing the human perspective to the robot's perspective. These may help to get a grasp of what's really happening in the software aspect of this project and how the robot implements its tracking logic compared to how we view the final product. 
@@ -192,6 +193,10 @@ The end goal for this robot is to be able to maneuver according to the largest a
 Some of the most challenging obstacles I faced was figuring out how work and display my Raspberry Pi, and to troubleshoot with one of my motors, which was originally not working. I've managed to overcome both of these major challenges so far, and now have a functioning Raspberry Pi and two functioning DC motors. Additional challenges that I have yet to overcome include the installation of the 3 ultrasonic sensors and the trainnig of the machine learning model meant to track the color red with computer vision.
 
 In the future, I plan to research how to overcome the challenge of building a machine learning model and figuring out how to wire my ultrasonic sensors by studying past circuit diagrams and getting a fundamental understanding of how an ultrasonic sensor works.
+
+## What's Next? 
+
+As my next steps at this point in progress, I will begin to have these features I've tested to work simoultaneously and in parallel, meaning I will slowly begin to start doing color detection to find the ball *and* moving the robot toward it. This is the first big step to getting my final code to work, and to have all the components of the project work together, and work well.
 
 <a id="schematics"></a>
 # Schematics 
