@@ -11,6 +11,8 @@ This project is a ball tracking robot using computer vision techniques using a w
 
 ![Final Demo Night Image](demo_night.png){:height="100%" width="100%"}
 
+[<ins>Jump to Tutorial</ins>](#Tutorial).
+
 # Fourth Milestone
 
 ## Summary 
@@ -399,6 +401,7 @@ This code is a very simple way to start understanding ultrasonic sensor calculat
         GPIO.cleanup()
 </pre>
 
+<a id="Tutorial"></a>
 # Tutorial 
 
 ### 1) Download an Operating System (OS)
