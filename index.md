@@ -6,6 +6,7 @@ This project is a ball tracking robot using computer vision techniques using a w
 | **Engineer** | **School** | **Area of Interest** | **Grade** |
 |:--:|:--:|:--:|:--:|
 | Derin G | Cupertino HS | Electrical Engineering | Rising Junior
+
 </br>
 
 ![Final Demo Night Image](demo_night.png){:height="100%" width="100%"}
