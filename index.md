@@ -105,11 +105,11 @@ if( Ball is found ):
 			*Robot parked, ball has been located*
 
 		elif( left_distance < 17.5 cm ):
-			move_back_left() for 0.2 seconds
+			move_back_left() for 0.1 seconds
 			forward()
 
 		elif( right_distance < 17.5 cm ): 
-			move_back_right() for 0.2 seconds
+			move_back_right() for 0.1 seconds
 			forward()
 
 elif( Ball is not found ):
@@ -117,11 +117,11 @@ elif( Ball is not found ):
 
 	if( no_obstacle ):
 		if( ball_last_seen = left ):
-			search_left() for 0.08 seconds
+			search_left() for 0.04 seconds
 			stop()
 
 		elif( ball_last_seen = right ):
-			search_right() for 0.08 seconds
+			search_right() for 0.04 seconds
 			stop()
 
 	elif( obstacle ):
