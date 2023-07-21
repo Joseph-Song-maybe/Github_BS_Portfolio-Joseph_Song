@@ -17,6 +17,19 @@ This project is a ball tracking robot using computer vision techniques using a w
 
 In my fourth milestone, I began to add much more complexity to the movement abilities of my robot while also adding LED features that light up depending on a certain state that the robot is in and cleaning up my code to optimizing the searching feature that the robot already had in the previous milestone. In addition to previous features, the ball tracking robot is now able to *maneuver around obstacles* that lie in the way of its path toward the ball, as well as *efficiently search for the ball* in case the ball rolls out of the frame. The robot now also features two *LEDs* on the back, both of which indicate different states that the robot is in. The <ins>red</ins> LED will light up when the robot is in the process of tracking the ball, while the <ins>green</ins> LED will light up when the robot has located the ball and has parked in front of it. 
 
+<a id="FieldTests"></a>
+### Final Robot Field Tests 
+
+Here are field test videos from both human and robot's eye views. These may help to get a grasp of what's really happening in the software aspect of this project and what the robot sees compared to how we view the final product. 
+
+***Human View:***
+<iframe width="560" height="315" src="https://www.youtube.com/embed/gwY0bOhOlUM" title="YouTube video player" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share" allowfullscreen></iframe>
+
+***Robot's View:***
+<iframe width="560" height="315" src="https://www.youtube.com/embed/GpLTcZbEwbo" title="YouTube video player" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share" allowfullscreen></iframe>
+
+
+
 ## Challenges
 
 The main challenges of this milestone were the *complex movement features* I decided to add. These movement features added a lot more complexity to the logic of my code, and as a result was hard to navigate through. Another main challenge I faced during this time was the frame rate drops I was experiencing. With some movement patterns, I had to incorporate the time.sleep() function in order to have more precise movements. However, since this robot works off live video capture, any time.sleep() functions would freeze my video capture for a short amount of time. These quick *drops in frames per second (FPS)* was enough to instead lower the precision and accuracy at which my robot would be able to track the ball, especially when the ball was in slight motion. In order to fix this problem, I had to find ways to decrease the time spent sleeping the live video capture in my code, and fine tune it to an equilibrium of smooth and precise tracking as well as movement efficiency. 
@@ -858,9 +871,7 @@ After combining all of the components of code, we can write the final code and c
 - Avoiding an obstacle
 - Parking in front of the ball (indicated by green LED)
 
-Here is a **demo video** of a final field test: 
-
-<iframe width="560" height="315" src="https://www.youtube.com/embed/gwY0bOhOlUM" title="YouTube video player" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share" allowfullscreen></iframe> 
+***You can view these successful field tests [<ins>HERE.</ins>](#FieldTests).***
 
 ### 6) Setting up Headless Pi (optional)
 
