@@ -11,28 +11,29 @@ This project is a ball tracking robot using computer vision techniques using a w
 
 ![Final Demo Night Image](demo_night.png){:height="100%" width="100%"}
 
+&nbsp;
+
+![Front View of robot](IMG_6633.jpg){:height="33%" width="31%"}
+![Top View of robot](TOPVIEW.JPG){:height="33%" width="31%"}
+![Side View of robot](IMG_6621.jpg){:height="33%" width="31%"}
+
 [<ins>(*Jump to Tutorial*)</ins>](#Tutorial)
 
 # Fourth Milestone
 
+<a id="FieldTests"></a>
+### Human's View vs. Robot's View 
+
+Here are field test videos comparing the human perspective to the robot's perspective. These may help to get a grasp of what's really happening in the software aspect of this project and how the robot implements its tracking logic compared to how we view the final product. 
+
+<iframe width="420" height="236" src="https://www.youtube.com/embed/gwY0bOhOlUM" title="YouTube video player" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share" allowfullscreen></iframe>
+
+<iframe width="420" height="236" src="https://www.youtube.com/embed/GpLTcZbEwbo" title="YouTube video player" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share" allowfullscreen></iframe>
+
+
 ## Summary 
 
 In my fourth milestone, I began to add much more complexity to the movement abilities of my robot while also adding LED features that light up depending on a certain state that the robot is in and cleaning up my code to optimizing the searching feature that the robot already had in the previous milestone. In addition to previous features, the ball tracking robot is now able to *maneuver around obstacles* that lie in the way of its path toward the ball, as well as *efficiently search for the ball* in case the ball rolls out of the frame. The robot now also features two *LEDs* on the back, both of which indicate different states that the robot is in. The <ins>red</ins> LED will light up when the robot is in the process of tracking the ball, while the <ins>green</ins> LED will light up when the robot has located the ball and has parked in front of it. 
-
-<a id="FieldTests"></a>
-### Final Robot Field Tests 
-
-Here are field test videos from both human and robot's eye views. These may help to get a grasp of what's really happening in the software aspect of this project and what the robot sees compared to how we view the final product. 
-
-#### Human's View:
-<iframe width="560" height="315" src="https://www.youtube.com/embed/gwY0bOhOlUM" title="YouTube video player" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share" allowfullscreen></iframe>
-&nbsp;
-&nbsp;
-
-#### Robot's View:
-<iframe width="560" height="315" src="https://www.youtube.com/embed/GpLTcZbEwbo" title="YouTube video player" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share" allowfullscreen></iframe>
-&nbsp;
-&nbsp;
 
 ## Challenges
 
@@ -208,12 +209,6 @@ In the future, I plan to research how to overcome the challenge of building a ma
 - *Center:*
     - *ECHO to GPIO 20*
     - *TRIG to GPIO 16*
-
-  
-![Front View of robot](IMG_6633.jpg){:height="33%" width="31%"}
-![Top View of robot](TOPVIEW.JPG){:height="33%" width="31%"}
-![Side View of robot](IMG_6621.jpg){:height="33%" width="31%"}
-
 
 # Bill of Materials
 
