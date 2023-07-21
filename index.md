@@ -13,9 +13,9 @@ This project is a ball tracking robot using computer vision techniques using a w
 
 &nbsp;
 
-![Front View of robot](IMG_6633.jpg){:height="33%" width="33%"}
-![Top View of robot](TOPVIEW.JPG){:height="33%" width="33%"}
-![Side View of robot](IMG_6621.jpg){:height="33%" width="33%"}
+![Front View of robot](IMG_6633.jpg){:height="33%" width="32%"}
+![Top View of robot](TOPVIEW.JPG){:height="33%" width="32%"}
+![Side View of robot](IMG_6621.jpg){:height="33%" width="32%"}
 
 [<ins>(*Jump to Tutorial*)</ins>](#Tutorial)
 
