@@ -11,7 +11,7 @@ This project is a ball tracking robot using computer vision techniques using a w
 
 ![Final Demo Night Image](demo_night.png){:height="100%" width="100%"}
 
-[<ins>Jump to Tutorial</ins>](#Tutorial).
+[<ins>(*Jump to Tutorial*)</ins>](#Tutorial)
 
 # Fourth Milestone
 
