@@ -410,7 +410,7 @@ This code is a very simple way to start understanding ultrasonic sensor calculat
 
 ### 1) Download an Operating System (OS)
 
-To begin building this project, we must first set up the Raspberry Pi minicomputer by **flashing the microSD** card and **downloading an operating system (OS)** onto it. This project uses a 32-bit OS, but a 64-bit OS works just as well, if not better, as long as it is compatible with your Raspberry Pi model. You can choose and download your operating system <a href="https://www.amazon.com/Arducam-Autofocus-Raspberry-Motorized-Software/dp/B07SN8GYGD/ref=sr_1_5?crid=3236VFT39VAPQ&keywords=picamera&qid=1689698732&s=electronics&sprefix=picamer%2Celectronics%2C138&sr=1-5"> <ins>here</ins> </a> once you have the microSD card in the reader connected to your computer. Once flashed, the microSD can be inserted into the Raspberry Pi from the side, and you're almost ready to start up your minicomputer!
+To begin building this project, we must first set up the Raspberry Pi minicomputer by **flashing the microSD** card and **downloading an operating system (OS)** onto it. This project uses a 32-bit OS, but a 64-bit OS works just as well, if not better, as long as it is compatible with your Raspberry Pi model. You can choose and download your operating system <a href="https://www.raspberrypi.com/software/operating-systems/"> <ins>here</ins> </a> once you have the microSD card in the reader connected to your computer. Once flashed, the microSD can be inserted into the Raspberry Pi from the side, and you're almost ready to start up your minicomputer!
 
 *Here is a short official tutorial:*
 
