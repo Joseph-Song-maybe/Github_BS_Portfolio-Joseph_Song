@@ -1,6 +1,8 @@
 # Choose-Your-Own Adventure Display
 
-![Headstone Image](Picture.jpg) {:height="40%" width="40%"}
+
+<img src="Picture.jpg" width="200" />
+
 
 
 <!---
