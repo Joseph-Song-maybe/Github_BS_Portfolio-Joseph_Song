@@ -62,7 +62,7 @@ The physical components were a PyPortal, a Stand, and a USB cable. The stand sup
 
 Out of all the files in the library, the most important file that makes the game function is the PYOA import. The PYOA import is the official framework for choosing your adventure for the portal. It is also the program that triggers the sound effects, sets the background and text, and displays transition animation.
 
-/See Below for More Information/
+**↓See Below for More Information↓**
 
 The primary code’s purpose is to access JSON files using the load.game command, where a list of multiple dictionaries, each acting as “cards.”(Which is also part of PYOA) The cards are like a page in a slide deck, each showing a different visual. Each dictionary contains different aspects of the card, like the text, the color of said text, the background, and much more. The code tells the portal to change cards according to the user's button input, creating the game. 
 
@@ -76,31 +76,134 @@ In my first milestone, I primarily learned about coding. I learned about enterin
 
 
 
- ## Code
- Here's where you'll put your code. The syntax below places it into a block of code. Follow the guide [here]([url](https://www.markdownguide.org/extended-syntax/)) to learn how to customize it to your project needs. 
+ ## Main Code
 
- ```c++
- void setup() {
-   // put your setup code here, to run once:
-   Serial.begin(9600);
-   Serial.println("Hello World!");
- }
+```
+# SPDX-FileCopyrightText: 2021 ladyada for Adafruit Industries
+# SPDX-License-Identifier: MIT
 
- void loop() {
-   // put your main code here, to run repeatedly:
+import board
+import storage
+from adafruit_pyoa import PYOA_Graphics
 
- }
+try:
+    try:
+        import sdcardio
+
+        spi = board.SPI()
+        sd_cs = board.SD_CS
+        sdcard = sdcardio.SDCard(spi, sd_cs)
+    except ImportError:
+        import adafruit_sdcard
+        import digitalio
+
+        sdcard = adafruit_sdcard.SDCard(
+            board.SPI(),
+            digitalio.DigitalInOut(board.SD_CS),
+        )
+    vfs = storage.VfsFat(sdcard)
+    storage.mount(vfs, "/sd")
+    print("SD card found")  # no biggie
+except OSError:
+    print("No SD card found")  # no biggie
+
+gfx = PYOA_Graphics()
+
+gfx.load_game("/cyoa")
+current_card = 0  # start with first card
+
+while True:
+    print("Current card:", current_card)
+    current_card = gfx.display_card(current_card)
+
+```
+## JSON File
+
+ ```
+[
+  {
+    "card_id": "startup",
+    "background_image": "startup.bmp",
+    "sound": "startup.wav",
+    "auto_advance": "5"
+  },
+  {
+    "card_id": "home",
+    "background_image": "home.bmp",
+    "sound": "home.wav",
+    "sound_repeat": "True",
+    "button01_text": "Help",
+    "button01_goto_card_id": "help",
+    "button02_text": "Start",
+    "button02_goto_card_id": "want to build?"
+  },
+
+  {
+    "card_id": "want to build?",
+    "background_image": "page01.bmp",
+    "text": "You do not have any friends so you decide that it might be a good idea to build a robot friend. You're unsure if you want to do this, so now is the time to decide. Do you want to build a robot friend?",
+    "text_color": "0x000001",
+    "text_background_color": "0xeeeeee",
+    "sound": "sound_01.wav",
+    "button01_text": "Yes",
+    "button01_goto_card_id": "continue?",
+    "button02_text": "No",
+    "button02_goto_card_id": "lazy"
+  },
+  {
+    "card_id": "continue?",
+    "background_image": "page02.bmp",
+    "text": "You spend all day, then all week, then all month building a robot, everyone stops talking to you, however a lot of progress has been made. Do you want to keep making the robots?",
+    "text_color": "0xFFFFFF",
+    "button01_text": "Yes",
+    "button01_goto_card_id": "robot friend",
+    "button02_text": "No",
+    "button02_goto_card_id": "lazy"
+  },
+  {
+    "card_id": "robot friend",
+    "background_image": "page03.bmp",
+    "text": "The robot is now you're friend, everyone else wishes they had a robot, this is the best thing ever. Good work!",
+    "text_color": "0xFFFFFF",
+    "sound": "Mystery.wav",
+    "button01_text": "Next",
+    "button01_goto_card_id": "happy ending"
+  },
+  {
+    "card_id": "lazy",
+    "background_image": "page04.bmp",
+    "sound": "sound_04.wav",
+    "text": "Welp, not only will you not have any friends, you are lazy. What's the point of playing? Try again.",
+    "text_color": "0xFFFFFF",
+    "button01_text": "Start Over",
+    "button01_goto_card_id": "home"
+  },
+  {
+    "card_id": "help",
+    "background_image": "help.bmp",
+    "text": "All you need to do is click the buttons, that's it.\nThis is a new line.",
+    "text_color": "0xFFFFFF",
+    "button01_text": "Home",
+    "button01_goto_card_id": "home"
+  },
+ {
+    "card_id": "happy ending",
+    "background_image": "happyending.bmp",
+    "sound": "happy_ending.wav",
+    "sound_repeat": "True",
+    "button01_text": "Home",
+    "button01_goto_card_id": "home"
+  }
+]
 ```
 
  # Bill of Materials
- Here's where you'll list the parts in your project. To add more rows, just copy and paste the example rows below.
- Don't forget to place the link of where to buy each component inside the quotation marks in the corresponding row after href =. Follow the guide [here]([url](https://www.markdownguide.org/extended-syntax/)) to learn how to customize this to your project needs. 
 
  | **Part** | **Note** | **Price** | **Link** |
  |:--:|:--:|:--:|:--:|
- | Item Name | What the item is used for | $Price | <a href="https://www.amazon.com/Arduino-A000066-ARDUINO-UNO-R3/dp/B008GRTSV6/"> Link </a> |
- | Item Name | What the item is used for | $Price | <a href="https://www.amazon.com/Arduino-A000066-ARDUINO-UNO-R3/dp/B008GRTSV6/"> Link </a> |
- | Item Name | What the item is used for | $Price | <a href="https://www.amazon.com/Arduino-A000066-ARDUINO-UNO-R3/dp/B008GRTSV6/"> Link </a> |
+ | Adafruit PyPortal - CircuitPython Powered Internet Display | Used to display the project | $54.95 | <a href="https://www.adafruit.com/product/4116"> Link </a> |
+ | Adafruit PyPortal Desktop Stand Enclosure Kit | Used to keep the portal vertical | $9.95 | <a href="https://www.adafruit.com/product/4146"> Link </a> |
+ | USB A/Micro Cable - 2m | Used to connect the PyPortal to the computer | $4.95 | <a href="https://www.adafruit.com/product/2185"> Link </a> |
 
 
 # Starter Project
