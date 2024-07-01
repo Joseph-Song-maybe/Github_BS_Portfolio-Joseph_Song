@@ -54,6 +54,7 @@ You should comment out all portions of your portfolio that you have not complete
  
 <img src="Choose-Your-Own-Adventure.jpg" width="200" />
 
+
 ## Summary
 For my main project, the Choose-Your-Own-Adventure Display(206), I've made significant progress. This project was chosen due to my interest in text adventures and the classic choose-your-own-adventure books. In addition, I was most excited about my ideas for modifications out of all the projects. I've successfully built the stand for the screen, installed the necessary programs, and debugged the code to make the PyPortal (The Display Machine) show an example adventure from the Project Book. This adventure includes coded buttons, music, different backgrounds, paths, and endings.
 
@@ -225,7 +226,42 @@ The main challenges I faced were the technical and physical aspects. With zero e
 
 ## What I Learned
 Overall, this was an amazing experience and something that will come into use later. I learned many skills I expected, like soldering and circuitry. Still, I also learned niche things I wouldn’t find without physical experiences, such as double-checking technology and simplifying circuitry. It challenged my problem-solving skills and tested my patience and resilience. After this project, I want to move on to my main project, which I’m truly looking forward to. The skills I learned will be crucial to this much larger task.
+## Code
+```
+const int trigPin = 9;
+const int echoPin = 10;
+// defines variables
+long duration;
+int distance;
+void setup() {
+  pinMode(trigPin, OUTPUT);
+  pinMode(13, OUTPUT); // Sets the trigPin as an Output
+  pinMode(echoPin, INPUT); // Sets the echoPin as an Input
+  Serial.begin(9600); // Starts the serial communication
+}
+void loop() {
+  // Clears the trigPin
+  digitalWrite(trigPin, LOW);
+  digitalWrite(13, LOW);// Turns LED off 
+  delay(100);
+  // Sets the trigPin on HIGH state for 10 micro seconds
+  digitalWrite(trigPin, HIGH);
+  delay(100);
+  digitalWrite(trigPin, LOW);
+  // Reads the echoPin, returns the sound wave travel time in microseconds
+  duration = pulseIn(echoPin, HIGH);
+  // Calculating the distance
 
+  distance = (duration * .034300) / 2;
+  // Prints the distance on the Serial Monitor
+  if ((distance)<20){ // Checks if the sensor detects an object that is too close to it
+    digitalWrite(13, HIGH);//Turns the LED on
+  }
+  Serial.print("Distance: ");
+  Serial.println(distance);
+  delay(100);
+}
+```
 
 # Other Resources/Examples
 
