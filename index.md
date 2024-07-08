@@ -32,20 +32,27 @@ You should comment out all portions of your portfolio that you have not complete
  - A summary of key topics you learned about
  - What you hope to learn in the future after everything you've learned at BSE
 
-
+-->
 
  # Second Milestone
 
- **Don't forget to replace the text below with the embedding for your milestone video. Go to Youtube, click Share -> Embed, and copy and paste the code to replace what's below.**
 
- <iframe width="560" height="315" src="https://www.youtube.com/embed/y3VAmNlER5Y" title="YouTube video player" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share" allowfullscreen></iframe>
+<iframe width="560" height="315" src="https://www.youtube.com/embed/I3SnmDUYsEY?si=zgpjrPx7nCRlBMiU" title="YouTube video player" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share" referrerpolicy="strict-origin-when-cross-origin" allowfullscreen></iframe>
 
- For your second milestone, explain what you've worked on since your previous milestone. You can highlight:
- - Technical details of what you've accomplished and how they contribute to the final goal
- - What has been surprising about the project so far
- - Previous challenges you faced that you overcame
- - What needs to be completed before your final milestone
--->
+## Summary
+For my second milestone, I concentrated on creating my project's story and visual aspects and tested them using the PyPortal, making for a simpler assembly in the third milestone. I had plans for an additional AI adventure at the end of my story, which required a story that would naturally transition from the main story to the AI aspect. I chose to base my story around reincarnation, with the characters from the first adventure influencing the gameplay in the second. I used Lucidchart to convert the story into a Choose-Your-Own-Adventure format, where I organized my thoughts using color coding. I also used many ideas thrown around the classroom to inspire many of my endings. I created the ending visuals using a pixel-art website to enhance the retro text adventure feel. Lastly, I tested all the components to ensure they could be displayed easily.
+
+<img src="comp.jpg" width="400" />
+
+## Challenges
+One of the toughest parts of this milestone was the beginning, where I needed to decide the story I was aiming for. It was difficult for me to find a subject that transitioned well while also fitting my interests. In addition, I also wasted some time fiddling with an idea of a far more complex mechanic that I needed to scrap because I couldn’t find a way to create and save new data. Image formatting was also quite a problem, as finding the correct image for the bitmap program was like finding a needle in a haystack. I eventually discovered I needed a pixel-perfect bitmap in order for the program to function. The rest of the project involved work that wasn’t complex but needed time, such as the art or the flowchart. 
+
+<img src="comp.jpg" width="400" />
+
+## What I Learned & What I’ll Do Next
+I learned more about the PyPortal during this milestone and experimented with its capabilities and shortcomings. I also improved at constructing flowcharts, and I can now clearly display thoughts and ideas with color-coding to explain without words. Finally, I learned the basics of pixel art and image files such as bitmaps and SVG files. Moving forward, I need to work on assembling the adventure. This will make it so the PyPortal displays my adventure with my story and visuals. I resolved most of the difficulties of this stage during this milestone, so I plan to finish this milestone quickly. My modifications are a whole new project, so I hope to acquire as much time as possible.
+
+
  # First Milestone
 
 
