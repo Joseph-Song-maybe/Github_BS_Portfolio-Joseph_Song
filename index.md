@@ -17,20 +17,36 @@ You should comment out all portions of your portfolio that you have not complete
 
 **Replace the BlueStamp logo below with an image of yourself and your completed project. Follow the guide [here](https://tomcam.github.io/least-github-pages/adding-images-github-pages-site.html) if you need help.**
 
+-->
 
 ![Headstone Image](logo.svg)
-  
+
 # Final Milestone
 
  **Don't forget to replace the text below with the embedding for your milestone video. Go to Youtube, click Share -> Embed, and copy and paste the code to replace what's below.**
 
  <iframe width="560" height="315" src="https://www.youtube.com/embed/F7M7imOVGug" title="YouTube video player" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share" allowfullscreen></iframe>
 
- For your final milestone, explain the outcome of your project. Key details to include are:
- - What you've accomplished since your previous milestone
- - What your biggest challenges and triumphs were at BSE
- - A summary of key topics you learned about
- - What you hope to learn in the future after everything you've learned at BSE
+
+## Summary
+For my third milestone, I used the plans and artwork made in the second milestone and implemented them on the PyPortal. Using the library adafruit_pyoa, which stands for PyPortal’s framework for a Choose-Your-Own-Adventure game, I could easily add and edit the text and visual elements I had planned before using JSON files. This format is readable by both users and the computer, which stores my data for my text and links every button with the corresponding text. I divided some larger text boxes into multiple slides and improved some designs to better fit with the display. I also worked on a flowchart of my project to make the project simpler to understand and give basic blueprints to make similar products.
+
+<img src="Blank diagram (1).png" width="400" />
+
+For a quick explanation, card 1 is requested to be used when the game starts. To prepare card 1, it grabs card data, such as the graphic and text databases. With the data, it puts the product on the display, where it waits for a button press. If they don’t press a button, it will loop until a button is pressed, where the card linked to the button repeats the same process.
+
+## Challenges
+One challenge I faced during my construction was managing the text boxes. The text buttons frequently overlapped with the other buttons, and there weren’t enough functions to move the text. I instead found the solution in simply “brute-forcing” it and making additional slides with one button. This turned out to be pretty helpful and made the game feel a lot better since it felt like 
+an actual adventure with progression.  
+
+<img src="ERROR.jpg" width="400" />
+
+Another problem I faced was with the flowchart to explain my project. Before I made the chart, I thought I knew pretty well what my code was about. I was quickly proven wrong, and what I thought would be an easy task was the most time-consuming part of the project. However, I've created a diagram that I am satisfied with.
+
+
+## What I Learned/Moving Forward
+The skills I learned for milestone three mostly centered around figuring out how to work with JSON files and the PYOA commands given by CircuitPython. However, I also learned about how my own code functioned, how to display images, and a deeper understanding of flowcharts that built onto my previous knowledge. Moving forward, I decided to work on a second AI chapter where the characters given in the first chapter would determine the AI's narrative. In addition, I plan to use the two projects to talk about something that interested me for a long time: Human Effort vs AI generation from a game-making perspective.
+
 
 -->
 
@@ -38,8 +54,6 @@ You should comment out all portions of your portfolio that you have not complete
 
 
 <iframe width="560" height="315" src="https://www.youtube.com/embed/I3SnmDUYsEY?si=zgpjrPx7nCRlBMiU" title="YouTube video player" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share" referrerpolicy="strict-origin-when-cross-origin" allowfullscreen></iframe>
-
-<img src="Blank diagram (1).png" width="800" />
 
 >Diagram: Illustrating the basic blueprint for my adventure
 
