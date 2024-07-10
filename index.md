@@ -41,7 +41,7 @@ For a quick explanation, card 1 is requested to be used when the game starts. To
 One challenge I faced during my construction was managing the text boxes. The text buttons frequently overlapped with the other buttons, and there weren’t enough functions to move the text. I instead found the solution in simply “brute-forcing” it and making additional slides with one button. This turned out to be pretty helpful and made the game feel a lot better since it felt like 
 an actual adventure with progression.  
 
-<img src="ERROR.png" width="400" />
+<img src="AMess.jpg" width="400" />
 
 Another problem I faced was with the flowchart to explain my project. Before I made the chart, I thought I knew pretty well what my code was about. I was quickly proven wrong, and what I thought would be an easy task was the most time-consuming part of the project. However, I've created a diagram that I am satisfied with.
 
