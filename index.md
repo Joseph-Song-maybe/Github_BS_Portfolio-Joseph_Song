@@ -25,8 +25,6 @@ You should comment out all portions of your portfolio that you have not complete
 
 # Final Milestone
 
- **Don't forget to replace the text below with the embedding for your milestone video. Go to Youtube, click Share -> Embed, and copy and paste the code to replace what's below.**
-
 <iframe width="560" height="315" src="https://www.youtube.com/embed/MgsUW-FxKSU?si=IvxY5zGIMVkSXT45" title="YouTube video player" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share" referrerpolicy="strict-origin-when-cross-origin" allowfullscreen></iframe>
 
 
@@ -35,6 +33,8 @@ For my third milestone, I used the plans and artwork made in the second mileston
 
 <img src="Blank diagram (1).png" width="400" />
 
+>Flowchart: A model to explain how my code functions
+
 For a quick explanation, card 1 is requested to be used when the game starts. To prepare card 1, it grabs card data, such as the graphic and text databases. With the data, it puts the product on the display, where it waits for a button press. If they don’t press a button, it will loop until a button is pressed, where the card linked to the button repeats the same process.
 
 ## Challenges
@@ -42,6 +42,8 @@ One challenge I faced during my construction was managing the text boxes. The te
 an actual adventure with progression.  
 
 <img src="AMess.jpg" width="400" />
+
+>Model: An example of the errors I encountered for this Milestone
 
 Another problem I faced was with the flowchart to explain my project. Before I made the chart, I thought I knew pretty well what my code was about. I was quickly proven wrong, and what I thought would be an easy task was the most time-consuming part of the project. However, I've created a diagram that I am satisfied with.
 
