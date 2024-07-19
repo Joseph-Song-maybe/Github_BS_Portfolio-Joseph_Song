@@ -42,7 +42,7 @@ while True:
     if current_card >= 101:
         break
 ```
-## Ai Portion Code (Full Code Below)
+## Ai Portion Code (Full Code Bottom)
 
 ```
 def ok_step(forced_choice=None):
