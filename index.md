@@ -19,9 +19,9 @@ My project is a Choose-Your-Own Adventure Display, a small screen that allows yo
 ## Summary
 For my modifications, I added a second chapter to my story using AI. I followed the directions in the project book for the AI Choose-Your-Own-Adventure project. Using the existing programs from my first project and an API key I got from OpenAI, I can input text into ChatGPT. Then, when ChatGPT responds, I can display the given text to make the game. The AI is encouraged to create an adventure in the first input and to give numbered choices, which we can select by the four numbered buttons, displayed using bitmap images, that each sends a number back into ChatGPT. Now, even if we respond with numbers, the AI can understand our true meaning and process how to respond to this decision. 
 
-<img src="1_T4xGioyFk_pbZ39nbIkU2Q.jpg" width="800" />
+<img src="AiGame.png" width="800" />
 
->Figure 1: A flowchart to explain how my code functions
+>Figure 1: A picture of my AI game
 
 >Credit: https://medium.com/@amol-wagh/open-ai-understand-foundational-concepts-of-chatgpt-and-cool-stuff-you-can-explore-a7a77baf0ee3
 
