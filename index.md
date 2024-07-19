@@ -32,7 +32,7 @@ My modifications taught me skills focused on AI and transporting data from one d
 
 <img src="images.jpeg" width="400" />
 
->Figure 2: An example of the errors I encountered for this Milestone
+>Figure 2: Pros and Cons of AI
 
 
 # Final Milestone
@@ -45,7 +45,7 @@ For my third milestone, I used the plans and artwork made in the second mileston
 
 <img src="Blank diagram (1).png" width="400" />
 
->Figure 1: A flowchart to explain how my code functions
+>Figure 3: A flowchart to explain how my ChatGPT functions
 
 For a quick explanation, card 1 is requested to be used when the game starts. To prepare card 1, it grabs card data, such as the graphic and text databases. With the data, it puts the product on the display, where it waits for a button press. If they don’t press a button, it will loop until a button is pressed, where the card linked to the button repeats the same process.
 
@@ -63,8 +63,6 @@ Another problem I faced was with the flowchart to explain my project. Before I m
 ## What I Learned/Moving Forward
 The skills I learned for milestone three mostly centered around figuring out how to work with JSON files and the PYOA commands given by CircuitPython. However, I also learned about how my own code functioned, how to display images, and a deeper understanding of flowcharts that built onto my previous knowledge. Moving forward, I decided to work on a second AI chapter where the characters given in the first chapter would determine the AI's narrative. In addition, I plan to use the two projects to talk about something that interested me for a long time: Human Effort vs AI generation from a game-making perspective.
 
-
--->
 
  # Second Milestone
 
