@@ -67,7 +67,7 @@ Another problem I faced was with the flowchart to explain my project. Before I m
 The skills I learned for milestone three mostly centered around figuring out how to work with JSON files and the PYOA commands given by CircuitPython. However, I also learned about how my own code functioned, how to display images, and a deeper understanding of flowcharts that built onto my previous knowledge. Moving forward, I decided to work on a second AI chapter where the characters given in the first chapter would determine the AI's narrative. In addition, I plan to use the two projects to talk about something that interested me for a long time: Human Effort vs AI generation from a game-making perspective.
 
 
- # Second Milestone
+# Second Milestone
 
 
 <iframe width="560" height="315" src="https://www.youtube.com/embed/I3SnmDUYsEY?si=zgpjrPx7nCRlBMiU" title="YouTube video player" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share" referrerpolicy="strict-origin-when-cross-origin" allowfullscreen></iframe>
@@ -97,7 +97,9 @@ One of the toughest parts of this milestone was the beginning, where I needed to
 ## What I Learned & What I’ll Do Next
 I learned more about the PyPortal during this milestone and experimented with its capabilities and shortcomings. I also improved at constructing flowcharts, and I can now clearly display thoughts and ideas with color-coding to explain without words. Finally, I learned the basics of pixel art and image files such as bitmaps and SVG files. Moving forward, I need to work on assembling the adventure. This will make it so the PyPortal displays my adventure with my story and visuals. I resolved most of the difficulties of this stage during this milestone, so I plan to finish this milestone quickly. My modifications are a whole new project, so I hope to acquire as much time as possible.
 
- # First Milestone
+
+# First Milestone
+
 
  <iframe width="560" height="315" src="https://www.youtube.com/embed/1DFSt7tJ0po?si=ZlgEAwYYKRw2jAyx" title="YouTube video player" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share" referrerpolicy="strict-origin-when-cross-origin" allowfullscreen></iframe>
  
@@ -259,9 +261,7 @@ while True:
  | Adafruit PyPortal Desktop Stand Enclosure Kit | Used to keep the portal vertical | $9.95 | <a href="https://www.adafruit.com/product/4146"> Link </a> |
  | USB A/Micro Cable - 2m | Used to connect the PyPortal to the computer | $4.95 | <a href="https://www.adafruit.com/product/2185"> Link </a> |
 
-
 # Starter Project
-
 
 <iframe width="560" height="315" src="https://www.youtube.com/embed/DByS1SLt-O0?si=E4YeEYrHOiGyVLPe" title="YouTube video player" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share" referrerpolicy="strict-origin-when-cross-origin" allowfullscreen></iframe>
 
