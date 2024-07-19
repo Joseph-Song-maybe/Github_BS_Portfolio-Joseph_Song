@@ -97,7 +97,6 @@ One of the toughest parts of this milestone was the beginning, where I needed to
 ## What I Learned & What I’ll Do Next
 I learned more about the PyPortal during this milestone and experimented with its capabilities and shortcomings. I also improved at constructing flowcharts, and I can now clearly display thoughts and ideas with color-coding to explain without words. Finally, I learned the basics of pixel art and image files such as bitmaps and SVG files. Moving forward, I need to work on assembling the adventure. This will make it so the PyPortal displays my adventure with my story and visuals. I resolved most of the difficulties of this stage during this milestone, so I plan to finish this milestone quickly. My modifications are a whole new project, so I hope to acquire as much time as possible.
 
-
  # First Milestone
 
  <iframe width="560" height="315" src="https://www.youtube.com/embed/1DFSt7tJ0po?si=ZlgEAwYYKRw2jAyx" title="YouTube video player" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share" referrerpolicy="strict-origin-when-cross-origin" allowfullscreen></iframe>
@@ -282,6 +281,7 @@ The main challenges I faced were the technical and physical aspects. With zero e
 
 ## What I Learned
 Overall, this was an amazing experience and something that will come into use later. I learned many skills I expected, like soldering and circuitry. Still, I also learned niche things I wouldn’t find without physical experiences, such as double-checking technology and simplifying circuitry. It challenged my problem-solving skills and tested my patience and resilience. After this project, I want to move on to my main project, which I’m truly looking forward to. The skills I learned will be crucial to this much larger task.
+
 ## Code
 ```
 const int trigPin = 9;
