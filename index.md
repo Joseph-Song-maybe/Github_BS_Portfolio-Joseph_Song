@@ -19,20 +19,23 @@ My project is a Choose-Your-Own Adventure Display, a small screen that allows yo
 ## Summary
 For my modifications, I added a second chapter to my story using AI. I followed the directions in the project book for the AI Choose-Your-Own-Adventure project. Using the existing programs from my first project and an API key I got from OpenAI, I can input text into ChatGPT. Then, when ChatGPT responds, I can display the given text to make the game. The AI is encouraged to create an adventure in the first input and to give numbered choices, which we can select by the four numbered buttons, displayed using bitmap images, that each sends a number back into ChatGPT. Now, even if we respond with numbers, the AI can understand our true meaning and process how to respond to this decision. 
 
-<img src="AiGame.png" width="800" />
+<img src="Blank diagram (2).png" width="800" />
 
 >Figure 1: A picture of my AI game
 
 ## Challenges
 One of the challenges of this milestone was making the connections between my first and second Python scripts. I experimented with ```exec()``` functions, importing the other code or using naming conventions built into CIRCUITPY, to no avail. The answer was comically simple: putting the code underneath my first code. It seemed a bit rudimentary, but it worked. Another challenge I faced was my memory allocation failing when trying to display the adventure responses from ChatGPT. The maximum number of lines was 26, and only 15 were generated, so I needed clarification from my parents about the issue. The problem lies in the PyPortal trying to load the next text while still rendering the first text, which surpassed the maximum lines and caused a crash. I fixed this problem by resetting the page every time the button was pressed and creating blank lines between each screen so that the PyPortal loads the first and a blank text and then loads the second and the same blank text. This solves the issue since the AI is discouraged from creating lines larger than 15, thus making it improbable that the text will surpass 26 lines.
 
+<img src="AiGame.png" width="800" />
+
+>Figure 2: A picture of my AI game
 
 ## What I Learned & What I’ll Do Next
 My modifications taught me skills focused on AI and transporting data from one device to another. A big part of learning this milestone was about API keys. API keys are a password of sorts that allows you to contact an AI. By calling an API key, you can make devices that traditionally couldn’t use AI such as the PyPortal input and output into a model of ChatGPT.  I also learned about formatting when displaying and using the coordinate plane to move displayed objects. I also worked a good bit around SD cards and taught myself how to mount SD cards. When the SD cards were bugged, I learned to work around and prevent the corruption of SD cards. Moving forward, I want to create an article that follows my endeavors and the debate on AI creation. This particular argument interests me due to my high regard for AI, and I wanted to give my side of the argument but didn’t have the experience or project to make my point noticeable. Now that I have the perfect project to use as a starting point and as an example, I want to make this article a reality.
 
 <img src="1709718907-pros-and-cons-of-ai-in-business.avif" width="800" />
 
->Figure 2: Pros and Cons of AI
+>Figure 3: Pros and Cons of AI
 
 >Credit: https://adamfard.com/blog/impact-of-ai-in-business
 
@@ -46,7 +49,7 @@ For my third milestone, I used the plans and artwork made in the second mileston
 
 <img src="Blank diagram (1).png" width="400" />
 
->Figure 3: A flowchart to explain how my ChatGPT functions
+>Figure 4: A flowchart to explain how my ChatGPT functions
 
 For a quick explanation, card 1 is requested to be used when the game starts. To prepare card 1, it grabs card data, such as the graphic and text databases. With the data, it puts the product on the display, where it waits for a button press. If they don’t press a button, it will loop until a button is pressed, where the card linked to the button repeats the same process.
 
@@ -56,7 +59,7 @@ an actual adventure with progression.
 
 <img src="AMess.jpg" width="400" />
 
->Figure 4: An example of the errors I encountered for this Milestone
+>Figure 5: An example of the errors I encountered for this Milestone
 
 Another problem I faced was with the flowchart to explain my project. Before I made the chart, I thought I knew pretty well what my code was about. I was quickly proven wrong, and what I thought would be an easy task was the most time-consuming part of the project. However, I've created a diagram that I am satisfied with.
 
@@ -77,9 +80,9 @@ For my second milestone, I implemented a custom story and custom visuals into my
 
 <img src="Yeti.jpg" width="400" />
 
->Figure 5: (Top) Pixel Art program I used
+>Figure 6: (Top) Pixel Art program I used
 
->Figure 6: (Bottom) Image of one of the endings with a Pixelart on the PyPortal
+>Figure 7: (Bottom) Image of one of the endings with a Pixelart on the PyPortal
 
 ## Challenges
 One of the toughest parts of this milestone was the beginning, where I needed to decide the story I was aiming for. It was difficult for me to find a subject that transitioned well while also fitting my interests. In addition, I also wasted some time fiddling with an idea of a far more complex mechanic that I needed to scrap because I couldn’t find a way to create and save new data. Image formatting was also quite a problem, as finding the correct image for the bitmap program was like finding a needle in a haystack. I eventually discovered I needed a pixel-perfect bitmap in order for the program to function. The rest of the project involved work that wasn’t complex but needed time, such as the art or the flowchart. 
@@ -88,9 +91,9 @@ One of the toughest parts of this milestone was the beginning, where I needed to
 
 <img src="Close.jpg" width="400" />
 
->Figure 7: (Top) The flowchart I used to assemble my story
+>Figure 8: (Top) The flowchart I used to assemble my story
 
->Figure 8: (Bottom) Close up of Top Image
+>Figure 9: (Bottom) Close up of Top Image
 
 ## What I Learned & What I’ll Do Next
 I learned more about the PyPortal during this milestone and experimented with its capabilities and shortcomings. I also improved at constructing flowcharts, and I can now clearly display thoughts and ideas with color-coding to explain without words. Finally, I learned the basics of pixel art and image files such as bitmaps and SVG files. Moving forward, I need to work on assembling the adventure. This will make it so the PyPortal displays my adventure with my story and visuals. I resolved most of the difficulties of this stage during this milestone, so I plan to finish this milestone quickly. My modifications are a whole new project, so I hope to acquire as much time as possible.
@@ -103,7 +106,7 @@ I learned more about the PyPortal during this milestone and experimented with it
  
 <img src="Choose-Your-Own-Adventure.jpg" width="200" />
 
->Figure 9: Image of Choose-Your-Own-Adventure Books
+>Figure 10: Image of Choose-Your-Own-Adventure Books
 >Credit: https://www.cyoa.com/
 
 ## Summary
@@ -120,7 +123,7 @@ The primary code’s purpose is to access JSON files using the load.game command
 
 <img src="comp.jpg" width="400" />
 
->Figure 10: Image illustrating the connection between the PyPortal and the computer
+>Figure 11: Image illustrating the connection between the PyPortal and the computer
 
 ## Challenges
 My first two steps for the project, assembling the stand and gathering the correct programs, weren’t too difficult. The real challenge came from debugging the code from the project book. The code was built on a previous version of CircuitPython, the portal program, which meant some folders didn’t exist, and some code was outdated from the current version of Python. This meant I had to improvise, and most of my time was spent experimenting and seeing what worked and what didn’t. Constantly running into errors was frustrating, and some errors like a RunTimeError that happens in a file that doesn’t exist continuously appeared, even if I had made the slightest tweak. After many debugging and troubleshooting attempts, I discovered a folder filled with needed PYOA data, and adding the massive folder seemed to work. It wasn’t a pleasant experience, but I finished within my second week.
@@ -272,7 +275,7 @@ The project comprised an Arduino Uno, a breadboard, an ultrasonic sensor, an LED
 
 ![Headstone Image](Ultrasonic-Sensor-Arduino-Interfacing_2.png)
 
->Figure 11: Model illustrating the functions of an ultrasonic sensor Credit: www.TheEnginneringProjects.com
+>Figure 12: Model illustrating the functions of an ultrasonic sensor Credit: www.TheEnginneringProjects.com
 
 ## Challenges
 The main challenges I faced were the technical and physical aspects. With zero experience with circuitry, I frequently made mistakes, such as plugging wires in the wrong parts, leading to obstacles that could have been solved within seconds with proper knowledge. In addition, I had some problems with soldering and ended up with a crooked proto shield, so I had to resort to the breadboard. However, the sensors were the most exhausting part of this project. I first worked on a motion sensor, but after receiving underwhelming accuracy in the readings, I restarted the project, switched to ultrasonic sensors, and went through two more buggy sensors until I finally found one that worked.
