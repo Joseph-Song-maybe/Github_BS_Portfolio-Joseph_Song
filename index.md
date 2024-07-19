@@ -5,7 +5,7 @@
 
 
 
-<!---
+
 Replace this text with a brief description (2-3 sentences) of your project. This description should draw the reader in and make them interested in what you've built. You can include what the biggest challenges, takeaways, and triumphs from completing the project were. As you complete your portfolio, remember your audience is less familiar than you are with all that your project entails!
 
 You should comment out all portions of your portfolio that you have not completed yet, as well as any instructions:
@@ -21,7 +21,30 @@ You should comment out all portions of your portfolio that you have not complete
 
 ![Headstone Image](logo.svg)
 
--->
+# Modification Milestone
+
+<iframe width="560" height="315" src="https://www.youtube.com/embed/MgsUW-FxKSU?si=IvxY5zGIMVkSXT45" title="YouTube video player" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share" referrerpolicy="strict-origin-when-cross-origin" allowfullscreen></iframe>
+
+## Summary
+For my modifications, I added a second chapter to my story using AI. I followed the directions in the project book for the AI Choose-Your-Own-Adventure project. Using the existing programs from my first project and an API key I got from OpenAI, I can input text into ChatGPT. Then, when ChatGPT responds, I can display the given text to make the game. The AI is encouraged to create an adventure in the first input and to give numbered choices, which we can select by the four numbered buttons, displayed using bitmap images, that each sends a number back into ChatGPT. Now, even if we respond with numbers, the AI can understand our true meaning and process how to respond to this decision. 
+
+<img src="Blank diagram (1).png" width="400" />
+
+>Figure 1: A flowchart to explain how my code functions
+
+## Challenges
+One of the challenges of this milestone was making the connections between my first and second Python scripts. I experimented with ```exec()``` functions, importing the other code or using naming conventions built into CIRCUITPY, to no avail. The answer was comically simple: putting the code underneath my first code. It seemed a bit rudimentary, but it worked. Another challenge I faced was my memory allocation failing when trying to display the adventure responses from ChatGPT. The maximum number of lines was 26, and only 15 were generated, so I needed clarification from my parents about the issue. The problem lies in the PyPortal trying to load the next text while still rendering the first text, which surpassed the maximum lines and caused a crash. I fixed this problem by resetting the page every time the button was pressed and creating blank lines between each screen so that the PyPortal loads the first and a blank text and then loads the second and the same blank text. This solves the issue since the AI is discouraged from creating lines larger than 15, thus making it improbable that the text will surpass 26 lines.
+
+
+<img src="AMess.jpg" width="400" />
+
+>Figure 2: An example of the errors I encountered for this Milestone
+
+## What I Learned & What I’ll Do Next
+My modifications taught me skills focused on AI and transporting data from one device to another. A big part of learning this milestone was about API keys. API keys are a password of sorts that allows you to contact an AI. By calling an API key, you can make devices that traditionally couldn’t use AI such as the PyPortal input and output into a model of ChatGPT.  I also learned about formatting when displaying and using the coordinate plane to move displayed objects. I also worked a good bit around SD cards and taught myself how to mount SD cards. When the SD cards were bugged, I learned to work around and prevent the corruption of SD cards. Moving forward, I want to create an article that follows my endeavors and the debate on AI creation. This particular argument interests me due to my high regard for AI, and I wanted to give my side of the argument but didn’t have the experience or project to make my point noticeable. Now that I have the perfect project to use as a starting point and as an example, I want to make this article a reality.
+
+
+
 
 # Final Milestone
 
