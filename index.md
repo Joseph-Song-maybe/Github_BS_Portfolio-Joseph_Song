@@ -4,20 +4,11 @@
 <img src="Picture.jpg" width="200" />
 
 
-
-
-Replace this text with a brief description (2-3 sentences) of your project. This description should draw the reader in and make them interested in what you've built. You can include what the biggest challenges, takeaways, and triumphs from completing the project were. As you complete your portfolio, remember your audience is less familiar than you are with all that your project entails!
-
-You should comment out all portions of your portfolio that you have not completed yet, as well as any instructions:
+My project is a Choose-Your-Own Adventure Display, a small screen that allows you to play a story-based multiple-choice story with multiple endings. I also created a second AI chapter using ChatGPT. Making this game was surprisingly tough, but it was a fun, interesting, and productive project. 
 
 | **Engineer** | **School** | **Area of Interest** | **Grade** |
 |:--:|:--:|:--:|:--:|
 | Joseph S| Palo Alto Highschool | Software Engineering | 9th Grade
-
-
-**Replace the BlueStamp logo below with an image of yourself and your completed project. Follow the guide [here](https://tomcam.github.io/least-github-pages/adding-images-github-pages-site.html) if you need help.**
-
-
 
 ![Headstone Image](logo.svg)
 
@@ -332,7 +323,5 @@ void loop() {
 # Other Resources/Examples
 
 - [CircuitPython Pyoa Import](https://docs.circuitpython.org/projects/pyoa/en/latest/api.html)
-- [Example 2](https://sviatil0.github.io/Sviatoslav_BSE/)
-- [Example 3](https://arneshkumar.github.io/arneshbluestamp/)
 
 
