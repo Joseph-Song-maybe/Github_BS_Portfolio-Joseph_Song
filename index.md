@@ -92,7 +92,7 @@ except Exception as e: # pylint: disable=broad-except
 ## Summary
 For my third milestone, I used the plans and artwork made in the second milestone and implemented them on the PyPortal. Using the library adafruit_pyoa, which stands for PyPortal’s framework for a Choose-Your-Own-Adventure game, I could easily add and edit the text and visual elements I had planned before using JSON files. This format is readable by both users and the computer, which stores my data for my text and links every button with the corresponding text. I divided some larger text boxes into multiple slides and improved some designs to better fit with the display. I also worked on a flowchart of my project to make the project simpler to understand and give basic blueprints to make similar products.
 
-<img src="Blank diagram (1).png" width="400" />
+<img src="Blank diagram (4).png" width="400" />
 
 >Figure 4: A flowchart to explain how my ChatGPT functions
 
